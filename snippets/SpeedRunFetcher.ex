@@ -1,4 +1,4 @@
-defmodule SpeedRunFetcher do
+defmodule CodesOnChain.SpeedRunFetcher do
   alias Components.ExHttp
 
   def fetch_data(addr, speedrun_api_endpoint, speedrun_url) do

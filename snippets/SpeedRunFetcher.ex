@@ -10,9 +10,7 @@ defmodule CodesOnChain.SpeedRunFetcher do
         id == addr
       end)
 
-    role = Map.get(runner, "role")
-
-    accepted_challengues =
+    accepted_challenges =
       runner
       |> Map.get("challenges", %{})
       |> Map.to_list()
@@ -20,11 +18,11 @@ defmodule CodesOnChain.SpeedRunFetcher do
         Map.get(challenge, "status") == "ACCEPTED"
       end)
 
-    len = length(accepted_challengues)
+    len = length(accepted_challenges)
 
     %{
       chanllege_passed_num: len,
-      link: "#{speedrun_url}#{role}s/#{addr}",
+      link: "#{speedrun_url}/builders/#{addr}",
       level: if(len == 0, do: 0, else: fib(len))
     }
   end

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div .namecard {
+            position: relative;
+            width: 786px;
+            height: 420px;
+            background: #FFFFFF;
+        }
+        div #personImg {
+            position: absolute;
+            width: 293px;
+            height: 420px;
+            left: 0px;
+            top: 0px;
+            background: url(img/person3.jpg);
+            background-repeat: none;
+            background-size: cover;
+            cursor: pointer;
+        }
+        /* #personImg :hover {
+            
+        } */
+        .flip-tip {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        .flip-tip span {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        #personImg:hover .flip-tip {
+            display: block;
+        }
+        div .footer {
+            position: absolute;
+            width: 293px;
+            height: 63px;
+            left: 0px;
+            top: 357px;
+            background: rgba(51, 51, 51, 0.5);
+        }
+        .footer img {
+            position: absolute;
+            /* width: 65px; */
+            height: 16px;
+            top: 24px;
+            display: inline;
+        }
+        .footer span {
+            position: absolute;
+            width: 144px;
+            height: 15px;
+            left: 119px;
+            top: 24px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #FFFFFF;
+        }
+        .right {
+            position: absolute;
+            width: 493px;
+            height: 420px;
+            left: 293px;
+            top: 0px;
+            background: #333333;
+        }
+        .right #name {
+            position: absolute;
+            /* width: 159px; */
+            height: 39px;
+            left: 57px;
+            top: 73px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 39px;
+            color: #FFFFFF;
+        }
+        .right #address {
+            position: absolute;
+            width: 74px;
+            height: 15px;
+            left: 237px;
+            top: 92px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #FFFFFF;
+            opacity: 0.5;
+        }
+        .right #first {
+            position: absolute;
+            width: 257px;
+            height: 47px;
+            left: 58px;
+            top: 121px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FFFFFF;
+        }
+        .right #second {
+            position: absolute;
+            /* width: 288px; */
+            height: 94px;
+            left: 58px;
+            top: 175px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #FFFFFF;
+        }
+        button {
+            position: absolute;
+            height: 30px;
+            background: #1D1D1D;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 20.5px;
+        }
+        #button1 {
+            width: 84px;
+            left: 57px;
+            top: 278px;
+        }
+        #button2 {
+            width: 101px;
+            left: 148px;
+            top: 278px;
+        }
+        #button3 {
+            width: 55px;
+            left: 256px;
+            top: 278px;
+        }
+        #button4 {
+            width: 84px;
+            left: 318px;
+            top: 278px;
+        }
+        #button5 {
+            width: 134px;
+            left: 57px;
+            top: 317px;
+        }
+        button span {
+            /* position: absolute; */
+            width: 61px;
+            height: 19px;
+            /* left: 69px;
+            top: 283px; */
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #53C78E;
+        }
+        #side {
+            position: absolute;
+            width: 90px;
+            height: 422px;
+            left: 402px;
+            top: -1px;
+            opacity: 0.05;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="namecard">
+        <a href="nameCard4Reverse.html" >
+            <div id="personImg" title="click to flip">
+                <!-- <img src="img/person3.jpg" style="height:420px;"> -->
+                <!-- <div class="flip-tip">
+                    <span>click here to flip</span>
+                </div> -->
+            </div>
+        </a>
+        <div class="footer">
+            <a href="https://www.instagram.com/"><img src="img/ins.jpg" style="left: 26px;"></a>
+            <a href="https://www.facebook.com/"><img src="img/facebook2.png" style="left: 46px;"></a> 
+            <a href="https://www.twitter.com/"><img src="img/twitter.png" style="left: 68px;"></a>
+            <span>howard.stern@gmail.com</span>
+        </div>
+        <div class="right">
+            <span id="name">Tom Stern</span>
+            <span id="address">Califonia,US</span>
+            <div class="content">
+                <div id="first">
+                    Have more than 6 years of Digital   <br/>
+                    Proudct Design experience.
+                </div>
+                <div id="second">
+                    Passionate about learning technology <br/>
+                    and exploring new possibilities.  <br/>
+                    Believe a well-design UI/UX is the key  <br/>
+                    to a successful product.  
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="button1"><span>Web 3.0</span></button>
+                <button id="button2"></button>
+                <button id="button3"></button>
+                <button id="button4"></button>
+                <button id="button5"></button>
+            </div>
+            <!-- <div id="side"> -->
+            <img id ="side" src="img/side.png" alt="sideImg">
+            <!-- </div> -->
+        </div>
+    </div>
+</body>
+</html>

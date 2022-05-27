@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nameCardReverse {
+            position: relative;
+            width: 786px;
+            height: 420px;
+            background: #333333;
+        }
+        div #personImg {
+            position: absolute;
+            width: 251px;
+            height: 251px;
+            left: 268px;
+            top: 55px;
+            background: url(img/person3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: drop-shadow(2px 2px 9px rgba(0, 0, 0, 0.1));
+            border-radius: 50%;
+            cursor: pointer;
+            /* overflow: hidden;
+            display: flex; */
+        }
+        p {
+            position: absolute;
+            /* width: 155px; */
+            height: 39px;
+            left: 316px;
+            top: 315px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 39px;
+            /* identical to box height */
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="nameCardReverse">
+        <a href="nameCard4.html">
+            <div  id="personImg" title="click to flip"></div> 
+        </a>
+        <p>Tom Stern</p>
+    </div>
+</body>
+</html>

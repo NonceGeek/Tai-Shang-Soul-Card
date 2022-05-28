@@ -1,24 +1,81 @@
 import styles from "./link.less"
 import logo from "@/assets/images/logo.png"
-import React, { useState, useEffect} from 'react'
-import {useStorage} from "@/hooks/useStorage.ts"
+import React, { useState, useEffect } from 'react'
+import { useStorage } from "@/hooks/useStorage.ts"
 import Stars from "@/components/Stars"
+import { create } from 'ipfs-http-client'
+import { rand_msg, create_user } from "@/request/fass.js"
+import { ethers } from "ethers";
+import { history } from 'umi';
+import Web3 from "web3";
+import Web3Modal from "web3modal";
+const web3Modal = new Web3Modal({
+  cacheProvider: false,
+  disableInjectedProvider: false,
+});
 export default function index(props) {
-  const [infos,setInfos] = useStorage("infos")
-  const [articleLink,setArticleLink] = useState("")
-  const [coodLink,setCoodLink] = useState("")
-  const [designLink,setDesignLink] = useState("")
-  const alChange =(event)=>{
+  const [infos, setInfos] = useStorage("infos")
+  const [articleLink, setArticleLink] = useState("")
+  const [coodLink, setCoodLink] = useState("")
+  const [designLink, setDesignLink] = useState("")
+
+  const alChange = (event) => {
     const articleLink = event.target.value
     setArticleLink(articleLink)
   }
-  const clChange =(event)=>{
+  const clChange = (event) => {
     const coodLink = event.target.value
     setCoodLink(coodLink)
   }
-  const dlChange =(event)=>{
+  const dlChange = (event) => {
     const designLink = event.target.value
     setDesignLink(designLink)
+  }
+  const addInfoByIPFS = async (infos) => {
+    const info = JSON.stringify(infos)
+    const client = create(new URL('https://ipfs.infura.io:5001'))
+    const { cid } = await client.add(info)
+    return cid
+  }
+  const randMsg = async () => {
+    const res = await rand_msg({ "params": [] })
+    return res.data.result
+  }
+
+  const createUser = async (data) => {
+    const res = await create_user(data)
+    return res
+  }
+  const signByMetamask = async () => {
+    const instance = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(instance);
+    const web3 = new Web3(instance)
+    const signer = provider.getSigner();
+    const accounts = await web3.eth.getAccounts();
+    const address = accounts[0];
+    const dataToSign = await randMsg()
+    const signature = await signer.signMessage(dataToSign)
+    return {
+      addr: address,
+      msg: dataToSign,
+      signature
+    }
+  }
+  const submitInfos = async () => {
+    const { _baseCache } = await addInfoByIPFS(infos)
+    const hash = _baseCache.get('z')
+    const { addr, msg, signature } = await signByMetamask()
+    const data = {
+      params: [
+        {ipfs: hash },
+        'user',
+        addr,
+        msg,
+        signature
+      ]
+    }
+    const res = await createUser(JSON.stringify(data))
+    return res
   }
   return (
     <>
@@ -35,32 +92,33 @@ export default function index(props) {
         <div className={styles.form}>
           <div className={styles.formItem}>
             <p>Article Link</p>
-            <input type="text" value={articleLink} onChange={alChange}/>
+            <input type="text" value={articleLink} onChange={alChange} />
           </div>
           <div className={styles.formItem}>
             <p>Cood Link</p>
-            <input type="text" value={coodLink} onChange={clChange}/>
+            <input type="text" value={coodLink} onChange={clChange} />
           </div>
           <div className={styles.formItem}>
             <p>Design Link</p>
-            <input type="text" value={designLink} onChange={dlChange}/>
+            <input type="text" value={designLink} onChange={dlChange} />
           </div>
         </div>
       </main>
       <footer>
-        <button onClick={()=>{
-            setInfos({...infos,article_link:"",cood_link:"",design_link:""})
-            setTimeout(()=>{
-              props.history.push("/gist")
-            },100)
-        }}>Skip</button>
-        <button onClick={()=>{
-            setInfos({...infos,article_link:articleLink,cood_link:coodLink,design_link:designLink})
-            setTimeout(()=>{
-                props.history.push("/gist")
-            },100)
+        <button onClick={() => {
+          setInfos({ ...infos, article_link: articleLink, cood_link: coodLink, design_link: designLink })
+          setTimeout(async() => {
+            try {
+              const res = await submitInfos(infos)
+              if(res.data.result.status=='ok'){
+                history.push('/home')
+              }
+            } catch (error) {
+              
+            }
+          }, 100)
         }}>
-          submit
+          Upload to ipfs and submit
         </button>
       </footer>
       <Stars></Stars>

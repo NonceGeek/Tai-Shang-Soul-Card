@@ -6,14 +6,14 @@ import Stars from "@/components/Stars"
 export default function index(props) {
   const [infos,setInfos] = useStorage("infos")
   const [info,setInfo] = useState({
-    username:'',
+    name:'',
     email:'',
     about_me:'',
     abilities:''
   })
   const nameChange = (event)=>{
-    const username = event.target.value
-    setInfo({...info,username})
+    const name = event.target.value
+    setInfo({...info,name})
   }
   const emailChange = (event)=>{
     const email = event.target.value
@@ -32,7 +32,7 @@ export default function index(props) {
       <header>
         <div className={styles.logo}>
           <img src={logo} alt="" />
-          <h2>Soul Card</h2>
+          <h2>SoulCard</h2>
         </div>
       </header>
       <main>
@@ -43,7 +43,7 @@ export default function index(props) {
         <div className={styles.form}>
           <div className={styles.formItem}>
             <p>Name</p>
-            <input type="text" value={info.username} onChange={nameChange}/>
+            <input type="text" value={info.name} onChange={nameChange}/>
           </div>
           <div className={styles.formItem}>
             <p>E-Mail</p>

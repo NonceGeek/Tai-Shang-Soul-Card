@@ -24,11 +24,6 @@ export default function index(props) {
     cacheProvider: false,
     disableInjectedProvider: false, 
   });
-  const menu = [
-    { id: 1, title: 'Fields' },
-    { id: 2, title: 'Resources' },
-    { id: 3, title: 'About us' }
-  ]
   const onChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
@@ -87,24 +82,20 @@ export default function index(props) {
       <header>
         <div className={styles.logo}>
           <img src={logo} alt="" />
-          <h2>Soul Card</h2>
+          <h2>SoulCard</h2>
         </div>
         <div className={styles.nav}>
-          <ul>
-            {
-              menu.map(item => {
-                return (
-                  <li key={item.id}>
-                    <span>{item.title}</span>
-                    <img src={arrowDown} alt="" />
-                  </li>
-                )
-              })
-            }
-          </ul>
+          {/* <ul>
+            <li>
+            <a href="https://todo"><span>Introduction</span></a>
+            </li>
+            <li>
+              <a href="https://noncegeek.com"><span>About us</span></a>
+            </li>
+          </ul> */}
           <button onClick={()=>setVisible(true)}>
             <span>
-              Log in
+              Register
             </span>
             <img src={arrowRight} alt="" />
           </button>
@@ -112,21 +103,28 @@ export default function index(props) {
       </header>
       <main>
         <div className={styles.text}>
-          <span className={styles.textLeft}>Realize the you love</span>
-          <span className={styles.textRight}>dream</span>
+          <span className={styles.textLeft}>
+            Create
+          </span>
+          <span className={styles.textRight}>SoulCard</span>
+          
         </div>
         <div className={styles.describe}>
-          <p>Showcase your different abilities in different fields of interest<br></br>
-            and create value with like-minded people.
+          <p> to show you in CryptoWorld, to touch cool guys in WEB3
           </p>
         </div>
       </main>
       <footer>
-        <button className={styles.free} onClick={()=>{
+        <button className={styles.free} onClick={
+          ()=>setVisible(true)
+        }>
+          Create your Soul!
+        </button>
+        {/* <button className={styles.free} onClick={()=>{
            props.history.push('/home');
         }}>
-          Try Soul Card for free
-        </button>
+          Go to Homepage
+        </button> */}
       </footer>
       <Modal
           centered
@@ -164,7 +162,7 @@ export default function index(props) {
             </div>
             <div className={styles.modalFooter}>
               <Checkbox onChange={onChange} defaultChecked={true} style={{color:"white",fontFamily: 'Inter',fontWeight:50,fontSize:"5px",lineHeight: '12px'}}>
-              I agree to Top5 Terms and Privacy Policy.
+              I agree to NonceGeek Terms and Privacy Policy.
               </Checkbox>
             </div>
           </div>

@@ -4,7 +4,7 @@ export default function index() {
   return (
     <div className={styles.cards}>
     <div className={styles.card}>
-      <h6>TOP 5</h6>
+      <h6>SoulCard</h6>
       <div className={styles.rounds}>
         <div className={styles.round}></div>
         <div className={styles.round}></div>

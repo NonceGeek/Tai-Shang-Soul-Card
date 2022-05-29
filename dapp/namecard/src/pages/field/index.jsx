@@ -35,7 +35,7 @@ export default function index(props) {
         <header>
             <div className={styles.logo}>
                 <img src={logo} alt="" />
-                <h2>Soul Card</h2>
+                <h2>SoulCard</h2>
             </div>
         </header>
         <main>

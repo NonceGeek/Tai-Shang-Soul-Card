@@ -15,17 +15,17 @@ const web3Modal = new Web3Modal({
 });
 export default function index(props) {
   const [infos, setInfos] = useStorage("infos")
-  const [articleLink, setArticleLink] = useState("")
-  const [coodLink, setCoodLink] = useState("")
+  const [mirrorLink, setMirrorLink] = useState("")
+  const [githubLink, setGithubLink] = useState("")
   const [designLink, setDesignLink] = useState("")
 
   const alChange = (event) => {
-    const articleLink = event.target.value
-    setArticleLink(articleLink)
+    const mirrorLink = event.target.value
+    setMirrorLink(mirrorLink)
   }
   const clChange = (event) => {
-    const coodLink = event.target.value
-    setCoodLink(coodLink)
+    const githubLink = event.target.value
+    setGithubLink(githubLink)
   }
   const dlChange = (event) => {
     const designLink = event.target.value
@@ -82,7 +82,7 @@ export default function index(props) {
       <header>
         <div className={styles.logo}>
           <img src={logo} alt="" />
-          <h2>Soul Card</h2>
+          <h2>SoulCard</h2>
         </div>
       </header>
       <main>
@@ -91,12 +91,12 @@ export default function index(props) {
         </div>
         <div className={styles.form}>
           <div className={styles.formItem}>
-            <p>Article Link</p>
-            <input type="text" value={articleLink} onChange={alChange} />
+            <p>Mirror Link</p>
+            <input type="text" value={mirrorLink} onChange={alChange} />
           </div>
           <div className={styles.formItem}>
-            <p>Cood Link</p>
-            <input type="text" value={coodLink} onChange={clChange} />
+            <p>Github Link</p>
+            <input type="text" value={githubLink} onChange={clChange} />
           </div>
           <div className={styles.formItem}>
             <p>Design Link</p>
@@ -106,7 +106,7 @@ export default function index(props) {
       </main>
       <footer>
         <button onClick={() => {
-          setInfos({ ...infos, article_link: articleLink, cood_link: coodLink, design_link: designLink })
+          setInfos({ ...infos, mirror_link: mirrorLink, github_link: githubLink, design_link: designLink })
           setTimeout(async() => {
             try {
               const res = await submitInfos(infos)

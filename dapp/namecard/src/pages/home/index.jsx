@@ -31,7 +31,7 @@ const tags = [
 ]
 
 const contentTypes = [
-  'Article',
+  'MirrorArticle',
   'Design',
   'Code',
 ]
@@ -114,7 +114,7 @@ export default function index() {
             {/* logo */}
             <div className='flex flex-col items-center'>
               <img className='w-logo' src={logo} alt="logo" />
-              <span className='mt-4 font-Audiowide origin-left inline-block scale-xs'>Soul Card</span>
+              <span className='mt-4 font-Audiowide origin-left inline-block scale-xs'>SoulCard</span>
             </div>
             {/* 切换页面的按钮 */}
             <div className='mt-12 grow flex flex-col items-center'>
@@ -145,30 +145,17 @@ export default function index() {
               <span className='py-1 text-gray-500'>More</span>
             </div>
             {/* 个人介绍 */}
+            todo: a selection to select all the DAO it's okay with none.
+            todo: change iframe link with dynamic params
             <div className='mt-9'>
-              <div className='text-sm origin-left inline-block scale-xs'>My Profile</div>
-              <div className='mt-5 flex'>
-                {/* 介绍文字 */}
-                <div className='w-1/2 pr-5'>
-                  <div className='text-lg'>Tom Stern</div>
-                  <div className='mt-1 leading-4'>Have more than 6 years of Digital Proudct Design experience.</div>
-                  <div className='mt-1 leading-4'>Passionate about learning technology and exploring new possibilities.</div>
-                  <div className='mt-1 leading-4'>Believe a well-design UI/UX is the key to a successful product.</div>
-                  {/* 社交媒体图标 */}
-                  <div className='mt-2 pl-4'>
-                    <img className='w-icon-sm' src={linkedin} alt="linkedin" />
-                    <img className='ml-2 w-icon-sm' src={facebook} alt="facebook" />
-                    <img className='ml-2 w-icon-sm' src={twitter} alt="twitter" />
-                    <span className='ml-4'>California,US</span>
-                  </div>
-                  <div className='mt-1.5 text-green'>howard.stern@gmail.com</div>
-                </div>
-                {/* 个人照片 */}
-                <div className='w-1/2'>
-                  <img className='w-full' src={photo} alt="photo" />
-                </div>
-              </div>
+              <iframe style={{width: "600px", height: "400px"}} allow="clipboard-write;" src="http://localhost:4000/dynamic/noncegeek_dao?addr=0x9Fd4cAbe74b06992203CAdDb10536CEA6e55Cac5"></iframe>
             </div>
+            todo: btn 0x00: setting the html;
+            todo: btn 0x01: upload namecard as html to arweave; 
+            https://arweave-uploader.surge.sh/?type=text/html
+            todo: btn 0x02: download namecard as html/png;
+            todo: btn 0x03: mint namecard as an NFT;
+            
             {/* 分隔线 */}
             <div className='mt-5 w-full border-solid border-t border-b-0 border-l-0 border-r-0 border-white'></div>
             {/* 内容类型选择标签 */}
@@ -178,12 +165,6 @@ export default function index() {
                 contentTypes.map((content) => <span key={content} className=''>{ content }</span>)
               }
             </div>
-            {/* 文章卡片 */}
-            <ContentWrapper {...article} />
-            {/* 设计卡片 */}
-            <ContentWrapper {...design} />
-            {/* 代码卡片 */}
-            <ContentWrapper {...code} />
             {/* 文章卡片 */}
             <ContentWrapper {...article} />
             {/* 设计卡片 */}
@@ -213,6 +194,7 @@ export default function index() {
           <div className="mt-12">
             <div className='text-sm text-center'>Add instagram or writer let more people connect to you</div>
             <div className="mt-5 flex justify-evenly items-center">
+              //todo adjust logo here
               {
                 [1, 2, 3].map((i) => <span className='shrink-0 w-8 h-8 bg-gray-300 rounded' key={i}></span>)
               }

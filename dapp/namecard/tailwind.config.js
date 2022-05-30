@@ -54,10 +54,10 @@ module.exports = {
         'lg-green2-end/40': 'rgba(213, 249, 125, 0.4)',
         // 内容卡片的灰色背景
         'card-gray': '#272727',
-        // NameCard 的背景色
+        // NameCard 和 Resume 卡片的背景色
         'namecard': '#0A1920',
-        // Resume 的背景色
-        'resume': '#0F2F3A',
+        // 下拉菜单、输入框的背景色
+        'input': '#111C27',
       },
       scale: {
         // 12px * 0.83 = 10px

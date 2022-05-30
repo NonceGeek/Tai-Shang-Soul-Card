@@ -11,7 +11,7 @@ export default function index({
     <div className={'mt-10 flex flex-col'}>
       <div className="text-rg">Resume</div>
       <div className="mt-2 w-full p-px rounded-lg bg-gradient-to-r from-lg-green2-start to-lg-green2-end">
-        <div className="w-full h-full rounded-lg bg-resume px-2 py-4 flex flex-col">
+        <div className="w-full h-full rounded-lg bg-namecard px-2 py-4 flex flex-col">
           <div className="text-lg text-center font-bold">Resume</div>
           <div className="flex justify-between items-center">
             <div className="w-1/2 flex flex-col">

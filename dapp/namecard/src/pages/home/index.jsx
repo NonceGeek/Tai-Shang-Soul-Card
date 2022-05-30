@@ -12,13 +12,14 @@ import noticeActive from "@/assets/images/notice-active.png"
 import notice from "@/assets/images/notice.png"
 import avatar from "@/assets/images/avatar.png"
 import add from "@/assets/images/add.png"
-import linkedin from "@/assets/images/linkedin.png"
-import facebook from "@/assets/images/facebook.png"
-import twitter from "@/assets/images/twitter.png"
+import twitter from "@/assets/images/twitter-white-30px.png"
+import instgram from "@/assets/images/instgram-white-30px.png"
+import github from "@/assets/images/github-white-30px.png"
 import photo from "@/assets/images/photo.png"
 import thumb from "@/assets/images/thumb.png"
 import banner from "@/assets/images/banner.png"
 import codeScreen from "@/assets/images/code.png"
+import arrowDown from "@/assets/images/arrowDown.png"
 
 const tags = [
   '3D animation',
@@ -94,6 +95,14 @@ const resumeInfo = {
   phone: '529***704',
 }
 
+const togglePersonalInfo = () => {
+  document.querySelector('#user-address').classList.toggle('hidden')
+}
+
+const toggleDaoSelect = () => {
+  document.querySelector('#dao-options').classList.toggle('hidden')
+}
+
 export default function index() {
   return (
     // 根元素，保证至少占满页面宽高
@@ -125,9 +134,14 @@ export default function index() {
             </div>
           </div>
           {/* 下半部分的人物头像 */}
-          <div className='flex flex-col items-center'>
-            <img className='w-icon' src={avatar} alt="edit" />
-            <span className='mt-2 origin-left inline-block scale-xs'>Wade</span>
+          <div className='w-logo flex flex-col space-y-1'>
+            <div id='user-address' className='hidden w-logo relative flex justify-center items-center'>
+              <span className='absolute bottom-1 rounded p-2 bg-gray-500'>0xeBbfa960Eec432beEFf68297BceBE5111B5889e1</span>
+            </div>
+            <div className='avatar-wrapper flex flex-col items-center cursor-pointer' onClick={togglePersonalInfo}>
+              <img className='w-icon' src={avatar} alt="edit" />
+              <span className='mt-2 origin-left inline-block scale-xs'>Wade</span>
+            </div>
           </div>
         </div>
         {/* 中间区域 */}
@@ -142,22 +156,43 @@ export default function index() {
               {
                 tags.map((text) => <Tag key={text} text={text} />)
               }
-              <span className='py-1 text-gray-500'>More</span>
+              <span className='py-1 text-gray-500'>Add More</span>
             </div>
             {/* 个人介绍 */}
-            todo: a selection to select all the DAO it's okay with none.
+            {/* 选择 DAO */}
+            <div className='my-6 relative'>
+              <div
+                onClick={toggleDaoSelect}
+                className='w-full p-px flex items-center rounded-lg bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
+              >
+                <div className='w-full h-full rounded-lg bg-input p-3 text-gray-300 flex justify-between items-center'>
+                  <span>Select your DAO</span>
+                  <img className='w-2' src={arrowDown} alt="select" />
+                </div>
+              </div>
+              <div id="dao-options" className='absolute top-12 hidden w-full bg-input cursor-pointer'>
+                <div className='w-full p-3 hover:bg-namecard'>Etherum</div>
+                <div className='w-full p-3 hover:bg-namecard'>Moombeam</div>
+                <div className='w-full p-3 hover:bg-namecard'>ABCDEFG</div>
+              </div>
+            </div>
             todo: change iframe link with dynamic params
-            <div className='mt-9'>
-              <iframe style={{width: "600px", height: "420px"}} allow="clipboard-write;" src="http://localhost:4000/dynamic/noncegeek_dao?addr=0x9Fd4cAbe74b06992203CAdDb10536CEA6e55Cac5"></iframe>
+            <div className='mt-8'>
+              <iframe className='w-full border-0' allow="clipboard-write;" src="http://localhost:4000/dynamic/noncegeek_dao?addr=0x9Fd4cAbe74b06992203CAdDb10536CEA6e55Cac5"></iframe>
             </div>
             todo: btn 0x00: setting the html;
             todo: btn 0x01: upload namecard as html to arweave; 
             https://arweave-uploader.surge.sh/?type=text/html
             todo: btn 0x02: download namecard as html/png;
             todo: btn 0x03: mint namecard as an NFT;
-            
+            {/* 按钮组 */}
+            <div className='mt-8 flex flex-col justify-center items-center space-y-4 font-Audiowide text-gray-900 text-rg'>
+              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Upload to Arewave</div>
+              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Download Namecard as HTML/PNG</div>
+              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Mint Namecard as NFT</div>
+            </div>
             {/* 分隔线 */}
-            <div className='mt-5 w-full border-solid border-t border-b-0 border-l-0 border-r-0 border-white'></div>
+            <div className='mt-8 w-full border-solid border-t border-b-0 border-l-0 border-r-0 border-white'></div>
             {/* 内容类型选择标签 */}
             {/* TODO: 当前所选内容类型和其他的颜色不同，且有下边框 */}
             <div className='sticky top-0 mt-2.5 bg-home-m flex space-x-16 justify-center text-nm'>
@@ -190,17 +225,16 @@ export default function index() {
               }
             </div>
           </div>
-          {/* 个人图片？ */}
+          {/* 社交账号 */}
           <div className="mt-12">
-            <div className='text-sm text-center'>Add instagram or writer let more people connect to you</div>
-            <div className="mt-5 flex justify-evenly items-center">
-              //todo adjust logo here
-              {
-                [1, 2, 3].map((i) => <span className='shrink-0 w-8 h-8 bg-gray-300 rounded' key={i}></span>)
-              }
+            <div className='text-sm text-center'>Add Twitter, Instagram or GitHub and let more people connect to you</div>
+            <div className="mt-5 mx-auto flex justify-center space-x-4 items-center">
+              <img className='w-7' src={twitter} alt="twitter" />
+              <img className='w-7' src={instgram} alt="instgram" />
+              <img className='w-7' src={github} alt="github" />
             </div>
           </div>
-          {/* 预览？ */}
+          {/* 个人名片 */}
           <div className="mt-12">
             <div className="text-sm">Preview</div>
             <NameCard {...nameCardInfo} />

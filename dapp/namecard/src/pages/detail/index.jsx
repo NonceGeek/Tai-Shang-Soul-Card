@@ -1,31 +1,41 @@
 import styles from "./detail.less"
 import logo from "@/assets/images/logo.png"
-import React, { useState, useEffect} from 'react'
-import {useStorage} from "@/hooks/useStorage.ts"
+import React, { useState, useEffect } from 'react'
+import { useStorage } from "@/hooks/useStorage.ts"
 import Stars from "@/components/Stars"
+import { Select } from 'antd';
 export default function index(props) {
-  const [infos,setInfos] = useStorage("infos")
-  const [info,setInfo] = useState({
-    name:'',
-    email:'',
-    about_me:'',
-    abilities:''
+  const { Option } = Select;
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+  const [infos, setInfos] = useStorage("infos")
+  const [info, setInfo] = useState({
+    name: '',
+    role: '',
+    email: '',
+    about_me: '',
+    abilities: ''
   })
-  const nameChange = (event)=>{
+  const nameChange = (event) => {
     const name = event.target.value
-    setInfo({...info,name})
+    setInfo({ ...info, name })
   }
-  const emailChange = (event)=>{
+  const roleChange = (event) => {
+    const role = event.target.value
+    setInfo({ ...info, role })
+  }
+  const emailChange = (event) => {
     const email = event.target.value
-    setInfo({...info,email })
+    setInfo({ ...info, email })
   }
-  const aboutMeChange = (event)=>{
+  const aboutMeChange = (event) => {
     const about_me = event.target.value
-    setInfo({...info, about_me })
+    setInfo({ ...info, about_me })
   }
-  const abilitiesChange = (event)=>{
+  const abilitiesChange = (event) => {
     const abilities = event.target.value
-    setInfo({...info, abilities })
+    setInfo({ ...info, abilities })
   }
   return (
     <>
@@ -43,28 +53,36 @@ export default function index(props) {
         <div className={styles.form}>
           <div className={styles.formItem}>
             <p>Name</p>
-            <input type="text" value={info.name} onChange={nameChange}/>
+            <input type="text" value={info.name} onChange={nameChange} />
+          </div>
+          <div className={styles.formItem}>
+            <p>Role</p>
+            <select name="" id="" value={info.role} onChange={roleChange}>
+              <option>coder</option>
+              <option>designer</option>
+              <option>others</option>
+            </select>
           </div>
           <div className={styles.formItem}>
             <p>E-Mail</p>
-            <input type="Email" value={info.email} onChange={emailChange}/>
+            <input type="Email" value={info.email} onChange={emailChange} />
           </div>
           <div className={styles.formItem}>
             <p>About Me</p>
-            <textarea style={{height:'84px'}} name="" id="" placeholder="you can only use 20 words" value={info.about_me} onChange={aboutMeChange}></textarea>
+            <textarea style={{ height: '60px' }} name="" id="" placeholder="you can only use 20 words" value={info.about_me} onChange={aboutMeChange}></textarea>
           </div>
           <div className={styles.formItem}>
             <p>Personal Abilities</p>
-            <textarea style={{height:'168px'}} name="" id="" placeholder="you can only use 50 words" value={info.abilities} onChange={abilitiesChange}></textarea>
+            <textarea style={{ height: '120px' }} name="" id="" placeholder="you can only use 50 words" value={info.abilities} onChange={abilitiesChange}></textarea>
           </div>
         </div>
       </main>
       <footer>
-        <button onClick={()=>{
-          setInfos({...infos,...info})
-          setTimeout(()=>{
+        <button onClick={() => {
+          setInfos({ ...infos, ...info })
+          setTimeout(() => {
             props.history.push("/field")
-          },100)
+          }, 100)
         }}>
           submit
         </button>

@@ -6,7 +6,6 @@ import Stars from "@/components/Stars"
 import { create } from 'ipfs-http-client'
 import { rand_msg, create_user } from "@/request/fass.js"
 import { ethers } from "ethers";
-import { history } from 'umi';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 const web3Modal = new Web3Modal({
@@ -15,13 +14,17 @@ const web3Modal = new Web3Modal({
 });
 export default function index(props) {
   const [infos, setInfos] = useStorage("infos")
-  const [mirrorLink, setMirrorLink] = useState("")
+  const [mirrorLink, setMirrorLink] = useState('')
   const [githubLink, setGithubLink] = useState("")
   const [designLink, setDesignLink] = useState("")
 
   const alChange = (event) => {
     const mirrorLink = event.target.value
-    setMirrorLink(mirrorLink)
+    if(mirrorLink == 'true'){
+      setMirrorLink(false)
+    }else{
+      setMirrorLink(true)
+    }
   }
   const clChange = (event) => {
     const githubLink = event.target.value
@@ -92,7 +95,7 @@ export default function index(props) {
         <div className={styles.form}>
           <div className={styles.formItem}>
             <p>Mirror Link</p>
-            <input type="text" value={mirrorLink} onChange={alChange} />
+            <input type="checkbox" value={mirrorLink} onChange={alChange}/>
           </div>
           <div className={styles.formItem}>
             <p>Github Link</p>
@@ -111,10 +114,9 @@ export default function index(props) {
             try {
               const res = await submitInfos(infos)
               if(res.data.result.status=='ok'){
-                history.push('/home')
+                props.history.push('/home')
               }
             } catch (error) {
-              
             }
           }, 100)
         }}>

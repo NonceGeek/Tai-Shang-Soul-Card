@@ -5,7 +5,7 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/loading' },
+    { path: '/', component: '@/pages/landing' },
     { path: '/detail', component: '@/pages/detail' },
     { path: '/field', component: '@/pages/field' },
     { path: '/link', component: '@/pages/link' },

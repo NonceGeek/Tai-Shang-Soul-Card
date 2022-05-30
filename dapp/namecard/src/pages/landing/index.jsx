@@ -92,7 +92,13 @@ export default function index(props) {
   const gotoDao = async()=>{
     const {dao} = await getUser()
     if(dao){
-      props.history.push('/home');
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'dao'
+        }
+      });
     }else{
       props.history.push('/dao');
     }
@@ -100,7 +106,13 @@ export default function index(props) {
   const gotoUser = async()=>{
     const {user} = await getUser()
     if(user){
-      props.history.push('/home');
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'user'
+        }
+      });
     }else{
       props.history.push('/detail');
     }

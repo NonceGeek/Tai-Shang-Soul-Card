@@ -130,7 +130,13 @@ export default function index(props) {
           setInfos({ ...infos, ...info })
           const res = await submitInfos(infos)
           if(res.data.result.status=='ok'){
-            props.history.push('/home')
+            props.history.push({
+              pathname:'/home',
+              query:{
+                address:infos.ethereum_addr,
+                role:'dao'
+              }
+            });
           }
         }}>
           Upload to ipfs and submit

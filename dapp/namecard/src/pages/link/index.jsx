@@ -112,7 +112,13 @@ export default function index(props) {
           setInfos({ ...infos, mirror_link: mirrorLink, github_link: githubLink, design_link: designLink })
           const res = await submitInfos(infos)
           if(res.data.result.status=='ok'){
-            props.history.push('/home')
+            props.history.push({
+              pathname:'/home',
+              query:{
+                address:infos.ethereum_addr,
+                role:'user'
+              }
+            });
           }
         }}>
           Upload to ipfs and submit

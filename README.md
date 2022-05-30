@@ -94,3 +94,24 @@
 
 # 0x05 Teams
 
+```
+"query": {
+  transactions(
+    tags: [
+      { name: "App-Name", values: ["MirrorXYZ"] }
+      {
+        name: "Contributor"
+        values: ["0x73c7448760517E3E6e416b2c130E3c6dB2026A1d"]
+      }
+    ]
+  ) {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+
+```
+

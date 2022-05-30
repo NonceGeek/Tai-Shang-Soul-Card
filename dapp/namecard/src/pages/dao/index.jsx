@@ -1,4 +1,4 @@
-import styles from "./link.less"
+import styles from "./dao.less"
 import logo from "@/assets/images/logo.png"
 import React, { useState, useEffect } from 'react'
 import { useStorage } from "@/hooks/useStorage.ts"
@@ -14,25 +14,32 @@ const web3Modal = new Web3Modal({
 });
 export default function index(props) {
   const [infos, setInfos] = useStorage("infos")
-  const [mirrorLink, setMirrorLink] = useState('')
-  const [githubLink, setGithubLink] = useState("")
-  const [designLink, setDesignLink] = useState("")
-
-  const alChange = (event) => {
-    const mirrorLink = event.target.value
-    if(mirrorLink == 'true'){
-      setMirrorLink(false)
-    }else{
-      setMirrorLink(true)
-    }
+  const [info, setInfo] = useState({
+    name: '',
+    mission: '',
+    gist_id: '1a301c084577fde54df73ced3139a3cb',
+    soulcard_contract_addr: '0x91607e5C9aD97b8AA7C7c6ACC35FA366D074532D',
+    soulcard_homepage: 'https://soulcard_dao_home_example.surge.sh/'
+  })
+  const nameChange = (event) => {
+    const name = event.target.value
+    setInfo({ ...info, name })
   }
-  const clChange = (event) => {
-    const githubLink = event.target.value
-    setGithubLink(githubLink)
+  const missionChange = (event) => {
+    const mission = event.target.value
+    setInfo({ ...info, mission })
   }
-  const dlChange = (event) => {
-    const designLink = event.target.value
-    setDesignLink(designLink)
+  const gistIdChange = (event) => {
+    const gist_id = event.target.value
+    setInfo({ ...info, gist_id })
+  }
+  const soulcardContractAddrChange = (event) => {
+    const soulcard_contract_addr = event.target.value
+    setInfo({ ...info, soulcard_contract_addr })
+  }
+  const soulcardHomepageChange = (event) => {
+    const soulcard_homepage = event.target.value
+    setInfo({ ...info, soulcard_homepage })
   }
   const addInfoByIPFS = async (infos) => {
     const info = JSON.stringify(infos)
@@ -44,7 +51,6 @@ export default function index(props) {
     const res = await rand_msg({ "params": [] })
     return res.data.result
   }
-
   const createUser = async (data) => {
     const res = await create_user(data)
     return res
@@ -63,7 +69,7 @@ export default function index(props) {
       msg: dataToSign,
       signature
     }
-  }
+  } 
   const submitInfos = async () => {
     const { _baseCache } = await addInfoByIPFS(infos)
     const hash = _baseCache.get('z')
@@ -71,7 +77,7 @@ export default function index(props) {
     const data = {
       params: [
         {ipfs: hash },
-        'user',
+        'dao',
         addr,
         msg,
         signature
@@ -80,6 +86,7 @@ export default function index(props) {
     const res = await createUser(JSON.stringify(data))
     return res
   }
+
   return (
     <>
       <header>
@@ -90,26 +97,37 @@ export default function index(props) {
       </header>
       <main>
         <div className={styles.text}>
-          <p className={styles.textBottom}>Add more details to feed your soul</p>
+          <p className={styles.textTop}>Goodmorning~</p>
+          <p className={styles.textBottom}>Let’s create your basic informationv</p>
         </div>
         <div className={styles.form}>
           <div className={styles.formItem}>
-            <p>Mirror Link</p>
-            <input type="checkbox" value={mirrorLink} onChange={alChange}/>
+            <p>Name</p>
+            <input type="text" value={info.name} onChange={nameChange} />
           </div>
           <div className={styles.formItem}>
-            <p>Github Link</p>
-            <input type="text" value={githubLink} onChange={clChange} />
+            <p>Describe your misson</p>
+            <textarea style={{ height: '120px' }} name="" id="" placeholder="you can only use 50 words" value={info.mission} onChange={missionChange}></textarea>
           </div>
           <div className={styles.formItem}>
-            <p>Design Link</p>
-            <input type="text" value={designLink} onChange={dlChange} />
+            <p>Add your gist_id</p>
+            <input type="text" value={info.gist_id} onChange={gistIdChange} />
+          </div>
+          <div className={styles.formItem}>
+            <p>Add your SoulCard Contract Address</p>
+            <input type="Email" value={info.soulcard_contract_addr} onChange={soulcardContractAddrChange} />
+            <button className={styles.button}>Quick Deploy</button>
+          </div>
+          <div className={styles.formItem}>
+            <p>Add your soulcard homepage</p>
+            <input type="Email" value={info.soulcard_homepage} onChange={soulcardHomepageChange} />
+            <button className={styles.button}>Quick Deploy</button>
           </div>
         </div>
       </main>
       <footer>
         <button onClick={async() => {
-          setInfos({ ...infos, mirror_link: mirrorLink, github_link: githubLink, design_link: designLink })
+          setInfos({ ...infos, ...info })
           const res = await submitInfos(infos)
           if(res.data.result.status=='ok'){
             props.history.push('/home')
@@ -122,4 +140,3 @@ export default function index(props) {
     </>
   )
 }
-

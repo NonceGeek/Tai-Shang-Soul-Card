@@ -6,6 +6,7 @@ export default defineConfig({
   },
   routes: [
     { path: '/', component: '@/pages/landing' },
+    { path: '/dao', component: '@/pages/dao' },
     { path: '/detail', component: '@/pages/detail' },
     { path: '/field', component: '@/pages/field' },
     { path: '/link', component: '@/pages/link' },

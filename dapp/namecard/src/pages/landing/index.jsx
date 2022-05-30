@@ -20,6 +20,7 @@ export default function index(props) {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
+  const [visible4, setVisible4] = useState(false);
   const [mask, setMask] = useState(false);
   web3Modal = new Web3Modal({
     cacheProvider: false,
@@ -78,9 +79,7 @@ export default function index(props) {
     const length = str.length;
     return str.length > maxlength ? str.slice(0, maxlength - 1) + '...' + str.slice(37, length) : str
   }
-  const start = async () =>{
-    setVisible3(false)
-    setMask(true)
+  const getUser = async ()=>{
     const ethereum_addr = infos.ethereum_addr;
     const data = {
       params: [
@@ -88,10 +87,33 @@ export default function index(props) {
       ]
     }
     const res = await get_user(JSON.stringify(data))
-    if(res.data.result){
-      props.history.push('/home');
+    return res.data.result
+  } 
+  const gotoDao = async()=>{
+    const {dao} = await getUser()
+    if(dao){
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'dao'
+        }
+      });
+    }else{
+      props.history.push('/dao');
     }
-    else{
+  }
+  const gotoUser = async()=>{
+    const {user} = await getUser()
+    if(user){
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'user'
+        }
+      });
+    }else{
       props.history.push('/detail');
     }
   }
@@ -264,7 +286,45 @@ export default function index(props) {
             <span>
               √
             </span>
-            <button onClick={start}>start</button>
+            <button onClick={()=>{
+                setVisible3(false)
+                setVisible4(true)
+            }}>start</button>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        centered
+        visible={visible4}
+        onCancel={() => {
+          setVisible4(false)
+          setMask(true)
+        }}
+        width={334}
+        mask={false}
+        destroyOnClose={true}
+        maskClosable={false}
+        title={null}
+        footer={null}
+        modalRender={modal => (
+          modal
+        )}
+        closeIcon={<><CloseOutlined style={{ color: "white", fontSize: "20px" }} /></>}
+        bodyStyle={{ padding: '0px', color: "white" }}
+      >
+        <div className={styles.modal4}>
+          <div className={styles.modalTitle}>
+            <img src={logo} alt="" />
+          </div>
+          <div className={styles.modalBody}>
+            <h6>
+            What is your character?
+            </h6>
+            <button onClick={gotoDao}>DAO Founder</button>
+            <p>You can initiate a DAO or project.</p>
+            <button onClick={gotoUser}>Individual User</button>
+            <p>You can create your own soulcard
+or join in a DAO or project.</p>
           </div>
         </div>
       </Modal>

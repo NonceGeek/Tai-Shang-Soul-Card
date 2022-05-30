@@ -1,4 +1,7 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import {useLocation} from "umi"
+
+import { get_role_list } from "@/request/fass.js"
 
 import Tag from '@/components/Tag'
 import ContentWrapper from '@/components/ContentWrapper'
@@ -103,7 +106,33 @@ const toggleDaoSelect = () => {
   document.querySelector('#dao-options').classList.toggle('hidden')
 }
 
-export default function index() {
+const getDaoList = async ()=>{
+  const data = {
+    "params": [
+      "dao",
+    ]
+  }
+  const res = await get_role_list(JSON.stringify(data))
+  return res.data.result
+}
+export default function index(props) {
+  const location  = useLocation()
+  const [address,setAddress] = useState('')
+  const [role,setRole] = useState('')
+  const [daoList,setDaoList] = useState([])
+  const [iframeSrc,setIframeSrc] = useState('https://faasbyleeduckgo.gigalixirapp.com/dynamic/noncegeek_dao?addr=0x65f07be0707e02D2bF4F51F0da4C2A4071ED0c74&dao=0xBC98Fff44b9de6957515C809D5a17e311987444a')
+  useEffect(async () => {
+    const addr = location.query.address
+    const rol = location.query.address
+    if(addr && rol){
+      setAddress(addr)
+      setRole(rol)
+    }else{
+      props.history.push("/")
+    }
+    const daos = await getDaoList()
+    setDaoList(daos)
+  }, [])
   return (
     // 根元素，保证至少占满页面宽高
     <div className='min-w-screen min-h-screen relative flex justify-center font-Inter text-sm'>
@@ -136,7 +165,7 @@ export default function index() {
           {/* 下半部分的人物头像 */}
           <div className='w-logo flex flex-col space-y-1'>
             <div id='user-address' className='hidden w-logo relative flex justify-center items-center'>
-              <span className='absolute bottom-1 rounded p-2 bg-gray-500'>0xeBbfa960Eec432beEFf68297BceBE5111B5889e1</span>
+              <span className='absolute bottom-1 rounded p-2 bg-gray-500'>{address}</span>
             </div>
             <div className='avatar-wrapper flex flex-col items-center cursor-pointer' onClick={togglePersonalInfo}>
               <img className='w-icon' src={avatar} alt="edit" />
@@ -171,14 +200,19 @@ export default function index() {
                 </div>
               </div>
               <div id="dao-options" className='absolute top-12 hidden w-full bg-input cursor-pointer'>
-                <div className='w-full p-3 hover:bg-namecard'>Etherum</div>
+                {/* <div className='w-full p-3 hover:bg-namecard'>Etherum</div>
                 <div className='w-full p-3 hover:bg-namecard'>Moombeam</div>
-                <div className='w-full p-3 hover:bg-namecard'>ABCDEFG</div>
+                <div className='w-full p-3 hover:bg-namecard'>ABCDEFG</div> */}
+                {daoList.map(item=>{
+                  return (
+                    <div className='w-full p-3 hover:bg-namecard' key={item}>{item}</div>
+                  )
+                })}
               </div>
             </div>
             todo: change iframe link with dynamic params
             <div className='mt-8'>
-              <iframe className='w-full border-0' allow="clipboard-write;" src="http://localhost:4000/dynamic/noncegeek_dao?addr=0x9Fd4cAbe74b06992203CAdDb10536CEA6e55Cac5"></iframe>
+              <iframe className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
             </div>
             todo: btn 0x00: setting the html;
             todo: btn 0x01: upload namecard as html to arweave; 

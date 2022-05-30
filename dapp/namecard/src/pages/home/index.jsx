@@ -12,9 +12,9 @@ import noticeActive from "@/assets/images/notice-active.png"
 import notice from "@/assets/images/notice.png"
 import avatar from "@/assets/images/avatar.png"
 import add from "@/assets/images/add.png"
-import linkedin from "@/assets/images/linkedin.png"
-import facebook from "@/assets/images/facebook.png"
-import twitter from "@/assets/images/twitter.png"
+import twitter from "@/assets/images/twitter-white-30px.png"
+import linkedin from "@/assets/images/linkedin-white-30px.png"
+import github from "@/assets/images/github-white-30px.png"
 import photo from "@/assets/images/photo.png"
 import thumb from "@/assets/images/thumb.png"
 import banner from "@/assets/images/banner.png"
@@ -193,11 +193,10 @@ export default function index() {
           {/* 个人图片？ */}
           <div className="mt-12">
             <div className='text-sm text-center'>Add instagram or writer let more people connect to you</div>
-            <div className="mt-5 flex justify-evenly items-center">
-              //todo adjust logo here
-              {
-                [1, 2, 3].map((i) => <span className='shrink-0 w-8 h-8 bg-gray-300 rounded' key={i}></span>)
-              }
+            <div className="mt-5 mx-auto flex justify-center space-x-4 items-center">
+              <img className='w-7' src={twitter} alt="twitter" />
+              <img className='w-7' src={linkedin} alt="linkedin" />
+              <img className='w-7' src={github} alt="github" />
             </div>
           </div>
           {/* 预览？ */}

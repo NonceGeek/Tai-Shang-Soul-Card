@@ -3,19 +3,20 @@ pragma solidity >=0.8.0 <0.9.0;
 
 
 import '@openzeppelin/contracts/access/Ownable.sol';
-import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import '@openzeppelin/contracts/utils/Counters.sol';
 import 'base64-sol/base64.sol';
 import './HexStrings.sol';
 
-contract SoulCard is Ownable, ERC721 {
+contract SoulCard is Ownable, ERC721Enumerable {
   using Strings for uint256;
   using HexStrings for uint160;
   using Counters for Counters.Counter;
-  Counters.Counter private _tokenIds;
+  Counters.Counter public _tokenIds;
 
-  mapping(uint256 => address) private _pending_owners;
-  mapping(uint256 => string) private _tokenURIs;
+  uint256 public waitingForApprove = 0;
+  mapping(uint256 => address) public _pending_owners;
+  mapping(uint256 => string) public _tokenURIs;
 
   constructor(string memory tokenName, string memory tokenSymbol) public ERC721(tokenName, tokenSymbol) {}
 
@@ -25,7 +26,7 @@ contract SoulCard is Ownable, ERC721 {
 
     _pending_owners[tokenId] = _msgSender();
     _tokenURIs[tokenId] = arLink;
-
+    waitingForApprove++;
     return tokenId;
   }
 
@@ -35,7 +36,7 @@ contract SoulCard is Ownable, ERC721 {
     return _tokenURIs[tokenId];
   }
 
-  function approve_claim(uint256 tokenId) public onlyOwner {
+  function approve_claim(uint256 tokenId) public{
     _safeMint(_pending_owners[tokenId], tokenId);
 
     _approve(_pending_owners[tokenId], tokenId);

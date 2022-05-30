@@ -35,7 +35,7 @@ contract SoulCard is Ownable, ERC721Enumerable {
 
     return _tokenURIs[tokenId];
   }
-
+  // function approve_claim(uint256 tokenId) public onlyOwner{
   function approve_claim(uint256 tokenId) public{
     _safeMint(_pending_owners[tokenId], tokenId);
 

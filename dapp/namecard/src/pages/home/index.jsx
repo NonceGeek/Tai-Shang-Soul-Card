@@ -95,6 +95,10 @@ const resumeInfo = {
   phone: '529***704',
 }
 
+const togglePersonalInfo = () => {
+  document.querySelector('#user-address').classList.toggle('hidden')
+}
+
 const toggleDaoSelect = () => {
   document.querySelector('#dao-options').classList.toggle('hidden')
 }
@@ -130,9 +134,14 @@ export default function index() {
             </div>
           </div>
           {/* 下半部分的人物头像 */}
-          <div className='flex flex-col items-center'>
-            <img className='w-icon' src={avatar} alt="edit" />
-            <span className='mt-2 origin-left inline-block scale-xs'>Wade</span>
+          <div className='w-logo flex flex-col space-y-1'>
+            <div id='user-address' className='hidden w-logo relative flex justify-center items-center'>
+              <span className='absolute bottom-1 rounded p-2 bg-gray-500'>0xeBbfa960Eec432beEFf68297BceBE5111B5889e1</span>
+            </div>
+            <div className='avatar-wrapper flex flex-col items-center cursor-pointer' onClick={togglePersonalInfo}>
+              <img className='w-icon' src={avatar} alt="edit" />
+              <span className='mt-2 origin-left inline-block scale-xs'>Wade</span>
+            </div>
           </div>
         </div>
         {/* 中间区域 */}

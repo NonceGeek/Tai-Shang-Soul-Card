@@ -148,7 +148,7 @@ export default function index() {
             todo: a selection to select all the DAO it's okay with none.
             todo: change iframe link with dynamic params
             <div className='mt-9'>
-              <iframe style={{width: "600px", height: "400px"}} allow="clipboard-write;" src="http://localhost:4000/dynamic/noncegeek_dao?addr=0x9Fd4cAbe74b06992203CAdDb10536CEA6e55Cac5"></iframe>
+              <iframe style={{width: "600px", height: "420px"}} allow="clipboard-write;" src="http://localhost:4000/dynamic/noncegeek_dao?addr=0x9Fd4cAbe74b06992203CAdDb10536CEA6e55Cac5"></iframe>
             </div>
             todo: btn 0x00: setting the html;
             todo: btn 0x01: upload namecard as html to arweave; 

@@ -95,7 +95,7 @@ export default function index(props) {
           </ul> */}
           <button onClick={()=>setVisible(true)}>
             <span>
-              Register
+              Register/Login
             </span>
             <img src={arrowRight} alt="" />
           </button>

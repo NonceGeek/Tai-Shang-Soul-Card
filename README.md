@@ -1,4 +1,6 @@
-# 0x00 Quick Introdcution
+# 灵魂名片 SoulCard
+
+## 0x00 Quick Introdcution
 
 面向分布式社会(DeSoc)中各族群的社交需求，NonceGeek 团队打造SoulCard 产品 —— **能标志灵魂的族群身份的链上名片**。
 
@@ -18,9 +20,9 @@
 * 在 SoulCard Owner 加入 DAO 之后，SoulCard 上回附带其参与的 DAO 的信息，从而高效、清晰地对 Owner 的族群进行标记
 * SoulCard 包含其 Owner 的 Web3 足迹👣
 
-# 0x01 Background
+## 0x01 Background
 
-## 1.1 基于人类社交天性构建积木化的「灵魂名片」
+### 1.1 基于人类社交天性构建积木化的「灵魂名片」
 
 近期，E. Glen Weyl, Puja Ohlhaver, Vitalik Buterin 等人发表论文《去中心化社会：寻找 Web3 的灵魂》。代表了区块链领域下一个十年的发展趋势——从纯粹的分布式金融（Defi）延展开来，在分布式金融与分布式社会（DeSoc）两条道路上同时探索。
 
@@ -50,7 +52,7 @@
 
 如果仅仅是没有经过思考的**信息堆砌**——就像我们在邮箱里经常能看到的又臭又长的简历，那么无法达成这一目标。因此，需要在产品设计层面对这件事情进行更进一步的思考，设计出更符合人类「社交天性」的产品——这是 DeSocial 领域目前所缺乏的。
 
-## 1.2 结构洞理论与「交叉灵魂」
+### 1.2 结构洞理论与「交叉灵魂」
 
 > **结构洞**（英语：structural holes）是[社会网络](https://zh.wikipedia.org/wiki/社会网络)研究中的一个概念，最早由[罗纳德·斯图亚特·伯特](https://zh.wikipedia.org/w/index.php?title=罗纳德·斯图亚特·伯特&action=edit&redlink=1)提出，指网络中拥有互补的信息来源的两个个体之间未连接形成的空缺。伯特引入这一概念是为了解释[社会资本](https://zh.wikipedia.org/wiki/社会资本)差异的根源。他的理论表明，个人在社区或其他社会结构中嵌入的方式具有某些位置优势/劣势。结构洞的相关研究跨越社会学、经济学和计算机科学等领域。
 
@@ -60,13 +62,13 @@
 
 因此，在进行 SoulCard 产品设计的时候，我们要更充分的考虑到如何通过 SoulCard 能更好的让填补结构洞的关键人物显现出来 —— 他们在过去往往是隐性的，而无论是对于关键节点本身，还是其所连接到的社会网络而言，都是多赢的局面。例如，一个关键人物同时是Coder & Designer，他同时作为活跃参与者身处于一个 DevDAO 和 DesignDAO 之中，那么他就有可能引领两个 DAO 的资源置换，从而创造新的可能与新的价值。在 DeSoc 中，我们可以将这种人物所拥有的灵魂命名为**「交叉灵魂」**。
 
-## 1.3 新型合作关系下的信任
+### 1.3 新型合作关系下的信任
 
 > 齐美尔在《货币哲学》和《社会理论的基础》中提出，信任是交换机制的重要条件，是社会性持续性的前提。社会学家詹姆斯·科尔曼在其巨著 《社会理论的基础》里用了很大的篇幅讨论信任，信任是社会资本的重要组成部分（罗伯特·D .普特内姆的《使民主运作 :现代意大利的市民传统》）信任有助于提高微观经济组织的运作效率。
 
 降低建立信任的成本，消除建立信任的壁垒都require信息交换的真实性（verified profile) 和结构建立的有效性（短的时间找到对的人，最短路径匹配合适人选）。
 
-## 1.4 DAO 品牌的去中心化传播
+### 1.4 DAO 品牌的去中心化传播
 
 和任何其它组织相同，DAO 依然需要品牌建设。除了传统的品牌建设思路，DAO 也应当考虑更加去中心化（同样也是更原始的😁）传播方式——
 
@@ -80,22 +82,22 @@
 
 > **Receiver:** 看到 SoulCard 的人，可以快速高效地理解其所接触的人与其背后的组织。
 
-## 1.5 信息熵与价值
+### 1.5 信息熵与价值
 
 传统的简历、个人主页等方式没有从机制的角度来避免冗长、沉闷的信息，而有效信息浓度太低带来的则是对 Profile Owner 的价值感的降低。
 
 传统的解决方案是通过一些简历相关的课程去增加简历的信息密度与价值，但我们认为，可以通过机制来解决这件事——例如，让 SoulCard Owner 在提供其写过的技术文章的时候，仅提供其认为最有价值的 3 篇文章。
 
-# 0x02 Web3 Stacks
+## 0x02 Web3 Stacks
 
-# 0x03 SoulCard Contract
+## 0x03 SoulCard Contract
 
-# 0x04 Architecture -- SSD
+## 0x04 Architecture -- SSD
 
-# 0x05 Teams
+## 0x05 Teams
 
-
-# 0x00 Quick Introdcution
+# SoulCard
+## 0x00 Quick Introdcution
 
 NonceGeek team builds SoulCard for the social needs of all communities in a distributed society (DeSoc)-- **The chain card that marks the identity of the soul's community**
 
@@ -114,9 +116,9 @@ Compared with the traditional personal information display such as LinkedIn home
 * After the SoulCard owner joins the DAO, the SoulCard will have the information of the DAO he/she participated in, so that the owner's community can be marked efficiently and clearly.
 * SoulCard contains the Web3 footprint of its owner 👣
 
-# 0x01 Background
+## 0x01 Background
 
-## 1.1 Building a building block "soul card" based on human social nature
+### 1.1 Building a building block "soul card" based on human social nature
 
 Recently, E. Glen Weyl, Puja Ohlhaver, Vitalik Buterin and others published their paper "Decentralized Society: In Search of the Soul of Web3". The paper represents the trend of the next decade in blockchain - extending from purely distributed finance (Defi) to explore both the path of distributed finance and distributed society (DeSoc).
 
@@ -146,19 +148,19 @@ Therefore, in this case, how to efficiently make a good and deep first impressio
 
 This cannot be achieved if it is simply an unthought-out **message pile** - like the smelly, long resumes we often see in our mailboxes. Therefore, there is a need to think further about this matter at the product design level and design products that are more in line with human "social nature" - something that is currently lacking in the DeSocial space.
 
-## 1.2 Structural Hole Theory and "Crossed Souls"
+### 1.2 Structural Hole Theory and "Crossed Souls"
 > **structural holes** is a concept from [social network](https://en.wikipedia.org/wiki/Social_network) research, originally developed by [Ronald Stuart](https://en.wikipedia.org/wiki/Ronald_Stuart_Burt) Burt. The study of structural holes spans the fields of sociology, economics, and computer science. Burt introduced this concept in an attempt to explain the origin of differences in [social capital](https://en.wikipedia.org/wiki/Social_capital). Burt’s theory suggests that individuals hold certain positional advantages/disadvantages from how they are embedded in neighborhoods or other social structures. A structural hole is understood as a gap between two individuals who have complementary sources to information.
 > -- Wikipedia
 
 Therefore, when designing the SoulCard product, we had to think more fully about how SoulCard could better bring to light the key people who fill the holes in the structure -- people who have often been invisible in the past -- and how it could be a win-win situation for both the key nodes themselves and the social networks they connect to. It's a win-win situation. For example, a key person who is both a Coder & Designer and who is an active participant in both a DevDAO and a DesignDAO has the potential to lead the exchange of resources between the two DAOs, creating new possibilities and new value. In DeSoc, we can name the soul of such a person as **"Cross-Soul "**.
 
-## 1.3 Trust in new cooperative relationships
+### 1.3 Trust in new cooperative relationships
 
 > In his Philosophy of Money and Foundations of Social Theory, Zimmer suggests that trust is an important condition for exchange mechanisms and a prerequisite for the continuity of sociality. The sociologist James Coleman devotes a large part of his magnum opus, The Foundations of Social Theory, to trust as an important component of social capital (Robert D . Trust helps to increase the efficiency of microeconomic organizations.
 
 Reducing the cost of building trust and eliminating barriers to building trust both require authenticity of information exchange (verified profile) and effectiveness of structure building (short time to the right person, shortest path to the right person).
 
-## 1.4 Decentralized diffusion of DAO brand
+### 1.4 Decentralized diffusion of DAO brand
 
 Like any other organization, DAOs still need branding. In addition to traditional brand building ideas, DAOs should also consider a more decentralized (and likewise more primitive 😁) approach to communication -
 
@@ -172,17 +174,17 @@ In this case, it is essential to let the DAO develop the Template for the busine
 
 > **Receiver:** People who see SoulCard can quickly and efficiently understand the people they are in contact with and the organizations behind them.
 
-## 1.5 Information Entropy and Value
+### 1.5 Information Entropy and Value
 
 Traditional resumes and profiles have no mechanism to avoid lengthy, dull information, and the low concentration of effective information reduces the sense of value to the Profile Owner.
 
 The traditional solution is to increase the information density and value of the profile through some resume-related courses, but we believe that this can be solved mechanically - for example, by having the SoulCard Owner provide only the 3 most valuable articles that he/she has written when providing technical articles.
 
 
-# 0x02 Web3 Stacks
+## 0x02 Web3 Stacks
 
-# 0x03 SoulCard Contract
+## 0x03 SoulCard Contract
 
-# 0x04 Architecture -- SSD
+## 0x04 Architecture -- SSD
 
-# 0x05 Teams
+## 0x05 Teams

@@ -18,25 +18,6 @@
 * 在 SoulCard Owner 加入 DAO 之后，SoulCard 上回附带其参与的 DAO 的信息，从而高效、清晰地对 Owner 的族群进行标记
 * SoulCard 包含其 Owner 的 Web3 足迹👣
 
-# 0x00 Quick Introdcution
-
-NonceGeek team builds SoulCard for the social needs of all communities in a distributed society (DeSoc)-- **The chain card that marks the identity of the soul's community**
-
-![SoulCard -- new contact way! (1)](https://tva1.sinaimg.cn/large/e6c9d24egy1h2q36a3x8jj20u00xjgnx.jpg)
-<center> Figure The significance of SoulCard in the Web3 social scene </center>
-
-![截屏2022-05-30 上午6.23.07](https://tva1.sinaimg.cn/large/e6c9d24egy1h2q36epe8jj20sc0vu41a.jpg)
-
-<center> Figure The benefits of SoulCard for Web3 social networks </center>
-
-Compared with the traditional personal information display such as LinkedIn homepage, SoulCard has the following features:
-
-* Multi-page flipping SoulCard has higher information density and can be embedded within multiple social scenarios. Such as Mirror articles, Twitter, etc.
-* DAO Owner verification is required when casting as NFT to ensure the trustworthiness of SoulCard through the mechanism.
-* The information related to the skills recorded on SoulCard will be proved by SpeedRun records, Github PR records, etc.
-* After the SoulCard owner joins the DAO, the SoulCard will have the information of the DAO he/she participated in, so that the owner's community can be marked efficiently and clearly.
-* SoulCard contains the Web3 footprint of its owner 👣
-
 # 0x01 Background
 
 ## 1.1 基于人类社交天性构建积木化的「灵魂名片」
@@ -104,6 +85,33 @@ Compared with the traditional personal information display such as LinkedIn home
 传统的简历、个人主页等方式没有从机制的角度来避免冗长、沉闷的信息，而有效信息浓度太低带来的则是对 Profile Owner 的价值感的降低。
 
 传统的解决方案是通过一些简历相关的课程去增加简历的信息密度与价值，但我们认为，可以通过机制来解决这件事——例如，让 SoulCard Owner 在提供其写过的技术文章的时候，仅提供其认为最有价值的 3 篇文章。
+
+# 0x02 Web3 Stacks
+
+# 0x03 SoulCard Contract
+
+# 0x04 Architecture -- SSD
+
+# 0x05 Teams
+
+# 0x00 Quick Introdcution
+
+NonceGeek team builds SoulCard for the social needs of all communities in a distributed society (DeSoc)-- **The chain card that marks the identity of the soul's community**
+
+![SoulCard -- new contact way! (1)](https://tva1.sinaimg.cn/large/e6c9d24egy1h2q36a3x8jj20u00xjgnx.jpg)
+<center> Figure The significance of SoulCard in the Web3 social scene </center>
+
+![截屏2022-05-30 上午6.23.07](https://tva1.sinaimg.cn/large/e6c9d24egy1h2q36epe8jj20sc0vu41a.jpg)
+
+<center> Figure The benefits of SoulCard for Web3 social networks </center>
+
+Compared with the traditional personal information display such as LinkedIn homepage, SoulCard has the following features:
+
+* Multi-page flipping SoulCard has higher information density and can be embedded within multiple social scenarios. Such as Mirror articles, Twitter, etc.
+* DAO Owner verification is required when casting as NFT to ensure the trustworthiness of SoulCard through the mechanism.
+* The information related to the skills recorded on SoulCard will be proved by SpeedRun records, Github PR records, etc.
+* After the SoulCard owner joins the DAO, the SoulCard will have the information of the DAO he/she participated in, so that the owner's community can be marked efficiently and clearly.
+* SoulCard contains the Web3 footprint of its owner 👣
 
 # 0x01 Background
 

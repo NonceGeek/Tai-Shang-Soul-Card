@@ -177,7 +177,6 @@ export default function index(props) {
         mask={true}
         destroyOnClose={mask}
         maskClosable={false}
-        maskStyle={{ backgroundColor: "black", opacity: 0.9, animation: '2s' }}
         title={null}
         footer={null}
         modalRender={modal => (

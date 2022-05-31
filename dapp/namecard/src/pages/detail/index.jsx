@@ -17,6 +17,9 @@ export default function index(props) {
     about_me: '',
     abilities: ''
   })
+  useEffect(()=>{
+    setInfos({...infos,...info})
+  },[info])
   const nameChange = (event) => {
     const name = event.target.value
     setInfo({ ...info, name })
@@ -79,10 +82,7 @@ export default function index(props) {
       </main>
       <footer>
         <button onClick={() => {
-          setInfos({ ...infos, ...info })
-          setTimeout(() => {
             props.history.push("/field")
-          }, 100)
         }}>
           submit
         </button>

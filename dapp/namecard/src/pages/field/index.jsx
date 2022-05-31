@@ -30,6 +30,13 @@ export default function index(props) {
         const arr = fields.filter(field=>field.checked)
         setField([...arr])
     },[fields])
+    useEffect(()=>{
+        const f = []
+        field.map(field=>{
+            f.push(field.content)
+        })
+        setInfos({...infos,fields:f})
+    },[field])
     return (
         <>
         <header>
@@ -76,14 +83,7 @@ export default function index(props) {
       </main>
       <footer>
         <button className={styles.submitButton} onClick={()=>{
-            const fields = []
-            field.map(field=>{
-                fields.push(field.content)
-            })
-            setInfos({...infos,fields})
-            setTimeout(()=>{
-                props.history.push("/link")
-            },100)
+            props.history.push("/link")
         }}>
           submit
         </button>

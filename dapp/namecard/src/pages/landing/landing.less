@@ -260,7 +260,6 @@ footer {
   height: 440px;
   background: #121F27;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(60px);
   border: 3px solid;
   border-image: linear-gradient(#79D5A8, #D5F97D);
   border-image-slice: 1;
@@ -531,4 +530,10 @@ footer {
       opacity: 0.3;
     }
   }
+}
+
+:global .ant-modal-mask {
+  background-color: rgba(0, 0, 0, .4);
+  backdrop-filter: blur(12px);
+  z-index: 10;
 }

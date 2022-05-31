@@ -20,7 +20,11 @@
 * 在 SoulCard Owner 加入 DAO 之后，SoulCard 上回附带其参与的 DAO 的信息，从而高效、清晰地对 Owner 的族群进行标记
 * SoulCard 包含其 Owner 的 Web3 足迹👣
 
-## 0x01 Background
+## 0x01 Quick Start
+
+// TODO
+
+## 0x02 Background
 
 ### 1.1 基于人类社交天性构建积木化的「灵魂名片」
 
@@ -88,7 +92,7 @@
 
 传统的解决方案是通过一些简历相关的课程去增加简历的信息密度与价值，但我们认为，可以通过机制来解决这件事——例如，让 SoulCard Owner 在提供其写过的技术文章的时候，仅提供其认为最有价值的 3 篇文章。
 
-## 0x02 Web3 Stacks
+## 0x03 Web3 Stacks
 
 - **Arweave Network**
   - 将 SoulCard 以不可篡改页面的形式，存储在 Arweave 区块链网络上
@@ -97,7 +101,7 @@
   - DAO 通过 Moonbeam Network 发行 SoulCard NFT 合约
   - User 将他们的 SoulCard mint 成 SoulCard NFT，从而获得 DAO 的认证
 
-## 0x03 SoulCard 设计
+## 0x04 SoulCard 设计
 
 ### 3.1 一个 Soulcard 例子
 
@@ -151,7 +155,7 @@ SoulCard 被设计为具备如下几种形态：
 
 
 
-## 0x04 SoulCard Contract
+## 0x05 SoulCard Contract
 
 see in `/contracts` in Repo.
 
@@ -169,7 +173,7 @@ SoulCard 是非标准的 ERC721 合约，是对`<<Decentralized Society: Finding
 
   仅能向`0x0`地址转账，也即`SoulCard`只能转移，不能销毁。 
 
-## 0x05 Architecture -- dSS
+## 0x06 Architecture -- dSS
 
  `dSS`——`dApp-Snippet-Script`架构，是 NonceGeekDAO 提出的一种新的区块链应用开发架构。
 
@@ -199,7 +203,7 @@ Snippets 见 Repo 下 的 Snippets 文件夹，其被加载到
 
 ![SoulCard架构 (1)](https://tva1.sinaimg.cn/large/e6c9d24ely1h2rih6amd6j21a80hsmyx.jpg)
 
-## 0x06 Snippets & Components using in SoulCard
+## 0x07 Snippets & Components using in SoulCard
 
 ```elixir
 Snippets:
@@ -236,7 +240,7 @@ Snippets：
 - `CodesOnChain.SpeedRunFetcher.ex`，对 SpeedRun 端的数据进行处理；
 - `CodesOnChain.SoulCardRenderLive.ex`，将数据+模板实时的渲染为SoulCard页面，以便进行预览与下一步操作。
 
-## 0x07 To-do-List
+## 0x08 To-do-List
 
 - [x] Register
   - [x] Individual User Register
@@ -248,10 +252,11 @@ Snippets：
   - [x] See Preview SoulCard
   - [x] Upload SoulCard to Arweave Netwrok as permaWeb
   - [x] Mint SoulCard as an NFT according to a DAO contract
+- [x] Whitepaper V1
 
 - [ ] More...
 
-## 0x08 Teams
+## 0x09 Teams
 
 NonceGeek, cool oriented programming ---
 

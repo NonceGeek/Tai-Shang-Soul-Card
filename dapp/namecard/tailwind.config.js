@@ -17,6 +17,10 @@ module.exports = {
       'xl': ['24px'],
     },
     extend: {
+      margin: {
+        // 首页左侧栏宽度
+        'home-l': '87px',
+      },
       width: {
         // 内容卡片小图宽度
         'thumb-sm': '80px',

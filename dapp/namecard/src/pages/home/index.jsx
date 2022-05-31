@@ -214,7 +214,7 @@ export default function index(props) {
           </div>
         </div>
         {/* 中间区域 */}
-        <div className='ml-24 w-home-m flex flex-col py-7 bg-home-m'>
+        <div className='ml-home-l w-home-m flex flex-col py-7 bg-home-m'>
           <div className='mx-auto w-home-mi'>
             {/* 个人标签的展示及编辑 */}
             <div className='flex items-center'>
@@ -254,48 +254,42 @@ export default function index(props) {
                 })}
               </div>
             </div>
-            todo: change iframe link with dynamic params
             <div className='mt-8'>
-              <iframe style={{width: "600px", height: "400px"}} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
+              <iframe style={{ height: "370px" }} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
             </div>
-            todo: btn 0x00: setting the html;
-            todo: btn 0x01: upload namecard as html to arweave; 
-            https://arweave-uploader.surge.sh/?type=text/html
-            todo: btn 0x02: download namecard as html/png;
-            todo: btn 0x03: mint namecard as an NFT;
             {/* 按钮组 */}
             <div className='mt-8 flex flex-col justify-center items-center space-y-4 font-Audiowide text-gray-900 text-rg'>
-              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end' onClick={
+              <div className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer' onClick={
                 ()=>{
                   open('https://arweave-uploader.surge.sh/?type=text/html')
                 }
               }>Upload to Arewave</div>
-              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Download Namecard as HTML/PNG</div>
+              {/* <div className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'>Download Namecard as HTML/PNG</div> */}
+              <div className="p-2 w-3/4 text-gray-300 font-Inter text-sm">tokenURI(arweave link to your unchangeable SoulCard):</div>
               <textarea 
                 name="" id=""  
-                style={{resize:'none',border:'0px',outline:"none"}} 
                 value={nftUrl}
                 onChange={nftUrlChange}
                 placeholder='Please enter url for casting nft'
-                className='rounded-lg p-4 w-3/4 h-32 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>
+                className='rounded-lg p-2 w-3/4 h-20 bg-input resize-none border-0 outline-0 text-white font-Inter text-sm'>
               </textarea>
               <div 
-                className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'
+                className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
                 onClick={mintNFT}
               >
                   Mint Namecard as NFT
               </div>
-              <p className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>
-                SoulCard Ids that need to approve by DAOL:[{
+              <div className='rounded-lg p-4 w-3/4 bg-input text-white font-Inter text-sm'>
+                SoulCard Ids that need to approve by DAOL: [{
                   tokenIDList
-                }]</p>
+                }]</div>
               <div 
-                className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'
+                className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
                 onClick={()=>{
                   open(`https://moonbeam.nftscan.com/search/${address}`)
                 }}
               >
-                  You can see all NFTs on Moonbeam HERE
+                See all your NFTs on Moonbeam
               </div>
             </div>
             {/* 分隔线 */}

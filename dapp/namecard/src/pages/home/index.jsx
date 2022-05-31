@@ -134,7 +134,7 @@ const exportContractInMoonbeam = async()=>{
 }
 export default function index(props) {
   const [tokenID,setTokenID] = useStorage("tokenID")
-  const onlineUrl = 'https://faasbyleeduckgo.gigalixirapp.com/dynamic/noncegeek_dao'
+  const onlineUrl = 'https://faasbyleeduckgo.gigalixirapp.com/dynamic/soulcard'
   const localUrl = "http://localhost:4000/dynamic/noncegeek_dao"
   const location  = useLocation()
   const [address,setAddress] = useState('')

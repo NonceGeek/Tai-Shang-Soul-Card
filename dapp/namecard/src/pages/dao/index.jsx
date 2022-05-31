@@ -16,11 +16,14 @@ export default function index(props) {
   const [infos, setInfos] = useStorage("infos")
   const [info, setInfo] = useState({
     name: '',
-    description: '',
+    mission: '',
     gist_id: '1a301c084577fde54df73ced3139a3cb',
     soulcard_contract_addr: '0x91607e5C9aD97b8AA7C7c6ACC35FA366D074532D',
     soulcard_homepage: 'https://soulcard_dao_home_example.surge.sh/'
   })
+  useEffect(()=>{
+    setInfos({...infos, ...info})
+  },[info])
   const nameChange = (event) => {
     const name = event.target.value
     setInfo({ ...info, name })
@@ -84,7 +87,15 @@ export default function index(props) {
       ]
     }
     const res = await createUser(JSON.stringify(data))
-    return res
+    if(res.data.result.status=='ok'){
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'dao'
+        }
+      });
+    }
   }
 
   return (
@@ -127,19 +138,7 @@ export default function index(props) {
       </main>
       <footer>
         <button onClick={async() => {
-          console.log("info" + JSON.stringify(info));
-          setInfos({ ...infos, ...info })
-          console.log("infos" +  JSON.stringify(infos));
-          const res = await submitInfos(infos)
-          if(res.data.result.status=='ok'){
-            props.history.push({
-              pathname:'/home',
-              query:{
-                address:infos.ethereum_addr,
-                role:'dao'
-              }
-            });
-          }
+          await submitInfos(infos)
         }}>
           Upload to ipfs and submit
         </button>

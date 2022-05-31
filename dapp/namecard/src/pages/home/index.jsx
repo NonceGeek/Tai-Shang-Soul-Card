@@ -135,7 +135,7 @@ const exportContractInMoonbeam = async()=>{
 export default function index(props) {
   const [tokenID,setTokenID] = useStorage("tokenID")
   const onlineUrl = 'https://faasbyleeduckgo.gigalixirapp.com/dynamic/soulcard'
-  const localUrl = "http://localhost:4000/dynamic/noncegeek_dao"
+  //const onlineUrl = "http://localhost:4000/dynamic/noncegeek_dao"
   const location  = useLocation()
   const [address,setAddress] = useState('')
   const [role,setRole] = useState('')
@@ -255,7 +255,7 @@ export default function index(props) {
               </div>
             </div>
             <div className='mt-8'>
-              <iframe style={{ height: "370px" }} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
+              <iframe style={{ height: "500px", width: "800px"}} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
             </div>
             {/* 按钮组 */}
             <div className='mt-8 flex flex-col justify-center items-center space-y-4 font-Audiowide text-gray-900 text-rg'>

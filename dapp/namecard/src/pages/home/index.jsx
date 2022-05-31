@@ -1,6 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import {useLocation} from "umi"
 
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+
+import { useStorage } from "@/hooks/useStorage.ts"
 import { get_role_list } from "@/request/fass.js"
 
 import Tag from '@/components/Tag'
@@ -97,7 +101,8 @@ const resumeInfo = {
   addr: 'New York·US',
   phone: '529***704',
 }
-
+const contractAddress = '0x10e8E23Cf8D35b37Ab3A4BfDf843FF9435831874'
+const tokenJson = '[{"inputs":[{"internalType":"string","name":"tokenName","type":"string"},{"internalType":"string","name":"tokenSymbol","type":"string"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"_pending_owners","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"_tokenIds","outputs":[{"internalType":"uint256","name":"_value","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"_tokenURIs","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve_claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"arLink","type":"string"}],"name":"claim","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"waitingForApprove","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]'
 const togglePersonalInfo = () => {
   document.querySelector('#user-address').classList.toggle('hidden')
 }
@@ -115,7 +120,20 @@ const getDaoList = async ()=>{
   const res = await get_role_list(JSON.stringify(data))
   return res.data.result
 }
+const exportContractInMoonbeam = async()=>{
+  const web3Modal = new Web3Modal();
+  const instance = await web3Modal.connect();
+  const provider = new ethers.providers.Web3Provider(instance);
+  const signer = provider.getSigner();
+  const Contract = new ethers.Contract(
+    contractAddress,
+    tokenJson,
+    signer
+  );
+  return Contract;
+}
 export default function index(props) {
+  const [tokenID,setTokenID] = useStorage("tokenID")
   const onlineUrl = 'https://faasbyleeduckgo.gigalixirapp.com/dynamic/noncegeek_dao'
   const localUrl = "http://localhost:4000/dynamic/noncegeek_dao"
   const location  = useLocation()
@@ -125,6 +143,12 @@ export default function index(props) {
   const [selectDao,setSelectDao] = useState('Select your DAO')
   const [iframeSrcBasic,setIframeSrcBasic] = useState('')
   const [iframeSrc,setIframeSrc] = useState('')
+  const [nftUrl,setnftUrl] = useState('https://arweave.net/n4FX-vDQ3au0qnMU2W_AxUwlfdiyxkpJ5bbp9LVh9Ww')
+  const [tokenIDList,setTokenIdList] =useState([])
+  const nftUrlChange = (event)=>{
+    const value = event.target.value
+    setnftUrl(value)
+  }
   useEffect(async () => {
     const addr = location.query.address
     const rol = location.query.role
@@ -136,12 +160,19 @@ export default function index(props) {
     }else{
       props.history.push("/")
     }
-    const tempDaos = [{addr:"0xC994B5384C0d0611De2ecE7d6fF1aD16C34A812F",name:"fsdf"}]
+    // const tempDaos = [{addr:"0xC994B5384C0d0611De2ecE7d6fF1aD16C34A812F",name:"fsdf"}]
     const daos = await getDaoList()
-    // console.log(daos);
-    // console.log("daos" + JSON.stringify(daos));
-    setDaoList(tempDaos)
+    setDaoList(daos)
   }, [])
+  useEffect(()=>{
+    setTokenIdList([...tokenIDList,tokenID])
+  },[tokenID])
+  const mintNFT = async () =>{
+    const NFTContract = await exportContractInMoonbeam()
+    await NFTContract.claim(nftUrl)
+    const tokenID = Number(await NFTContract._tokenIds())+2
+    setTokenID(tokenID)
+  }
   return (
     // 根元素，保证至少占满页面宽高
     <div className='min-w-screen min-h-screen relative flex justify-center font-Inter text-sm'>
@@ -234,9 +265,38 @@ export default function index(props) {
             todo: btn 0x03: mint namecard as an NFT;
             {/* 按钮组 */}
             <div className='mt-8 flex flex-col justify-center items-center space-y-4 font-Audiowide text-gray-900 text-rg'>
-              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Upload to Arewave</div>
+              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end' onClick={
+                ()=>{
+                  open('https://arweave-uploader.surge.sh/?type=text/html')
+                }
+              }>Upload to Arewave</div>
               <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Download Namecard as HTML/PNG</div>
-              <div className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>Mint Namecard as NFT</div>
+              <textarea 
+                name="" id=""  
+                style={{resize:'none',border:'0px',outline:"none"}} 
+                value={nftUrl}
+                onChange={nftUrlChange}
+                placeholder='Please enter url for casting nft'
+                className='rounded-lg p-4 w-3/4 h-32 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>
+              </textarea>
+              <div 
+                className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'
+                onClick={mintNFT}
+              >
+                  Mint Namecard as NFT
+              </div>
+              <p className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'>
+                SoulCard Ids that need to approve by DAOL:[{
+                  tokenIDList
+                }]</p>
+              <div 
+                className='rounded-lg p-4 w-3/4 mx-auto bg-gradient-to-r from-lg-green2-start to-lg-green2-end'
+                onClick={()=>{
+                  open(`https://moonbeam.nftscan.com/search/${address}`)
+                }}
+              >
+                  You can see all NFTs on Moonbeam HERE
+              </div>
             </div>
             {/* 分隔线 */}
             <div className='mt-8 w-full border-solid border-t border-b-0 border-l-0 border-r-0 border-white'></div>

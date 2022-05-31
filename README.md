@@ -58,7 +58,7 @@
 
 > —— 维基百科
 
-![img](https://r8jmm3f9xe.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjVjMmVhYTY0NjhlZTgwMjhhNzFhZmY4NWMyNmFmODZfNmUxa2NrNmxhMWpxRGljYWx0bWw5OXRRU05ma2FxNnJfVG9rZW46Ym94Y25RMEhMM3JCR3p5TXZnSHA0NTBMbXRoXzE2NTM4NjcyMjk6MTY1Mzg3MDgyOV9WNA)
+![image (6)](https://tva1.sinaimg.cn/large/e6c9d24ely1h2rk3bd4rkj20qv0dejs2.jpg)
 
 因此，在进行 SoulCard 产品设计的时候，我们要更充分的考虑到如何通过 SoulCard 能更好的让填补结构洞的关键人物显现出来 —— 他们在过去往往是隐性的，而无论是对于关键节点本身，还是其所连接到的社会网络而言，都是多赢的局面。例如，一个关键人物同时是Coder & Designer，他同时作为活跃参与者身处于一个 DevDAO 和 DesignDAO 之中，那么他就有可能引领两个 DAO 的资源置换，从而创造新的可能与新的价值。在 DeSoc 中，我们可以将这种人物所拥有的灵魂命名为**「交叉灵魂」**。
 
@@ -147,11 +147,27 @@ SoulCard 被设计为具备如下几种形态：
 
 通过 DAO 的 SoulCardContract Addr，将 Arweave PermaWeb 形态的 SoulCard Mint 为 NFT，这个 NFT 需要经过 DAO 的审批。如果审批通过，即可视为被 DAO 「认证通过」。
 
+### 3.3 SoulCard 模板设计
+
+
+
 ## 0x04 SoulCard Contract
 
 see in `/contracts` in Repo.
 
-// TODO
+SoulCard 是非标准的 ERC721 合约，是对`<<Decentralized Society: Finding Web3's Soul>>`一文所述的 `SBTs`（灵魂绑定）代币的一次探索，其关键方法包括：
+
+- `claim(_arLink)`
+
+  去申领一个该 Contract 下的NFT（或称为SBTs），但是在申领之后申请人并不会立即得到 NFT，而是需要经过 DAO Owner 的审批
+
+- `approveClaim(tokenId)`
+
+  DAO Owner 查看申请的 SoulCard 内容是否属实，验证后对该申请进行审批
+
+- `safeTransferFrom(from, to, tokenId, _data \\nil)`
+
+  仅能向`0x0`地址转账，也即`SoulCard`只能转移，不能销毁。 
 
 ## 0x05 Architecture -- dSS
 
@@ -181,13 +197,59 @@ Snippets 见 Repo 下 的 Snippets 文件夹，其被加载到
 
 中，为 dApp 提供后端服务。
 
+![SoulCard架构 (1)](https://tva1.sinaimg.cn/large/e6c9d24ely1h2rih6amd6j21a80hsmyx.jpg)
+
 ## 0x06 Snippets & Components using in SoulCard
 
+```elixir
+Snippets:
+- CodesOnChain.SoulCardRenderLive.ex
+- CodesOnChain.SoulCardRender.ex
+- CodesOnChain.SpeedRunFetcher.ex
+- CodesOnChain.TemplateManager.ex
+- CodesOnChain.UserManager.ex
+Components:
+- ipfs.ex
+- ar_graphql_interactor.ex
+- arweave_handler.ex
+- mirror_handler.ex
+- gist_handler.ex
+- kv.ex
+- verifier.ex
+```
 
+组件库：
+
+- `ipfs.ex`：用于 IPFS 相关操作；
+- `ar_graphql_interactor`，Arweave 网络的 GraphQL 交互模块；
+- `arweave_handler.ex`，用于和 Arweave 节点进行交互，读写操作；
+- `mirror_handler.ex`，处理 Mirror 应用存储在 Arweave 网络上的内容；
+- `gist_handler.ex`，对 Gist 中的内容进行处理，例如存储在 Gist 上的 SoulCard 模板；
+- `kv.ex`，一个本地的K-V数据库。
+- `verifier.ex`，用于验证 metamask 签名的信息，以进行鉴权。
+
+Snippets：
+
+- `CodesOnChain.UserManager.ex`，用户管理，包括普通用户和 DAO 用户。需要注意的是，用户的信息是以`json`的形式存在 IPFS 上的，因此本地数据库进存储`addr-ipfs`的关联就行了；
+- `CodesOnChain.TemplateManager.ex`，模板管理，本质上是`:template_list-[gist_id_1, gist_id_2, ...]`这样的一个键值对；
+- `CodesOnChain.SoulCardRender.ex`，对元数据（例如`user-%{user: %{ipfs: ipfs}}`进行渲染，得到更丰富的数据；
+- `CodesOnChain.SpeedRunFetcher.ex`，对 SpeedRun 端的数据进行处理；
+- `CodesOnChain.SoulCardRenderLive.ex`，将数据+模板实时的渲染为SoulCard页面，以便进行预览与下一步操作。
 
 ## 0x07 To-do-List
 
+- [x] Register
+  - [x] Individual User Register
+  - [x] DAO Founder Register
+- [x] For DAO Founder
+  - [x] SoulCardContract
+  - [x] SoulCard DAO Homepage
+- [x] For Individual User
+  - [x] See Preview SoulCard
+  - [x] Upload SoulCard to Arweave Netwrok as permaWeb
+  - [x] Mint SoulCard as an NFT according to a DAO contract
 
+- [ ] More...
 
 ## 0x08 Teams
 

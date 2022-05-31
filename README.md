@@ -391,7 +391,7 @@ SoulCard is designed to have the following state:
 
 - **preview form**
 
-通过后台根据`addr`和`dao_addr`两个索引信息动态渲染出 SoulCard
+The SoulCard is dynamically rendered in the background according to the two index information of `addr` and `dao_addr`.
 
 - **Arweave PermaWeb state**
 

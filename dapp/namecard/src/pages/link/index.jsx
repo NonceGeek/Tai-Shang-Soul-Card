@@ -1,6 +1,6 @@
 import styles from "./link.less"
 import logo from "@/assets/images/logo.png"
-import React, { useState, useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useStorage } from "@/hooks/useStorage.ts"
 import Stars from "@/components/Stars"
 import { create } from 'ipfs-http-client'
@@ -17,7 +17,9 @@ export default function index(props) {
   const [mirrorLink, setMirrorLink] = useState('')
   const [githubLink, setGithubLink] = useState("")
   const [designLink, setDesignLink] = useState("")
-
+  useEffect(()=>{
+    setInfos({...infos,mirrorLink,githubLink,designLink})
+  },[mirrorLink,githubLink,designLink])
   const alChange = (event) => {
     const mirrorLink = event.target.value
     if(mirrorLink == 'true'){
@@ -78,7 +80,15 @@ export default function index(props) {
       ]
     }
     const res = await createUser(JSON.stringify(data))
-    return res
+    if(res.data.result.status=='ok'){
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'user'
+        }
+      });
+    }
   }
   return (
     <>
@@ -109,17 +119,7 @@ export default function index(props) {
       </main>
       <footer>
         <button onClick={async() => {
-          setInfos({ ...infos, mirror_link: mirrorLink, github_link: githubLink, design_link: designLink })
-          const res = await submitInfos(infos)
-          if(res.data.result.status=='ok'){
-            props.history.push({
-              pathname:'/home',
-              query:{
-                address:infos.ethereum_addr,
-                role:'user'
-              }
-            });
-          }
+           await submitInfos(infos)
         }}>
           Upload to ipfs and submit
         </button>

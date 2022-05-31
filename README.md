@@ -318,6 +318,8 @@ This cannot be achieved if it is simply an unthought-out **message pile** - like
 > **structural holes** is a concept from [social network](https://en.wikipedia.org/wiki/Social_network) research, originally developed by [Ronald Stuart](https://en.wikipedia.org/wiki/Ronald_Stuart_Burt) Burt. The study of structural holes spans the fields of sociology, economics, and computer science. Burt introduced this concept in an attempt to explain the origin of differences in [social capital](https://en.wikipedia.org/wiki/Social_capital). Burt’s theory suggests that individuals hold certain positional advantages/disadvantages from how they are embedded in neighborhoods or other social structures. A structural hole is understood as a gap between two individuals who have complementary sources to information.
 > -- Wikipedia
 
+![image (6)](https://tva1.sinaimg.cn/large/e6c9d24ely1h2rk3bd4rkj20qv0dejs2.jpg)
+
 Therefore, when designing the SoulCard product, we had to think more fully about how SoulCard could better bring to light the key people who fill the holes in the structure -- people who have often been invisible in the past -- and how it could be a win-win situation for both the key nodes themselves and the social networks they connect to. It's a win-win situation. For example, a key person who is both a Coder & Designer and who is an active participant in both a DevDAO and a DesignDAO has the potential to lead the exchange of resources between the two DAOs, creating new possibilities and new value. In DeSoc, we can name the soul of such a person as **"Cross-Soul "**.
 
 ### 1.3 Trust in new cooperative relationships

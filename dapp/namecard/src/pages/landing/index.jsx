@@ -90,7 +90,7 @@ export default function index(props) {
     return res.data.result
   } 
   const gotoDao = async()=>{
-    const {dao} = await getUser()
+    const dao = await getUser()
     if(dao){
       props.history.push({
         pathname:'/home',
@@ -104,7 +104,7 @@ export default function index(props) {
     }
   }
   const gotoUser = async()=>{
-    const {user} = await getUser()
+    const user = await getUser()
     if(user){
       props.history.push({
         pathname:'/home',

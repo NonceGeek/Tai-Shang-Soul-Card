@@ -90,11 +90,96 @@
 
 ## 0x02 Web3 Stacks
 
-## 0x03 SoulCard Contract
+- **Arweave Network**
+  - 将 SoulCard 以不可篡改页面的形式，存储在 Arweave 区块链网络上
+  - 进而将不可篡改的 SoulCard 在任意 Ethereum 兼容网络上 Mint 为 NFT
+- **Moonbeam Network**
+  - DAO 通过 Moonbeam Network 发行 SoulCard NFT 合约
+  - User 将他们的 SoulCard mint 成 SoulCard NFT，从而获得 DAO 的认证
 
-## 0x04 Architecture -- SSD
+## 0x03 SoulCard 设计
 
-## 0x05 Teams
+### 3.1 一个 Soulcard 例子
+
+见：
+
+> https://arweave.net/n4FX-vDQ3au0qnMU2W_AxUwlfdiyxkpJ5bbp9LVh9Ww
+
+SoulCard 被设计为可多次翻页的 HTML。
+
+* **Page 0x01 基础页**
+
+![image-20220531085943320](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rbdh0bkvj20xe0megmw.jpg)
+
+其中包括：
+
+> 用户头像、用户地址、用户社交媒体链接、用户基础信息、用户擅长领域、SppedRun等级与SpeedRun 主页链接（如有）
+
+- **Page 0x02 DAO页**
+
+![image-20220531090858517](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rbdelpnfj20xg0magn8.jpg)
+
+显示 SoulCard Owner 所加入的 DAO 的信息。
+
+- **Page 0x03 作品页**
+
+![image-20220531091038554](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rbf9ey9fj20xg0mewfs.jpg)
+
+SoulCard Owner 的作品列表，可以是自行挑选的，也可以是从 Feed 源中自动抓取的。
+
+### 3.2 SoulCard 的几种形态
+
+SoulCard 被设计为具备如下几种形态（几个阶段）：
+
+
+
+## 0x04 SoulCard Contract
+
+see in `/contracts` in Repo.
+
+
+
+## 0x05 Architecture -- dSS
+
+ `dSS`——`dApp-Snippet-Script`架构，是 NonceGeekDAO 提出的一种新的区块链应用开发架构。
+
+从架构的角度来讲，一个「纯正」的 dApp 应该是一个纯前端的应用，以确保去中心化：
+
+```
++-----------+     +------------------+     +------------+
+
+| Front-End |-----| Wallet(Metamask) |-----| Blockchain |
+
++-----------+     +------------------+     +------------+
+```
+
+但在实际的情况中，dApp 往往依然会用到部分后端服务，以提升其性能或满足部分需求。
+
+例如：获取全量的 NFT 数据、通过签名从后端拿到一些隐私数据……
+
+这些需求往往十分轻量。因此，通过传统的方式在服务器上启动一个后端服务，会显得过于「沉重」。
+
+在 SoulCard 项目中，我们采用了这种形式的架构。
+
+Snippets 见 Repo 下 的 Snippets 文件夹，其被加载到
+
+> https://faasbyleeduckgo.gigalixirapp.com/
+
+中，为 dApp 提供后端服务。
+
+## 0x06 Snippets & Components using in SoulCard
+
+
+
+## 0x07 To-do-List
+
+
+
+## 0x08 Teams
+
+NonceGeek, cool oriented programming ---
+
+> https://noncegeek.com
 
 # SoulCard
 ## 0x00 Quick Introdcution

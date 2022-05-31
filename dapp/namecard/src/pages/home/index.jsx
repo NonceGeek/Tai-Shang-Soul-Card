@@ -120,18 +120,20 @@ export default function index(props) {
   const [address,setAddress] = useState('')
   const [role,setRole] = useState('')
   const [daoList,setDaoList] = useState([])
-  const [iframeSrc,setIframeSrc] = useState('https://faasbyleeduckgo.gigalixirapp.com/dynamic/noncegeek_dao?addr=0x65f07be0707e02D2bF4F51F0da4C2A4071ED0c74&dao=0xBC98Fff44b9de6957515C809D5a17e311987444a')
+  const [iframeSrc,setIframeSrc] = useState('http://localhost:4000/dynamic/noncegeek_dao?addr=0x65f07be0707e02D2bF4F51F0da4C2A4071ED0c74&dao=0xBC98Fff44b9de6957515C809D5a17e311987444a')
   useEffect(async () => {
     const addr = location.query.address
     const rol = location.query.address
     if(addr && rol){
       setAddress(addr)
       setRole(rol)
+      setIframeSrc(`http://localhost:4000/dynamic/noncegeek_dao?addr=${addr}`)
     }else{
       props.history.push("/")
     }
     const daos = await getDaoList()
-    setDaoList(daos)
+    console.log("daos" + JSON.stringify(daos));
+    setDaoList(["abcdefg"])
   }, [])
   return (
     // 根元素，保证至少占满页面宽高
@@ -212,7 +214,7 @@ export default function index(props) {
             </div>
             todo: change iframe link with dynamic params
             <div className='mt-8'>
-              <iframe className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
+              <iframe style={{width: "600px", height: "400px"}} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
             </div>
             todo: btn 0x00: setting the html;
             todo: btn 0x01: upload namecard as html to arweave; 

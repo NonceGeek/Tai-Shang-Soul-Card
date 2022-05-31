@@ -16,7 +16,7 @@ export default function index(props) {
   const [infos, setInfos] = useStorage("infos")
   const [info, setInfo] = useState({
     name: '',
-    mission: '',
+    description: '',
     gist_id: '1a301c084577fde54df73ced3139a3cb',
     soulcard_contract_addr: '0x91607e5C9aD97b8AA7C7c6ACC35FA366D074532D',
     soulcard_homepage: 'https://soulcard_dao_home_example.surge.sh/'
@@ -110,7 +110,7 @@ export default function index(props) {
             <textarea style={{ height: '120px' }} name="" id="" placeholder="you can only use 50 words" value={info.mission} onChange={missionChange}></textarea>
           </div>
           <div className={styles.formItem}>
-            <p>Add your gist_id</p>
+            <p>Add your template gist id</p>
             <input type="text" value={info.gist_id} onChange={gistIdChange} />
           </div>
           <div className={styles.formItem}>
@@ -127,7 +127,9 @@ export default function index(props) {
       </main>
       <footer>
         <button onClick={async() => {
+          console.log("info" + JSON.stringify(info));
           setInfos({ ...infos, ...info })
+          console.log("infos" +  JSON.stringify(infos));
           const res = await submitInfos(infos)
           if(res.data.result.status=='ok'){
             props.history.push({

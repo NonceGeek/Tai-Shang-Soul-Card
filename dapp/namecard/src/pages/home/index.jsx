@@ -116,24 +116,31 @@ const getDaoList = async ()=>{
   return res.data.result
 }
 export default function index(props) {
+  const onlineUrl = 'https://faasbyleeduckgo.gigalixirapp.com/dynamic/noncegeek_dao'
+  const localUrl = "http://localhost:4000/dynamic/noncegeek_dao"
   const location  = useLocation()
   const [address,setAddress] = useState('')
   const [role,setRole] = useState('')
   const [daoList,setDaoList] = useState([])
-  const [iframeSrc,setIframeSrc] = useState('http://localhost:4000/dynamic/noncegeek_dao?addr=0x65f07be0707e02D2bF4F51F0da4C2A4071ED0c74&dao=0xBC98Fff44b9de6957515C809D5a17e311987444a')
+  const [selectDao,setSelectDao] = useState('Select your DAO')
+  const [iframeSrcBasic,setIframeSrcBasic] = useState('')
+  const [iframeSrc,setIframeSrc] = useState('')
   useEffect(async () => {
     const addr = location.query.address
-    const rol = location.query.address
+    const rol = location.query.role
     if(addr && rol){
       setAddress(addr)
       setRole(rol)
-      setIframeSrc(`http://localhost:4000/dynamic/noncegeek_dao?addr=${addr}`)
+      setIframeSrcBasic(`${onlineUrl}?addr=${addr}`)
+      setIframeSrc(`${onlineUrl}?addr=${addr}`)
     }else{
       props.history.push("/")
     }
+    const tempDaos = [{addr:"0xC994B5384C0d0611De2ecE7d6fF1aD16C34A812F",name:"fsdf"}]
     const daos = await getDaoList()
-    console.log("daos" + JSON.stringify(daos));
-    setDaoList(["abcdefg"])
+    // console.log(daos);
+    // console.log("daos" + JSON.stringify(daos));
+    setDaoList(tempDaos)
   }, [])
   return (
     // 根元素，保证至少占满页面宽高
@@ -197,7 +204,7 @@ export default function index(props) {
                 className='w-full p-px flex items-center rounded-lg bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
               >
                 <div className='w-full h-full rounded-lg bg-input p-3 text-gray-300 flex justify-between items-center'>
-                  <span>Select your DAO</span>
+                  <span>{selectDao}</span>
                   <img className='w-2' src={arrowDown} alt="select" />
                 </div>
               </div>
@@ -207,7 +214,11 @@ export default function index(props) {
                 <div className='w-full p-3 hover:bg-namecard'>ABCDEFG</div> */}
                 {daoList.map(item=>{
                   return (
-                    <div className='w-full p-3 hover:bg-namecard' key={item}>{item}</div>
+                    <div className='w-full p-3 hover:bg-namecard' key={item.addr} onClick={()=>{
+                      toggleDaoSelect()
+                      setSelectDao(item.name)
+                      setIframeSrc(`${iframeSrcBasic}&dao_addr=${item.addr}`)
+                    }}>{item.name}</div>
                   )
                 })}
               </div>

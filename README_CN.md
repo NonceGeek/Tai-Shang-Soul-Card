@@ -181,7 +181,7 @@ SoulCard 是非标准的 ERC721 合约，是对`<<Decentralized Society: Finding
 
 - `safeTransferFrom(from, to, tokenId, _data \\nil)`
 
-  仅能向`0x0`地址转账，也即`SoulCard`只能转移，不能销毁。 
+  仅能向`0x0`地址转账，也即`SoulCard`只能销毁，不能转移。 
 
 ## 0x06 Architecture -- dSS
 

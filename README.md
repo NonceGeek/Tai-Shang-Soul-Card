@@ -189,21 +189,21 @@ SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Bindi
 
 ## 0x04 SoulCard Contract
 
-see in `/contracts` in Repo.
+- see in `/contracts` in Repo.
 
-SoulCard 是非标准的 ERC721 合约，是对`<<Decentralized Society: Finding Web3's Soul>>`一文所述的 `SBTs`（灵魂绑定）代币的一次探索，其关键方法包括：
-
-- `claim(_arLink)`
-
-  去申领一个该 Contract 下的NFT（或称为SBTs），但是在申领之后申请人并不会立即得到 NFT，而是需要经过 DAO Owner 的审批
-
-- `approveClaim(tokenId)`
-
-  DAO Owner 查看申请的 SoulCard 内容是否属实，验证后对该申请进行审批
-
-- `safeTransferFrom(from, to, tokenId, _data \\nil)`
-
-  仅能向`0x0`地址转账，也即`SoulCard`只能销毁，不能转移。 
+  SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Binding) tokens described in `<<Decentralized Society: Finding Web3's Soul>>`. Its key methods include:
+  
+  - `claim(_arLink)`
+  
+    To apply for an NFT (or SBTs) under the contract, but the applicant will not get the NFT immediately after the application, but needs to be approved by the DAO Owner
+  
+  - `approveClaim(tokenId)`
+  
+    The DAO Owner checks whether the applied SoulCard content is true, and approves the application after verification
+  
+  - `safeTransferFrom(from, to, tokenId, _data \\nil)`
+  
+    Transfers can only be made to the `0x0` address, that is, the `SoulCard` can only be transferred and cannot be destroyed.
 
 ## 0x05 Architecture -- SSD
 

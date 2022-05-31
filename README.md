@@ -409,6 +409,10 @@ Through DAO's SoulCardContract Addr, the SoulCard Mint in the form of Arweave Pe
 
 ### 3.3 SoulCard Template Design
 
+
+
+## 0x04 SoulCard Contract
+
 see in `/contracts` in Repo.
 
 SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Binding) tokens described in `<<Decentralized Society: Finding Web3's Soul>>`. Its key methods include:
@@ -425,7 +429,7 @@ SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Bindi
 
    Transfers can only be made to the `0x0` address, that is, the `SoulCard` can only be transferred and cannot be destroyed.
 
-## 0x04 Architecture -- SSD
+## 0x05 Architecture -- SSD
 
 `dSS`——`dApp-Snippet-Script` architecture, is a new blockchain application development architecture proposed by NonceGeekDAO.
 
@@ -451,7 +455,7 @@ Snippets See the Snippets folder under the Repo, which is loaded into **[https:/
 
 ![SoulCard架构 (1)](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rz4m5ts3j21a80hsmyx.jpg)
 
-## 0x05 Snippets & Components using in SoulCard
+## 0x06 Snippets & Components using in SoulCard
 
 ```elixir
 Snippets:
@@ -488,7 +492,7 @@ Components:
   - `CodesOnChain.SpeedRunFetcher.ex`, to process the data on the SpeedRun side;
   - `CodesOnChain.SoulCardRenderLive.ex`, which renders data + templates into SoulCard pages in real time for preview and next steps.
 
-## 0x06 To-do-List
+## 0x07 To-do-List
 
 - [x] Register
   - [x] Individual User Register
@@ -504,4 +508,4 @@ Components:
 
 - [ ] More...
 
-## 0x07 Teams
+## 0x08 Teams

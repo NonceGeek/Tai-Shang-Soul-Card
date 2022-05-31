@@ -129,15 +129,29 @@ SoulCard Owner 的作品列表，可以是自行挑选的，也可以是从 Feed
 
 ### 3.2 SoulCard 的几种形态
 
-SoulCard 被设计为具备如下几种形态（几个阶段）：
+SoulCard 被设计为具备如下几种形态：
 
+- **预览形态**
 
+通过后台根据`addr`和`dao_addr`两个索引信息动态渲染出 SoulCard
+
+- **Arweave PermaWeb 形态**
+
+通过`Arweave Uploader`插件，通过`bundlr`网络固化为 `permaweb on Arweave`，该形态可内嵌与支持`iframe`的应用与页面中。
+
+- **PNG 形态**
+
+保存为 PNG 形态，该形态可适用于不支持`iframe`的应用与页面中。
+
+- **NFT 形态**
+
+通过 DAO 的 SoulCardContract Addr，将 Arweave PermaWeb 形态的 SoulCard Mint 为 NFT，这个 NFT 需要经过 DAO 的审批。如果审批通过，即可视为被 DAO 「认证通过」。
 
 ## 0x04 SoulCard Contract
 
 see in `/contracts` in Repo.
 
-
+// TODO
 
 ## 0x05 Architecture -- dSS
 

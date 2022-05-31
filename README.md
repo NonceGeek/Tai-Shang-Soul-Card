@@ -1,4 +1,30 @@
 # SoulCard
+
+* Videos:
+
+> Introduction
+> 
+> https://youtu.be/KAcfIohP-Y4
+>
+> Show how demo works:
+> 
+> https://youtu.be/jEDkPwyuqJg
+>
+
+* Demoes:
+
+
+> Demo Online: https://soulcard.surge.sh/
+>
+> SoulCard Online: https://6kpljk5akas4va4dqs55akterpcb4ifyw3tr5e6mvxexrgedwi.arweave.net/8p60q6BQJcqDg4S70Cpki8QeILi25x-6TzK3JeJiDss
+>
+> DAO Homepage Online: https://soulcard_dao_home_example.surge.sh/
+>
+> Contract Example Online:
+>
+> [0x91607e5C9aD97b8AA7C7c6ACC35FA366D074532D](https://moonbeam.moonscan.io/address/0x91607e5C9aD97b8AA7C7c6ACC35FA366D074532D#code)
+
+
 ## 0x00 Quick Introdcution
 
 NonceGeek team builds SoulCard for the social needs of all communities in a distributed society (DeSoc)-- **The chain card that marks the identity of the soul's community**

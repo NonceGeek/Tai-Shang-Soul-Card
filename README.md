@@ -318,6 +318,8 @@ This cannot be achieved if it is simply an unthought-out **message pile** - like
 > **structural holes** is a concept from [social network](https://en.wikipedia.org/wiki/Social_network) research, originally developed by [Ronald Stuart](https://en.wikipedia.org/wiki/Ronald_Stuart_Burt) Burt. The study of structural holes spans the fields of sociology, economics, and computer science. Burt introduced this concept in an attempt to explain the origin of differences in [social capital](https://en.wikipedia.org/wiki/Social_capital). Burt’s theory suggests that individuals hold certain positional advantages/disadvantages from how they are embedded in neighborhoods or other social structures. A structural hole is understood as a gap between two individuals who have complementary sources to information.
 > -- Wikipedia
 
+![image (6)](https://tva1.sinaimg.cn/large/e6c9d24ely1h2rk3bd4rkj20qv0dejs2.jpg)
+
 Therefore, when designing the SoulCard product, we had to think more fully about how SoulCard could better bring to light the key people who fill the holes in the structure -- people who have often been invisible in the past -- and how it could be a win-win situation for both the key nodes themselves and the social networks they connect to. It's a win-win situation. For example, a key person who is both a Coder & Designer and who is an active participant in both a DevDAO and a DesignDAO has the potential to lead the exchange of resources between the two DAOs, creating new possibilities and new value. In DeSoc, we can name the soul of such a person as **"Cross-Soul "**.
 
 ### 1.3 Trust in new cooperative relationships
@@ -346,11 +348,160 @@ Traditional resumes and profiles have no mechanism to avoid lengthy, dull inform
 
 The traditional solution is to increase the information density and value of the profile through some resume-related courses, but we believe that this can be solved mechanically - for example, by having the SoulCard Owner provide only the 3 most valuable articles that he/she has written when providing technical articles.
 
-
 ## 0x02 Web3 Stacks
+
+- **Arweave Network**
+   - Store SoulCard on the Arweave blockchain network as an immutable page.
+   - Then mint the immutable SoulCard into an NFT on any Ethereum compatible network.
+- **Moonbeam Network**
+   - DAO issues SoulCard NFT contract via Moonbeam Network.
+   - Users mint their SoulCards into SoulCard NFTs to get certified by the DAO.
 
 ## 0x03 SoulCard Contract
 
+### 3.1 A Soulcard Example
+
+See:
+
+> https://arweave.net/n4FX-vDQ3au0qnMU2W_AxUwlfdiyxkpJ5bbp9LVh9Ww
+
+SoulCard is designed as HTML that can be flipped multiple times.
+
+* **Page 0x01 base page**
+
+![image-20220531085943320](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rbdh0bkvj20xe0megmw.jpg)
+
+These include:
+
+> User avatar, user address, user social media links, user basic information, user areas of expertise, SppedRun level and SpeedRun homepage link (if any)
+
+- **Page 0x02 DAO page**
+
+![image-20220531090858517](https://tva1.sinaimg.cn/large/e6c9d24egy1h2ryrjzjkej20xg0mamys.jpg)
+
+Displays information about the DAOs that SoulCard Owner has joined.
+
+- **Page 0x03 Works page**
+
+![image-20220531091038554](https://tva1.sinaimg.cn/large/e6c9d24egy1h2ryrijh8sj20xg0me3zt.jpg)
+
+`A list of SoulCard Owner's works`, either self-selected or automatically grabbed from a feed source.
+
+### 3.2 Several state of SoulCard
+
+SoulCard is designed to have the following state:
+
+- **preview form**
+
+The SoulCard is dynamically rendered in the background according to the two index information of `addr` and `dao_addr`.
+
+- **Arweave PermaWeb state**
+
+Through the `Arweave Uploader` plugin, the `bundlr` network is solidified into `permaweb on Arweave`, which can be embedded and supported in `iframe` applications and pages.
+
+- **PNG state**
+
+Save as PNG, which can be used in applications and pages that do not support `iframe`.
+
+- **NFT state**
+
+Through DAO's SoulCardContract Addr, the SoulCard Mint in the form of Arweave PermaWeb is converted into NFT, and this NFT needs to be approved by DAO. If the approval is passed, it can be regarded as "certified" by the DAO.
+
+### 3.3 SoulCard Template Design
+
+see in `/contracts` in Repo.
+
+SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Binding) tokens described in `<<Decentralized Society: Finding Web3's Soul>>`. Its key methods include:
+
+- `claim(_arLink)`
+
+   To apply for an NFT (or SBTs) under the contract, but the applicant will not get the NFT immediately after the application, but needs to be approved by the DAO Owner
+
+- `approveClaim(tokenId)`
+
+   The DAO Owner checks whether the applied SoulCard content is true, and approves the application after verification
+
+- `safeTransferFrom(from, to, tokenId, _data \\nil)`
+
+   Transfers can only be made to the `0x0` address, that is, the `SoulCard` can only be transferred and cannot be destroyed.
+
 ## 0x04 Architecture -- SSD
 
-## 0x05 Teams
+`dSS`——`dApp-Snippet-Script` architecture, is a new blockchain application development architecture proposed by NonceGeekDAO.
+
+From an architectural point of view, a "pure" dApp should be a pure front-end application to ensure decentralization:
+
+```
++-----------+     +------------------+     +------------+
+
+| Front-End |-----| Wallet(Metamask) |-----| Blockchain |
+
++-----------+     +------------------+     +------------+
+```
+
+However, in practical situations, dApps often still use some backend services to improve their performance or meet some needs.
+
+For example: get the full amount of NFT data, get some private data from the backend through signatures...
+
+These requirements are often very lightweight. Therefore, starting a backend service on the server in the traditional way would be too "heavy".
+
+In the SoulCard project, we adopted this form of architecture.
+
+Snippets See the Snippets folder under the Repo, which is loaded into **[https://faasbyleeduckgo.gigalixirapp.com/](https://faasbyleeduckgo.gigalixirapp.com/)** to provide backend services for dApps.
+
+![SoulCard架构 (1)](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rz4m5ts3j21a80hsmyx.jpg)
+
+## 0x05 Snippets & Components using in SoulCard
+
+```elixir
+Snippets:
+- CodesOnChain.SoulCardRenderLive.ex
+- CodesOnChain.SoulCardRender.ex
+- CodesOnChain.SpeedRunFetcher.ex
+- CodesOnChain.TemplateManager.ex
+- CodesOnChain.UserManager.ex
+Components:
+- ipfs.ex
+- ar_graphql_interactor.ex
+- arweave_handler.ex
+- mirror_handler.ex
+- gist_handler.ex
+- kv.ex
+- verifier.ex
+```
+
+- Component library:
+
+  - `ipfs.ex`: for IPFS related operations;
+  - `ar_graphql_interactor`, the GraphQL interaction module for the Arweave network;
+  - `arweave_handler.ex`, used to interact with Arweave nodes, read and write operations;
+  - `mirror_handler.ex`, which handles content stored by the Mirror app on the Arweave network;
+  - `gist_handler.ex`, which handles the content in the Gist, such as the SoulCard template stored on the Gist;
+  - `kv.ex`, a local K-V database.
+  - `verifier.ex`, the information used to verify the metamask signature for authentication.
+
+  Snippets:
+
+  - `CodesOnChain.UserManager.ex`, user management, including ordinary users and DAO users. It should be noted that the user's information is stored on IPFS in the form of `json`, so it is enough to store the association of `addr-ipfs` in the local database;
+  - `CodesOnChain.TemplateManager.ex`, template management, essentially a key-value pair like `:template_list-[gist_id_1, gist_id_2, ...]`;
+  - `CodesOnChain.SoulCardRender.ex`, render metadata (such as `user-%{user: %{ipfs: ipfs}}` to get richer data;
+  - `CodesOnChain.SpeedRunFetcher.ex`, to process the data on the SpeedRun side;
+  - `CodesOnChain.SoulCardRenderLive.ex`, which renders data + templates into SoulCard pages in real time for preview and next steps.
+
+## 0x06 To-do-List
+
+- [x] Register
+  - [x] Individual User Register
+  - [x] DAO Founder Register
+- [x] For DAO Founder
+  - [x] SoulCardContract
+  - [x] SoulCard DAO Homepage
+- [x] For Individual User
+  - [x] See Preview SoulCard
+  - [x] Upload SoulCard to Arweave Netwrok as permaWeb
+  - [x] Mint SoulCard as an NFT according to a DAO contract
+- [x] Whitepaper V1
+
+- [ ] More...
+
+## 0x07 Teams

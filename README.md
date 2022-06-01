@@ -8,7 +8,7 @@
 >
 > Show how demo works:
 > 
-> https://www.youtube.com/watch?v=q-fa8ULqPc
+> https://youtu.be/_q-fa8ULqPc
 >
 
 * Demoes:

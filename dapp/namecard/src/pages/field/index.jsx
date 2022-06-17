@@ -14,7 +14,7 @@ export default function index(props) {
         {id:5,content:"Web Design",checked:false},
         {id:6,content:"Writing",checked:false},
         {id:7,content:"Video Edict",checked:false},
-        {id:8,content:"Tecnology",checked:false},
+        {id:8,content:"Technology",checked:false},
         {id:9,content:"Web 3.0",checked:false},
         {id:10,content:"Illustration",checked:false},
     ])

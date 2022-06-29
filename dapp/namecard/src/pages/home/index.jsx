@@ -584,9 +584,7 @@ export default function index(props) {
       else
         iframeSrcTemp += `&dao_addr_${i + 1}=${item.addr}`
     }
-
-    console.log(iframeSrcTemp);
-    // setIframeSrc(iframeSrcTemp)
+    setIframeSrc(iframeSrcTemp)
   }
 
   return (

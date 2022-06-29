@@ -17,20 +17,14 @@ export default function index(props) {
   const [mirror_link, setMirrorLink] = useState(false)
   const [github_link, setGithubLink] = useState("")
   const [design_link, setDesignLink] = useState("")
+  const [twitter,setTwitter] = useState('')
   const [ng,setNg] = useState(false)
   const [offical,setOffical] = useState(false)
   const [speedruns,setSpeedruns] = useState([])
   useEffect(()=>{
-    setInfos({...infos,mirror_link,github_link,design_link,speedruns})
-  },[mirror_link,github_link,design_link,speedruns])
-  const alChange = (event) => {
-    const mirror_link = event.target.value
-    if(mirror_link == 'true'){
-      setMirrorLink(false)
-    }else{
-      setMirrorLink(true)
-    }
-  }
+    setInfos({...infos,mirror_link,github_link,design_link,twitter,speedruns})
+  },[mirror_link,github_link,design_link,twitter,speedruns])
+
   useEffect(()=>{
     const speedruns = []
     if(ng){
@@ -41,6 +35,15 @@ export default function index(props) {
     }
     setSpeedruns(speedruns)
   },[ng,offical])
+
+  const alChange = (event) => {
+    const mirror_link = event.target.value
+    if(mirror_link == 'true'){
+      setMirrorLink(false)
+    }else{
+      setMirrorLink(true)
+    }
+  }
   const clChange = (event) => {
     const github_link = event.target.value
     setGithubLink(github_link)
@@ -48,6 +51,10 @@ export default function index(props) {
   const dlChange = (event) => {
     const design_link = event.target.value
     setDesignLink(design_link)
+  }
+  const twChange = (event)=>{
+    const twitter = event.target.value
+    setTwitter(twitter)
   }
   const ngChange = (event) => {
     const ng = event.target.value
@@ -96,29 +103,28 @@ export default function index(props) {
     }
   }
   const submitInfos = async () => {
-    console.log(infos);
-    // const { _baseCache } = await addInfoByIPFS(infos)
-    // const hash = _baseCache.get('z')
-    // const { addr, msg, signature } = await signByMetamask()
-    // const data = {
-    //   params: [
-    //     {ipfs: hash },
-    //     'user',
-    //     addr,
-    //     msg,
-    //     signature
-    //   ]
-    // }
-    // const res = await createUser(JSON.stringify(data))
-    // if(res.data.result.status=='ok'){
-    //   props.history.push({
-    //     pathname:'/home',
-    //     query:{
-    //       address:infos.ethereum_addr,
-    //       role:'user'
-    //     }
-    //   });
-    // }
+    const { _baseCache } = await addInfoByIPFS(infos)
+    const hash = _baseCache.get('z')
+    const { addr, msg, signature } = await signByMetamask()
+    const data = {
+      params: [
+        {ipfs: hash },
+        'user',
+        addr,
+        msg,
+        signature
+      ]
+    }
+    const res = await createUser(JSON.stringify(data))
+    if(res.data.result.status=='ok'){
+      props.history.push({
+        pathname:'/home',
+        query:{
+          address:infos.ethereum_addr,
+          role:'user'
+        }
+      });
+    }
   }
   return (
     <>
@@ -144,6 +150,10 @@ export default function index(props) {
           <div className={styles.formItem}>
             <p>Design Link</p>
             <input type="text" value={design_link} onChange={dlChange} />
+          </div>
+          <div className={styles.formItem}>
+            <p>Twitter</p>
+            <input type="text" value={twitter} onChange={twChange} />
           </div>
           <div className={styles.formItem}>
             <p>speedruns</p>

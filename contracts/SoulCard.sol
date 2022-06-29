@@ -45,9 +45,7 @@ contract SoulCard is Ownable, ERC721Enumerable {
               arLink,
               '", "attributes": [], "owner":"',
               (uint160(ownerOf(tokenId))).toHexString(20),
-              '", "image": "',
-              arLink,
-              '"}'
+              '", "image": "https://bafkreidihkq2wggccxhlted36ecckwkee7htax4rrzewi7w2y6js2z42ja.ipfs.nftstorage.link/"}'
             )
           )
         )

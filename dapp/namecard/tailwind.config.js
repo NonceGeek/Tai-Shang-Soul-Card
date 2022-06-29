@@ -15,17 +15,22 @@ module.exports = {
       'rg': ['16px'],
       'lg': ['20px'],
       'xl': ['24px'],
+      '2xl': ['28px'],
+      '3xl': ['32px'],
+      '5xl': ['64px'],
     },
     extend: {
-      margin: {
+      spacing: {
         // 首页左侧栏宽度
         'home-l': '87px',
-      },
-      width: {
+        // 主要内容区域宽度
+        'main': '1040px',
+        '80vh': '80vh',
         // 内容卡片小图宽度
         'thumb-sm': '80px',
         // logo 尺寸
         'logo': '56px',
+        'logo-sm': '48px',
         // 中等图标尺寸
         'icon': '36px',
         // 小图标尺寸

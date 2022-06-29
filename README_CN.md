@@ -23,7 +23,7 @@
 >
 > Contract Example Online:
 >
-> [https://moonbase.moonscan.io/address/0xFD2eAE748407bFf503212599d0992b6d26Fb310a#code](
+> [https://moonbase.moonscan.io/address/0xFD2eAE748407bFf503212599d0992b6d26Fb310a#code]()
 
 ## 0x00 Quick Introdcution
 

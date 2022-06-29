@@ -407,7 +407,7 @@ const ongoingRefcolumns = [
     key: 'action',
     render: (_, record) => (
       <Space size="middle">
-        <a>Second {record.name}</a>
+        <a>Vote {record.name}</a>
       </Space>
     ),
     width: 100,

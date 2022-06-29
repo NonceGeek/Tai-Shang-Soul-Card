@@ -23,17 +23,20 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-layout": "^6.5.0",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
     "@walletconnect/web3-provider": "^1.7.8",
+    "autoprefixer": "9",
     "axios": "^0.27.2",
     "ethers": "^5.6.7",
     "file-loader": "^6.2.0",
     "ipfs-http-client": "^56.0.3",
     "react": "17.x",
     "react-dom": "17.x",
+    "surge": "^0.21.5",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "umi": "^3.5.23",
     "web3": "^1.7.3",
-    "web3modal": "^1.9.7",
-    "surge": "^0.21.5"
+    "web3modal": "^1.9.7"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

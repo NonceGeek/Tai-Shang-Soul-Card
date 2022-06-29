@@ -16,16 +16,12 @@ export default defineConfig({
   theme:{
     "@primary-color":"#7AD6A8",
   },
-  extraPostCSSPlugins: [
-    require("tailwindcss"),
-    require("autoprefixer")
-  ],
   dva:{
     immer:true
   },
   fastRefresh: {},
   proxy:{},
-  chainWebpack(config){
+  chainWebpack(config:any){
     config.module // 配置 file-loader
       .rule('otf')
       .test(/.otf$/)

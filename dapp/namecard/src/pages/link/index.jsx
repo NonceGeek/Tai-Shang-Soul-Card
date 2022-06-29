@@ -14,6 +14,7 @@ const web3Modal = new Web3Modal({
 });
 export default function index(props) {
   const [infos, setInfos] = useStorage("infos")
+  const [infoByAddr, setInfoByAddr] = useStorage(`${infos.ethereum_addr}`)
   const [mirror_link, setMirrorLink] = useState(false)
   const [github_link, setGithubLink] = useState("")
   const [design_link, setDesignLink] = useState("")
@@ -25,6 +26,9 @@ export default function index(props) {
     setInfos({...infos,mirror_link,github_link,design_link,twitter,speedruns})
   },[mirror_link,github_link,design_link,twitter,speedruns])
 
+  useEffect(()=>{
+    setInfoByAddr(infos)
+  },[infos])
   useEffect(()=>{
     const speedruns = []
     if(ng){

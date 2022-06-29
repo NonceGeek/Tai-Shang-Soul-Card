@@ -1,6 +1,7 @@
-import React,{useEffect,useState} from 'react'
-import {useLocation} from "umi"
+import React, { useEffect, useState } from 'react'
+import { useLocation } from "umi"
 
+import { CloudDownloadOutlined } from "@ant-design/icons"
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 
@@ -111,7 +112,7 @@ const toggleDaoSelect = () => {
   document.querySelector('#dao-options').classList.toggle('hidden')
 }
 
-const getDaoList = async ()=>{
+const getDaoList = async () => {
   const data = {
     "params": [
       "dao",
@@ -120,7 +121,7 @@ const getDaoList = async ()=>{
   const res = await get_role_list(JSON.stringify(data))
   return res.data.result
 }
-const exportContractInMoonbeam = async()=>{
+const exportContractInMoonbeam = async () => {
   const web3Modal = new Web3Modal();
   const instance = await web3Modal.connect();
   const provider = new ethers.providers.Web3Provider(instance);
@@ -133,44 +134,44 @@ const exportContractInMoonbeam = async()=>{
   return Contract;
 }
 export default function index(props) {
-  const [tokenID,setTokenID] = useStorage("tokenID")
+  const [tokenID, setTokenID] = useStorage("tokenID")
   const onlineUrl = 'https://faasbyleeduckgo.gigalixirapp.com/dynamic/soulcard'
   //const onlineUrl = "http://localhost:4000/dynamic/noncegeek_dao"
-  const location  = useLocation()
-  const [address,setAddress] = useState('')
-  const [role,setRole] = useState('')
-  const [daoList,setDaoList] = useState([])
-  const [selectDao,setSelectDao] = useState('Select your DAO')
-  const [iframeSrcBasic,setIframeSrcBasic] = useState('')
-  const [iframeSrc,setIframeSrc] = useState('')
-  const [nftUrl,setnftUrl] = useState('https://arweave.net/n4FX-vDQ3au0qnMU2W_AxUwlfdiyxkpJ5bbp9LVh9Ww')
-  const [tokenIDList,setTokenIdList] =useState([])
-  const nftUrlChange = (event)=>{
+  const location = useLocation()
+  const [address, setAddress] = useState('')
+  const [role, setRole] = useState('')
+  const [daoList, setDaoList] = useState([])
+  const [selectDao, setSelectDao] = useState('Select your DAO')
+  const [iframeSrcBasic, setIframeSrcBasic] = useState('')
+  const [iframeSrc, setIframeSrc] = useState('')
+  const [nftUrl, setnftUrl] = useState('https://arweave.net/n4FX-vDQ3au0qnMU2W_AxUwlfdiyxkpJ5bbp9LVh9Ww')
+  const [tokenIDList, setTokenIdList] = useState([])
+  const nftUrlChange = (event) => {
     const value = event.target.value
     setnftUrl(value)
   }
   useEffect(async () => {
     const addr = location.query.address
     const rol = location.query.role
-    if(addr && rol){
+    if (addr && rol) {
       setAddress(addr)
       setRole(rol)
       setIframeSrcBasic(`${onlineUrl}?addr=${addr}`)
       setIframeSrc(`${onlineUrl}?addr=${addr}`)
-    }else{
+    } else {
       props.history.push("/")
     }
     // const tempDaos = [{addr:"0xC994B5384C0d0611De2ecE7d6fF1aD16C34A812F",name:"fsdf"}]
     const daos = await getDaoList()
     setDaoList(daos)
   }, [])
-  useEffect(()=>{
-    setTokenIdList([...tokenIDList,tokenID])
-  },[tokenID])
-  const mintNFT = async () =>{
+  useEffect(() => {
+    setTokenIdList([...tokenIDList, tokenID])
+  }, [tokenID])
+  const mintNFT = async () => {
     const NFTContract = await exportContractInMoonbeam()
     await NFTContract.claim(nftUrl)
-    const tokenID = Number(await NFTContract._tokenIds())+2
+    const tokenID = Number(await NFTContract._tokenIds()) + 2
     setTokenID(tokenID)
   }
   return (
@@ -243,9 +244,9 @@ export default function index(props) {
                 {/* <div className='w-full p-3 hover:bg-namecard'>Etherum</div>
                 <div className='w-full p-3 hover:bg-namecard'>Moombeam</div>
                 <div className='w-full p-3 hover:bg-namecard'>ABCDEFG</div> */}
-                {daoList.map(item=>{
+                {daoList.map(item => {
                   return (
-                    <div className='w-full p-3 hover:bg-namecard' key={item.addr} onClick={()=>{
+                    <div className='w-full p-3 hover:bg-namecard' key={item.addr} onClick={() => {
                       toggleDaoSelect()
                       setSelectDao(item.name)
                       setIframeSrc(`${iframeSrcBasic}&dao_addr=${item.addr}`)
@@ -255,37 +256,37 @@ export default function index(props) {
               </div>
             </div>
             <div className='mt-8'>
-              <iframe style={{ height: "500px", width: "800px"}} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
+              <iframe style={{ height: "450px", width: "600px" }} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
             </div>
             {/* 按钮组 */}
             <div className='mt-8 flex flex-col justify-center items-center space-y-4 font-Audiowide text-gray-900 text-rg'>
               <div className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer' onClick={
-                ()=>{
+                () => {
                   open('https://arweave-uploader.surge.sh/?type=text/html')
                 }
               }>Upload to Arewave</div>
               {/* <div className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'>Download Namecard as HTML/PNG</div> */}
               <div className="p-2 w-3/4 text-gray-300 font-Inter text-sm">tokenURI(arweave link to your unchangeable SoulCard):</div>
-              <textarea 
-                name="" id=""  
+              <textarea
+                name="" id=""
                 value={nftUrl}
                 onChange={nftUrlChange}
                 placeholder='Please enter url for casting nft'
                 className='rounded-lg p-2 w-3/4 h-20 bg-input resize-none border-0 outline-0 text-white font-Inter text-sm'>
               </textarea>
-              <div 
+              <div
                 className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
                 onClick={mintNFT}
               >
-                  Mint Namecard as NFT
+                Mint Namecard as NFT
               </div>
               <div className='rounded-lg p-4 w-3/4 bg-input text-white font-Inter text-sm'>
                 SoulCard Ids that need to approve by DAOL: [{
                   tokenIDList
                 }]</div>
-              <div 
+              <div
                 className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
-                onClick={()=>{
+                onClick={() => {
                   open(`https://moonbeam.nftscan.com/search/${address}`)
                 }}
               >
@@ -298,7 +299,7 @@ export default function index(props) {
             {/* TODO: 当前所选内容类型和其他的颜色不同，且有下边框 */}
             <div className='sticky top-0 mt-2.5 bg-home-m flex space-x-16 justify-center text-nm'>
               {
-                contentTypes.map((content) => <span key={content} className=''>{ content }</span>)
+                contentTypes.map((content) => <span key={content} className=''>{content}</span>)
               }
             </div>
             {/* 文章卡片 */}

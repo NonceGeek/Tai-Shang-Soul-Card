@@ -32,4 +32,5 @@ export default defineConfig({
       .use('file-loader')
       .loader('file-loader');
   },
+  mfsu: {},
 });

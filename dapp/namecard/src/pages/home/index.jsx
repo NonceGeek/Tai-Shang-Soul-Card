@@ -412,8 +412,6 @@ const ongoingRefcolumns = [
   },
 ];
 
-
-
 const getDaoList = async ()=>{
   const data = {
     "params": [
@@ -455,6 +453,7 @@ export default function index(props) {
   const [address,setAddress] = useState('')
   const [role,setRole] = useState('')
   const [daoList,setDaoList] = useState([])
+  const [selectedDaoList,setSelectedDaoList] = useState([])
   const [ongoingList,setOngoingList] = useState([])
   const [propList,setPropList] = useState([])
   const [isDemocracy,setisDemocracy] = useState(false)
@@ -543,9 +542,49 @@ export default function index(props) {
     setOngoingList(ongoingList)
     setPropList(propList)
   }
+  
+  const toogleDaos = (theDAO) => {
+    const daoIndex = selectedDaoList.findIndex(dao => dao.name === theDAO.name)
+
+    if (daoIndex === -1) {
+      setSelectedDaoList(selectedDaoList.concat([
+        {
+          name: theDAO.name,
+          addr: theDAO.addr,
+          role: '',
+        }
+      ]))
+      return
+    }
+
+    setSelectedDaoList(selectedDaoList.filter(dao => dao.name !== theDAO.name))
+  }
+
+  const onDaoAddrChange = (daoName, e) => {
+    const daoIndex = selectedDaoList.findIndex(dao => dao.name === daoName)
+
+    if (daoIndex > -1) {
+      const tempDaoList = [...selectedDaoList]
+      tempDaoList[daoIndex].role = e.target.value
+      setSelectedDaoList(tempDaoList)
+    }
+  }
+
+  const showIframe = () => {
+    let iframeSrcTemp = iframeSrc
+
+    for (let i = 0; i < selectedDaoList.length; i++) {
+      const item = selectedDaoList[i]
+      iframeSrcTemp += `&dao_addr_${i + 1}=${item.addr}&role_${i + 1}=${encodeURI(item.role)}`
+    }
+    setIframeSrc(iframeSrcTemp)
+  }
+
   return (
     // 根元素，保证至少占满页面宽高
-    <div className='min-w-screen min-h-screen relative flex justify-center font-Inter text-sm'>
+    <div
+      className='min-w-screen min-h-screen relative flex justify-center font-Inter text-sm'
+    >
       {/* 背景元素，用于页面左侧/右侧空白区域和左/右侧栏的背景色相一致 */}
       <div className='absolute top-0 bottom-0 left-0 right-0 flex'>
         <div className='w-1/2 bg-home-l'></div>
@@ -570,7 +609,7 @@ export default function index(props) {
               <img className='w-icon mb-7' src={homeActive} alt="home" />
               {/* 消息页的图标 */}
               <img className='w-icon mb-7' src={notice} alt="notice" />
-              <img  onClick={queryDemocracy} className='w-icon mb-7' src={notice} alt="notice" />
+              <img onClick={queryDemocracy} className='w-icon mb-7' src={notice} alt="notice" />
             </div>
           </div>
           {/* 下半部分的人物头像 */}
@@ -601,6 +640,7 @@ export default function index(props) {
             {/* 个人介绍 */}
             {/* 选择 DAO */}
             <div className='my-6 relative'>
+              {/* 下拉菜单 */}
               <div
                 onClick={toggleDaoSelect}
                 className='w-full p-px flex items-center rounded-lg bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
@@ -610,21 +650,47 @@ export default function index(props) {
                   <img className='w-2' src={arrowDown} alt="select" />
                 </div>
               </div>
-              <div id="dao-options" className='absolute top-12 hidden w-full bg-input cursor-pointer'>
-                {/* <div className='w-full p-3 hover:bg-namecard'>Etherum</div>
-                <div className='w-full p-3 hover:bg-namecard'>Moombeam</div>
-                <div className='w-full p-3 hover:bg-namecard'>ABCDEFG</div> */}
+              {/* 下拉菜单选项 */}
+              <div id="dao-options" className='absolute top-12 hidden rounded overflow-hidden border-solid border-green w-full bg-input cursor-pointer'>
                 {daoList.map(item=>{
                   return (
-                    <div className='w-full p-3 hover:bg-namecard' key={item.addr} onClick={()=>{
-                      toggleDaoSelect()
-                      setSelectDao(item.name)
-                      setIframeSrc(`${iframeSrcBasic}&dao_addr=${item.addr}`)
-                    }}>{item.name}</div>
+                    <div className='w-full p-3 flex justify-between items-center hover:bg-namecard' key={item.addr} onClick={()=>{
+                      toogleDaos(item)
+                    }}>
+                      <span>{item.name}</span>
+                      {
+                        (selectedDaoList.find(dao => dao.name === item.name)) && <svg t="1656517375155" className="w-4 h-4" viewBox="0 0 1024 1024" width="32" height="32"><path d="M384.119471 821.116243c-11.918447 0-23.837918-4.527107-32.936133-13.573133L77.629032 535.332405c-18.196431-18.107403-18.196431-47.456848 0-65.557088 18.196431-18.107403 47.674812-18.10024 65.871243-0.007163l240.619196 239.436254 495.173776-492.739331c18.196431-18.107403 47.674812-18.107403 65.871243 0 18.196431 18.10024 18.196431 47.449685 0 65.557088L417.055604 807.535947C407.956366 816.589137 396.037918 821.116243 384.119471 821.116243z" p-id="2195" fill="#7AD6A8"></path></svg>
+                      }
+                    </div>
                   )
                 })}
               </div>
+              {/* 输入 DAO 地址 */}
+              <div>
+                {
+                  selectedDaoList.map(dao => {
+                    return (
+                      <div
+                        className='mt-4'
+                        key={dao.name}
+                      >
+                        <div className=''>{dao.name}: {dao.addr}</div>
+                        <input
+                          value={dao.role}
+                          onChange={(value) => onDaoAddrChange(dao.name, value)}
+                          placeholder='Please input address of this DAO'
+                          className='mt-2 rounded-lg p-2 w-full bg-input border-0 outline-0 text-white font-Inter text-sm'>
+                        </input>
+                      </div>
+                    )
+                  })
+                }
+              </div>
             </div>
+            <div
+              className='w-3/4 mx-auto rounded-lg p-4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
+              onClick={showIframe}
+            >Submit</div>
             <div className='mt-8'>
               <iframe style={{ height: "500px", width: "800px"}} className='w-full border-0' allow="clipboard-write;" src={iframeSrc}></iframe>
             </div>
@@ -646,7 +712,7 @@ export default function index(props) {
                     onChange={nftUrlChange}
                     placeholder='Please enter url for casting nft'
                     className='rounded-lg p-2 w-3/4 h-20 bg-input resize-none border-0 outline-0 text-white font-Inter text-sm'>
-              </textarea>
+                  </textarea>
                   <div
                     className='rounded-lg p-4 w-3/4 bg-gradient-to-r from-lg-green2-start to-lg-green2-end cursor-pointer'
                     onClick={mintNFT}

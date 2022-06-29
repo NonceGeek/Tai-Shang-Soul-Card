@@ -190,12 +190,12 @@ export default function index(props) {
           </button>
         </div>
         <div className="mt-16 w-main mx-auto flex">
-          <div className='w-2/5 flex flex-col justify-between'>
+          <div className='w-2/5 flex flex-col'>
             <div className='w-full flex flex-col'>
               <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Create SoulCards in different fields</div>
               <div className="mt-8 text-rg text-white">select the fields you interested in and......</div>
             </div>
-            <div className="mt-16 flex items-center">
+            <div className="flex-1 flex items-center">
               <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Start Now</div>
               <img className='ml-8' src={finger} alt="" />
             </div>

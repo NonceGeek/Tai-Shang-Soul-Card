@@ -18,6 +18,10 @@ import metaMask from "@/assets/images/metaMask.png"
 import stars from "@/assets/images/landing/stars.png"
 import articleWave from "@/assets/images/landing/article-wave.png"
 import bgP2 from "@/assets/images/landing/bg-p2.png"
+import bgP3 from "@/assets/images/landing/bg-p3.png"
+import finger from "@/assets/images/landing/finger.png"
+import p3Card1 from "@/assets/images/landing/p3-card1.png"
+import p3Card2 from "@/assets/images/landing/p3-card2.png"
 
 let web3Modal
 let provider
@@ -126,6 +130,11 @@ export default function index(props) {
       props.history.push('/detail');
     }
   }
+
+  const p3C2Style = {
+    transform: 'rotate(6deg) translate(-1.5rem, 3rem)',
+    zIndex: 0,
+  }
   return (
     <>
       {/* 随后删除 p-0 */}
@@ -170,7 +179,39 @@ export default function index(props) {
           </div>
         </div>
       </div>
-      <div id="p3" className='w-full'></div>
+      <div id="p3" className='mt-48 w-full relative'>
+        <img className='absolute right-0 top-0' src={bgP3} alt="" />
+        <div className='w-main mx-auto flex'>
+          <button className='px-5 py-2 rounded-full bg-gradient-to-r from-lg-green2-start to-lg-green2-end text-black text-xl cursor-pointer'>
+            Create SoulCard
+          </button>
+          <button className='ml-4 p-px rounded-full border-0 bg-gradient-to-r from-lg-green2-start to-lg-green2-end text-white text-xl cursor-pointer'>
+            <div className='px-5 py-2  rounded-full bg-namecard'>Create DAO</div>
+          </button>
+        </div>
+        <div className="mt-16 w-main mx-auto flex">
+          <div className='w-2/5 flex flex-col justify-between'>
+            <div className='w-full flex flex-col'>
+              <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Create SoulCards in different fields</div>
+              <div className="mt-8 text-rg text-white">select the fields you interested in and......</div>
+            </div>
+            <div className="mt-16 flex items-center">
+              <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Start Now</div>
+              <img className='ml-8' src={finger} alt="" />
+            </div>
+          </div>
+          <div className="w-3/5 flex">
+            <div className='flex flex-col items-center z-10'>
+              <img className='' src={p3Card1} alt="" />
+              <span className='text-white text-2xl font-bold'>I'm a <span className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent'>Coder</span></span>
+            </div>
+            <div className='flex flex-col items-center' style={p3C2Style}>
+              <img className='' src={p3Card2} alt="" />
+              <span className='mt-6 text-white text-2xl font-bold'> &#38; <span className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent'>Desinger</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
       <Modal
         centered
         visible={visible}

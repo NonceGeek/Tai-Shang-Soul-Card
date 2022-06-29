@@ -579,9 +579,14 @@ export default function index(props) {
 
     for (let i = 0; i < selectedDaoList.length; i++) {
       const item = selectedDaoList[i]
-      iframeSrcTemp += `&dao_addr_${i + 1}=${item.addr}&role_${i + 1}=${encodeURI(item.role)}`
+      if(item.role!='')
+        iframeSrcTemp += `&dao_addr_${i + 1}=${item.addr}&role_${i + 1}=${encodeURI(item.role)}`
+      else
+        iframeSrcTemp += `&dao_addr_${i + 1}=${item.addr}`
     }
-    setIframeSrc(iframeSrcTemp)
+
+    console.log(iframeSrcTemp);
+    // setIframeSrc(iframeSrcTemp)
   }
 
   return (

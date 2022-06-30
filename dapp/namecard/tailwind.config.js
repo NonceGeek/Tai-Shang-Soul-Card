@@ -45,28 +45,6 @@ module.exports = {
         // 右侧栏内容区域宽度
         'home-r': '214px',
       },
-      margin: {
-        // 首页左侧栏宽度
-        'home-l': '87px',
-      },
-      width: {
-        // 内容卡片小图宽度
-        'thumb-sm': '80px',
-        // logo 尺寸
-        'logo': '56px',
-        // 中等图标尺寸
-        'icon': '36px',
-        // 小图标尺寸
-        'icon-sm': '16px',
-        // 更小图标尺寸
-        'icon-xs': '8px',
-        // 首页中间区域宽度
-        'home-m': '726px',
-        // 首页中间内容宽度
-        'home-mi': '510px',
-        // 右侧栏内容区域宽度
-        'home-r': '214px',
-      },
       colors: {
         // 首页左侧栏背景
         'home-l': '#0E1F27',

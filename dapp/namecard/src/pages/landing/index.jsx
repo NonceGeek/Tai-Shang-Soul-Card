@@ -19,6 +19,8 @@ import stars from "@/assets/images/landing/stars.png"
 import articleWave from "@/assets/images/landing/article-wave.png"
 import bgP2 from "@/assets/images/landing/bg-p2.png"
 import bgP3 from "@/assets/images/landing/bg-p3.png"
+import bgP4 from "@/assets/images/landing/bg-p4.png"
+import bgP5 from "@/assets/images/landing/bg-p5.png"
 import finger from "@/assets/images/landing/finger.png"
 import p3Card1 from "@/assets/images/landing/p3-card1.png"
 import p3Card2 from "@/assets/images/landing/p3-card2.png"
@@ -135,6 +137,10 @@ export default function index(props) {
     transform: 'rotate(6deg) translate(-1.5rem, 3rem)',
     zIndex: 0,
   }
+
+  const p5Style = {
+    transform: 'translatex(8rem)',
+  }
   return (
     <>
       {/* 随后删除 p-0 */}
@@ -192,12 +198,12 @@ export default function index(props) {
         <div className="mt-16 w-main mx-auto flex">
           <div className='w-2/5 flex flex-col'>
             <div className='w-full flex flex-col'>
-              <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Create SoulCards in different fields</div>
-              <div className="mt-8 text-rg text-white">select the fields you interested in and......</div>
+              <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold leading-tight'>Create SoulCards in different fields</div>
+              <div className="mt-4 text-rg text-white">select the fields you interested in and......</div>
             </div>
             <div className="flex-1 flex items-center">
-              <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Start Now</div>
-              <img className='ml-8' src={finger} alt="" />
+              <div className='mt-3 bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Start Now</div>
+              <img className='ml-6' src={finger} alt="" />
             </div>
           </div>
           <div className="w-3/5 flex">
@@ -209,6 +215,39 @@ export default function index(props) {
               <img className='' src={p3Card2} alt="" />
               <span className='mt-6 text-white text-2xl font-bold'> &#38; <span className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent'>Desinger</span></span>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="p4" className='mt-48 w-full'>
+        <div className="w-main mx-auto flex">
+          <div className='pt-16 w-2/5 flex flex-col'>
+            <div className='w-full flex flex-col'>
+              <div className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold leading-tight'>Create a DAO and work with cool guys</div>
+              <div className="mt-4 text-rg text-white">you can......</div>
+            </div>
+            <div className="flex-1 flex items-center">
+              <div className='mt-3 bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold'>Start Now</div>
+              <img className='ml-6' src={finger} alt="" />
+            </div>
+          </div>
+          <div className="w-3/5 flex flex-col items-center">
+            <img className='' src={bgP4} alt="" />
+            <span className='text-white text-rg'>Our mission is explore new possibilities in Web 3.0.</span>
+            <span className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent text-3xl'>　Let's do something amazing !</span>
+          </div>
+        </div>
+      </div>
+      <div id="p5" className='mt-64 w-full'>
+        <div className="text-center font-Audiowide text-white text-4xl">Join our community</div>
+        <div className="mt-28 pb-32 w-main mx-auto flex">
+          <div className='w-2/5 pr-8 flex justify-center items-center'>
+            <div className='flex items-center'>
+              <span className='bg-gradient-to-r from-lg-green2-start to-lg-green2-end bg-clip-text text-transparent font-Audiowide text-3xl font-bold leading-tight'>Jump to the official website</span>
+              <img className='w-16' src={finger} alt="" />
+            </div>
+          </div>
+          <div className="w-3/5 flex flex-col items-center">
+            <img className='w-full' style={p5Style} src={bgP5} alt="" />
           </div>
         </div>
       </div>

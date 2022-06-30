@@ -16,15 +16,15 @@ import Resume from '@/components/Resume'
 
 import logo from "@/assets/images/logo.png"
 import homeActive from "@/assets/images/home-active.png"
-import home from "@/assets/images/home.png"
-import noticeActive from "@/assets/images/notice-active.png"
+import vote from "@/assets/images/home/vote.png"
+import voteActive from "@/assets/images/home/vote-active.png"
 import notice from "@/assets/images/notice.png"
+
 import avatar from "@/assets/images/avatar.png"
 import add from "@/assets/images/add.png"
 import twitter from "@/assets/images/twitter-white-30px.png"
 import instgram from "@/assets/images/instgram-white-30px.png"
 import github from "@/assets/images/github-white-30px.png"
-import photo from "@/assets/images/photo.png"
 import thumb from "@/assets/images/thumb.png"
 import banner from "@/assets/images/banner.png"
 import codeScreen from "@/assets/images/code.png"
@@ -613,10 +613,10 @@ export default function index(props) {
             {/* 切换页面的按钮 */}
             <div className='mt-12 grow flex flex-col items-center'>
               {/* 首页的图标 */}
-              <img className='w-icon mb-7' src={homeActive} alt="home" />
+              <img className='w-icon mb-7 cursor-pointer' src={homeActive} alt="home" />
               {/* 消息页的图标 */}
-              <img className='w-icon mb-7' src={notice} alt="notice" />
-              <img onClick={queryDemocracy} className='w-icon mb-7' src={notice} alt="notice" />
+              <img className='w-icon mb-7 cursor-pointer' src={notice} alt="notice" />
+              <img onClick={queryDemocracy} className='w-icon mb-7 cursor-pointer' src={isDemocracy ? voteActive : vote} alt="vote" />
             </div>
           </div>
           {/* 下半部分的人物头像 */}

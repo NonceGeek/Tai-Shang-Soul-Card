@@ -84,5 +84,4 @@ const submitInfos = async () => {
 }
 ```
 
-后面的代码逻辑，其实就没什么特别的地方了。配合使用 `ModuleHandler` 和 `KVHandler`，新建或更新用户资料，保存到 FaaS 的键值数据库中。
-
+`UserManager` 模块里其它的代码逻辑，其实就没什么特别的地方了。基本就是配合使用 `ModuleHandler` 和 `KVHandler` 组件，新建或更新用户资料，保存到 FaaS 的键值数据库中。

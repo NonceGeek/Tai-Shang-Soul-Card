@@ -2,14 +2,13 @@
 
 💡 道（DAO）者万物之奥。善人之宝，不善人之所保。
 
-近期，E. Glen Weyl, Puja Ohlhaver, Vitalik Buterin 等人发表论文《去中心化社会：寻找 Web3
-的灵魂》。代表了区块链领域下一个十年的发展趋势——从纯粹的分布式金融（Defi）延展开来，在分布式金融与分布式社会（DeSoc）两条道路上同时探索。
+近期，E. Glen Weyl, Puja Ohlhaver, Vitalik Buterin 等人发表论文《去中心化社会：寻找 Web3的灵魂》，代表了区块链领域下一个十年的发展趋势——从纯粹的分布式金融（Defi）延展开来，在分布式金融与分布式社会（DeSoc）两条道路上同时探索。
 
 包含 DAO（分布式自组织） 在内的各类族群是分布式社会的基本组成单元。这里的族群是广义上的 —— DAO
 是一个族群、一种职业是一个族群、一个小区的居民也可以是一个族群。
 
 我们认为，如果要逐步建设基于区块链的分布式社会（DeSoc based on
-Blockchain），那末首先建立起 **能标志灵魂（灵魂的含义见论文）族群身份的链上名片** 是重要的第一步。
+Blockchain），那么首先建立起 **能标志灵魂（灵魂的含义见论文）族群身份的链上名片** 是重要的第一步。
 
 # 特点
 
@@ -18,7 +17,7 @@ SoulCard 具有如下特点：
 - 多次翻页的 SoulCard 具备更高的信息密度，可以被嵌入到多种社交场景内。如 Mirror 文章、Twitter 等
 - 在铸造为 NFT 时需 DAO Owner 进行验证，通过机制确保 SoulCard 的可信性
 - SoulCard 上记载的技能等相关信息会有 SpeedRun 记录、Github PR 记录等进行证明
-- 在 SoulCard Owner 加入 DAO 之后，SoulCard 上回附带其参与的 DAO 的信息，从而高效、清晰地对 Owner 的族群进行标记
+- 在 SoulCard Owner 加入 DAO 之后，SoulCard 上会附带其参与的 DAO 的信息，从而高效、清晰地对 Owner 的族群进行标记
 - SoulCard 包含其 Owner 的 Web3 足迹设计SoulCard 被设计为可多次翻页的 HTML。
 
 # 架构：dSS
@@ -39,7 +38,7 @@ SoulCard 具有如下特点：
 
 例如：获取全量的 NFT 数据、通过签名从后端拿到一些隐私数据……
 
-这些需求往往十分轻量。因此，通过传统的方式在服务器上启动一个后端服务，会显得过于「沉重」。
+这些需求往往十分轻量。因此，通过传统的方式在服务器上启动一个后端服务，会显得过于「沉重」。所以，FaaS提供了一种轻量级的的方式：Snippet。
 
 ![](https://raw.githubusercontent.com/zhenfeng-zhu/pic-go/main/202206302104974.png)
 

@@ -29,4 +29,6 @@ export default defineConfig({
       .loader('file-loader');
   },
   mfsu: {},
+  title:'SoulCard',
+  favicon: 'logo.png'
 });

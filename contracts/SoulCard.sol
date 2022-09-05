@@ -19,7 +19,7 @@ contract SoulCard is Ownable, ERC721Enumerable {
 
   constructor(string memory tokenName, string memory tokenSymbol) public ERC721(tokenName, tokenSymbol) {}
 
-  function claim(string memory username, string memory arLink) public returns (uint256) {
+  function claim(string memory username, string memory soulcardPermaWebURL) public returns (uint256) {
 
     _tokenIds.increment();
     uint256 tokenId = _tokenIds.current();
@@ -40,9 +40,9 @@ contract SoulCard is Ownable, ERC721Enumerable {
               '", "description":"',
               description,
               '", "external_url":"',           
-              arLink,
+              soulcardPermaWebURL,
               '", "animation_url":"',
-              arLink,
+              soulcardPermaWebURL,
               '", "attributes": [], "owner":"',
               (uint160(ownerOf(tokenId))).toHexString(20),
               '", "image": "https://bafkreidihkq2wggccxhlted36ecckwkee7htax4rrzewi7w2y6js2z42ja.ipfs.nftstorage.link/"}'

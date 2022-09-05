@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to the address type",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"SoulCard_flat.sol": "Address"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"SoulCard_flat.sol": {
+			"keccak256": "0x8eb586a9e976afccb5272af79667295d30b8a27199182f20158f7aa0a2e750d4",
+			"urls": [
+				"bzz-raw://379085ddd65f42d318605773e6cc2d8c3e2c4abf949ec08365f61f185f12a3b7",
+				"dweb:/ipfs/QmWymPhEzu2duj7KUi5EywkEg29aJnMJ58yioiueixqUyV"
+			]
+		}
+	},
+	"version": 1
+}

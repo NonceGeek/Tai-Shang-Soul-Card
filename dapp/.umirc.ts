@@ -5,8 +5,9 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/landing' },
     { path: '/home', component: '@/pages/personal' },
+    { path: '/about', component: '@/pages/about' },
+    { path: '/', component: '@/pages/landing' },
   ],
   fastRefresh: {},
   extraPostCSSPlugins: [require("tailwindcss"), require("autoprefixer")],

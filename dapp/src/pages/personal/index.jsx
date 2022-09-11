@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/Card/index'
+import RightCard from '../../components/RightCard/index'
 
 const temp_data = {
   name: 'Robert Fox',
@@ -96,7 +96,7 @@ export default function index() {
               {/* edit component */}
             </div>
             <div className="w-2/5 h-screen p-54">
-              <Card data={temp_data} />
+              <RightCard data={temp_data} />
             </div>
           </main>
         </div>

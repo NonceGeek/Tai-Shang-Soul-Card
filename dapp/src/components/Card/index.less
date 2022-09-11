@@ -1,0 +1,102 @@
+.card-container {
+    width: 336px;
+    .inside {
+        position: relative;
+        height: 336px;
+        width: 336px;
+        .basic-info {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 230px;
+            height: 135px;
+            padding: 12px 35px 12px 8px;
+        }
+        .intro {
+            line-height: 1.2;
+        }
+        .addr {
+            display: inline-block;
+            width: 100%;
+            white-space: nowrap;
+            word-break: keep-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .location {
+            position: absolute;
+            left: 240px;
+            top: 0;
+            width: 95px;
+            height: 95px;
+            padding: 16px 10px;
+        }
+        .skills {
+            width: 198px;
+            height: 130px;
+            top: 140px;
+            left: 0;
+            position: absolute;
+            padding: 8px;
+            .skills-list {
+                width: 100%;
+                height: 90px;
+                overflow-y: scroll;
+                .list-item {
+                    display: inline-block;
+                    padding: 4px 8px;
+                    color: black;
+                }
+            }
+        }
+        .avator {
+            position: absolute;
+            right: 0;
+            top: 103px;
+            width: 130px;
+            height: 233px;
+            z-index: 0;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .contact {
+            width: 198px;
+            height: 61px;
+            position: absolute;
+            top: 275px;
+            left: 0;
+            padding: 18px 0 18px 14px;
+        }
+    }
+    .awsome-things {
+        .awsome-things-title {
+            padding: 4px 8px;
+        }
+        .circle-button {
+            flex: 1;
+            text-align: right;
+        }
+        .dao-list {
+            height: 250px;
+            overflow-y: scroll;
+        }
+        .position {
+            align-items: center;
+        }
+    }
+    .project-item {
+        text-decoration: underline;
+        display: inline-block;
+    }
+}
+.c-icon {
+    background-color: #C5EF83;
+    width: 16px;
+    height: 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}

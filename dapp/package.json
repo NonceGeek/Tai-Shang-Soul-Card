@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "cross-env TAILWIND_MODE=watch umi dev",
+    "start win": "cross-env TAILWIND_MODE=watch umi dev",
+    "start": "TAILWIND_MODE=watch umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",

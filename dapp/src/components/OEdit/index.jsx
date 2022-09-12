@@ -5,35 +5,6 @@ import Button from '@/components/Button';
 import { useStorage } from '@/hooks/useStorage.ts';
 export default function index(props) {
   const [info, setInfo] = useStorage('individual_info');
-  const [skills, setSkills] = useState({
-    'Frontend technology stack': [
-      { name: 'HTMl', status: false },
-      { name: 'CSS', status: false },
-      { name: 'Javascript', status: false },
-      { name: 'React', status: false },
-      { name: 'scaffold-eth', status: false },
-    ],
-    'Backend technology stack': [
-      { name: 'Java', status: false },
-      { name: 'C', status: false },
-      { name: 'C#', status: false },
-      { name: 'C++', status: false },
-      { name: 'Python', status: false },
-      { name: 'Node', status: false },
-      { name: 'Golang', status: false },
-      { name: 'Elixir', status: false },
-      { name: 'Rust', status: false },
-    ],
-    'Contract technology stack': [
-      { name: 'Solidity', status: false },
-      { name: 'Move', status: false },
-    ],
-    'Blockchain technology stack': [
-      { name: 'Ethereum', status: false },
-      { name: 'Arweave', status: false },
-    ],
-  });
-  const [check_skill, set_check_skill] = useState([]);
   const [check_dao, set_check_dao] = useState([
     { name: 'NonceGeek' },
     { name: 'Starcoin' },
@@ -51,22 +22,6 @@ export default function index(props) {
       telegram: '9478981157',
     },
     location: 'California',
-    skills: [
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-    ],
     awesome_things: [
       {
         project: 'Design for the transport',
@@ -155,28 +110,7 @@ export default function index(props) {
       setFormData(Object.assign({}, formData));
     };
   };
-  const clickHandler = (key, skill) => {
-    return () => {
-      const isExist = check_skill.some((item) => item === skill);
-      if (isExist) {
-        const newSkill = check_skill.filter((item) => item !== skill);
-        set_check_skill([...newSkill]);
-        skills[key].map((item) => {
-          if (item.name == skill) {
-            item.status = false;
-          }
-        });
-      } else {
-        check_skill.push(skill);
-        set_check_skill([...check_skill]);
-        skills[key].map((item) => {
-          if (item.name == skill) {
-            item.status = true;
-          }
-        });
-      }
-    };
-  };
+
   const changeDao = (param1) => {
     return (value) => {
       check_dao[param1].name = value;
@@ -198,14 +132,15 @@ export default function index(props) {
   const saveEdit = () => {
     console.log(formData);
   };
-  useEffect(() => {
-    formData.skills = [...check_skill];
-    setFormData({ ...formData });
-  }, [check_skill]);
+
   return (
     <div className=" relative">
       <div className="mb-6">
-        <InputLabel text="Name" required={true} bold={true}></InputLabel>
+        <InputLabel
+          text="Company/DAO Name"
+          required={true}
+          bold={true}
+        ></InputLabel>
         <GradientInput
           value={formData.name}
           onChange={changeHandle('name')}
@@ -259,6 +194,14 @@ export default function index(props) {
         ></GradientInput>
       </div>
       <div className="mb-6">
+        <InputLabel text="Your Website" bold={true}></InputLabel>
+        <GradientInput
+          value={formData.name}
+          onChange={changeHandle('name')}
+          placeholder="111"
+        ></GradientInput>
+      </div>
+      <div className="mb-6">
         <InputLabel text="Notable Things About You" bold={true}></InputLabel>
         <div className="mb-2">
           {formData.awesome_things.map((item, index) => {
@@ -287,46 +230,26 @@ export default function index(props) {
           onClick={addProject}
         />
       </div>
-      <div className="mb-6">
-        <InputLabel text="Connect to Your Github" bold={true}></InputLabel>
-        <Button colorStyle="green" buttonText="Connect" font="IBMPlexMono" />
+      <div className="mb-6 flex flex-col">
+        <InputLabel text="Add Your Contract Address" bold={true}></InputLabel>
+        <GradientInput
+          value={formData.social_links.discord}
+          onChange={changeHandle('social_links', 'discord')}
+        ></GradientInput>
       </div>
       <div className="mb-6">
-        <InputLabel text="Build Your Techstack" bold={true}></InputLabel>
-        {Reflect.ownKeys(skills).map((key) => {
-          return (
-            <div>
-              <InputLabel text={key} key={key}></InputLabel>
-              <div className="flex flex-wrap">
-                {skills[key].map((skill) => {
-                  return (
-                    <Button
-                      key={skill.name}
-                      colorStyle={skill.status ? 'green' : 'white'}
-                      buttonText={skill.name}
-                      font="IBMPlexMono"
-                      onClick={clickHandler(key, skill.name)}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
-        <div className="w-[421px] h-[150px] rounded border-[0.5px] border-solid border-white text-white font-bold mr-4 mb-4 px-6 py-2">
-          <p>Do you agree to retrieve your tag sorting by Github</p>
-          <div className="flex justify-center">
-            <Button colorStyle="green" buttonText="Agree" font="IBMPlexMono" />
-            <Button
-              colorStyle="white"
-              buttonText="Don't Agree"
-              font="IBMPlexMono"
-            />
-          </div>
-        </div>
+        <InputLabel text="Invite Related Members" bold={true}></InputLabel>
+        <Button
+          colorStyle="green"
+          buttonText="Invite Link"
+          font="IBMPlexMono"
+        />
       </div>
       <div className="mb-6">
-        <InputLabel text="What's your company/DAO?" bold={true}></InputLabel>
+        <InputLabel
+          text="Add Your Associating Company/DAO"
+          bold={true}
+        ></InputLabel>
         <div className="mb-2">
           {check_dao.map((item, index) => {
             return (

@@ -17,7 +17,6 @@ import dao_avator from './mock/dao_avator.png'
 
 const addr = localStorage.getItem('addr')
 
-
 const Card = (props) => {
   const coreMember = props.data.members.filter((item) => {
     return item.is_core_member === true
@@ -41,6 +40,7 @@ const Card = (props) => {
         discord: "hitchhacker@3691"
       },
       location: 'California',
+      skills: ['Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java', 'Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java'],
       awesome_things: [],
       members: [],
       partner: []

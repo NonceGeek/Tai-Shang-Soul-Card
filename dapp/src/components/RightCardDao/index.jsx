@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './index.less'
 
 import address from './mock/address.svg'
@@ -17,6 +17,7 @@ import dao_avator from './mock/dao_avator.png'
 
 const addr = localStorage.getItem('addr')
 
+
 const Card = (props) => {
   const coreMember = props.data.members.filter((item) => {
     return item.is_core_member === true
@@ -25,9 +26,33 @@ const Card = (props) => {
     return item.is_core_member === false
   })
   const allMembers = props.data.members.length
+  const [cardData, setCardData] = useState(
+    {
+      name: 'Dao Name',
+      dao_link: 'https://noncegeek.com/#/',
+      contract_address: 'contract address',
+      description: 'Our team is working on a decentralized social product in the Web3 environment.',
+      introduction: 'Have more than 6 years of Digital Product Design experience.',
+      social_links: {
+        twitter: "https://twitter.com/Web3dAppCamp",
+        mirror_link: "https://mirror.xyz/apecoder.eth",
+        github_link: "https://github.com/WeLightProject",
+        wechat: "197626581",
+        discord: "hitchhacker@3691"
+      },
+      location: 'California',
+      skills: ['Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java', 'Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java'],
+      awesome_things: [],
+      members: [],
+      partner: []
+    }
+  )
+  useEffect(() => {
+    setCardData(props.data)
+  }, [props.data])
   return (
-    <div className='card-container text-white'>
-      <div className='text-imb-bold ft-s-64 line-height-one'>{props.data.name}</div>
+    <div className='card-container-dao text-white'>
+      <div className='text-imb-bold ft-s-64 line-height-one'>{cardData.name}</div>
       <div className='flex'>
         <img src={address} alt="" />
         <span className='ml-10 ft-s-14 bg-grey text-gray addr word-break'>{addr}</span>
@@ -37,29 +62,29 @@ const Card = (props) => {
           <img src={dao_avator} alt="" />
         </div>
         <div className='contact general-border'>
-          {props.data.social_links.discord ? <img className='mr-15' src={discord} alt="" /> : <span></span>}
-          {props.data.social_links.github_link ? <img className='mr-15' src={github_link} alt="" /> : <span></span>}
-          {props.data.social_links.wechat ? <img className='mr-15' src={wechat} alt="" /> : <span></span>}
-          {props.data.social_links.twitter ? <img className='mr-15' src={twitter} alt="" /> : <span></span>}
-          {props.data.social_links.mirror_link ? <img className='mr-15' src={mirror_link} alt="" /> : <span></span>}
-          <div className='ft-s-12' style={{marginTop: '4px'}}>{props.data.dao_link}</div>
+          {cardData.social_links.discord ? <img className='mr-15' src={discord} alt="" /> : <span></span>}
+          {cardData.social_links.github_link ? <img className='mr-15' src={github_link} alt="" /> : <span></span>}
+          {cardData.social_links.wechat ? <img className='mr-15' src={wechat} alt="" /> : <span></span>}
+          {cardData.social_links.twitter ? <img className='mr-15' src={twitter} alt="" /> : <span></span>}
+          {cardData.social_links.mirror_link ? <img className='mr-15' src={mirror_link} alt="" /> : <span></span>}
+          <div className='ft-s-12' style={{marginTop: '4px'}}>{cardData.dao_link}</div>
         </div>
         <div className='contract general-border' style={{paddingLeft: '14px'}}>
           <img src={sign} alt="" />
-          <span className='ml-4 contract-address'>{props.data.contract_address}</span>
+          <span className='ml-4 contract-address'>{cardData.contract_address}</span>
         </div>
         <div className='location general-border'>
           <div><img src={location} alt="" /></div>
-          <div>{props.data.location}</div>
+          <div>{cardData.location}</div>
         </div>
         <div className='des general-border ft-s-14 pt-26 pl-16'>
-          {props.data.description}
+          {cardData.description}
         </div>
       </div>
       <div className='awsome-things general-border mt-8'>
         <div className='awsome-things-title ft-s-16 fw-700 text-ibm-bold'>Awesome Things</div>
-        {props.data.awesome_things.map((item) => {
-          return <div className='border-t p-8 fw-700 text-ibm ft-s-12 flex'>
+        {cardData.awesome_things.map((item) => {
+          return <div className='border-t p-8 fw-700 text-ibm ft-s-12 flex' key={item.project}>
             <div>{item.project}</div>
             <div className='circle-button pointer'><img src={circle} alt="" /></div>
           </div>
@@ -71,8 +96,8 @@ const Card = (props) => {
             <img src={c} alt="" />
           </div>
         <div className='dao-list'>
-          {coreMember.map((item) => {
-            return <div className='flex pt-4 pl-8 mb-15'>
+          {coreMember.map((item, index) => {
+            return <div className='flex pt-4 pl-8 mb-15' key={index}>
               <div><img src={require(`./mock/${item.avator}.png`)} alt="" /></div>
               <div className='ml-10'>
                 <div className='dao-name ft-s-14 ft-700 mb-5 line-height-one text-ibm-bold word-break'>{item.name}</div>
@@ -87,7 +112,7 @@ const Card = (props) => {
             <div className='m-icon m-8'><img src={m} alt="" /></div>
             <div className='relative normal-container flex pl-8'>
               {normalMember.splice(0, 4).map((item, index) => {
-                return <div className='absolute member-ele' style={{left: `${index * 25 + 8}px`}}>
+                return <div className='absolute member-ele' style={{left: `${index * 25 + 8}px`}} key={index}>
                   <img src={require(`./mock/${item.avator}.png`)} alt="" />
                 </div>
               })}
@@ -98,8 +123,8 @@ const Card = (props) => {
       <div className='awsome-things general-border mt-8'>
         <div className='awsome-things-title ft-s-16 fw-700 text-ibm-bold'>Partner</div>
         <div className='partner'>
-          {props.data.partner.map((item) => {
-            return <div className='flex border-t p-8 dao-ele'>
+          {cardData.partner.map((item, index) => {
+            return <div className='flex border-t p-8 dao-ele' key={index}>
               <img src={require(`./mock/${item.avator}.png`)} alt="" />
               <span className='ml-10 text-ibm-bold'>{item.name}</span>
             </div>

@@ -3,13 +3,17 @@ import GradientFont from '@/components/GradientFont';
 import GradientLine from '@/components/GradientLine';
 import IEdit from '@/components/IEdit';
 import OEdit from '@/components/OEdit';
-export default function index() {
+export default function index(props) {
   const [individual_info, set_individual_info] = useState({});
   const [organization_info, set_organization_info] = useState({});
   const [current_edit, set_current_edit] = useState('individual');
   useEffect(() => {
     console.log(current_edit);
   }, [current_edit]);
+
+  const handle = (val) => {
+    props.updateForm(val)
+  }
   return (
     <div className="flex flex-col font-IBMPlexMono">
       <GradientFont text="Hi," style={{ fontSize: '80px' }}></GradientFont>
@@ -51,7 +55,7 @@ export default function index() {
           )}
         </span>
       </div>
-      {current_edit === 'individual' ? <IEdit></IEdit> : <OEdit></OEdit>}
+      {current_edit === 'individual' ? <IEdit handleData={handle}></IEdit> : <OEdit></OEdit>}
     </div>
   );
 }

@@ -41,7 +41,6 @@ const Card = (props) => {
         discord: "hitchhacker@3691"
       },
       location: 'California',
-      skills: ['Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java', 'Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java'],
       awesome_things: [],
       members: [],
       partner: []

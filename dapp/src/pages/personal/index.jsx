@@ -119,22 +119,6 @@ const temp_data_dao = {
     discord: 'hitchhacker@3691',
   },
   location: 'California',
-  skills: [
-    'Javascript',
-    'C++',
-    'Python',
-    'HTML',
-    'Node',
-    'C#',
-    'Java',
-    'Javascript',
-    'C++',
-    'Python',
-    'HTML',
-    'Node',
-    'C#',
-    'Java',
-  ],
   awesome_things: [
     {
       project: 'Design for the transport',

@@ -17,7 +17,6 @@ import dao_avator from './mock/dao_avator.png'
 
 const addr = localStorage.getItem('addr')
 
-
 const Card = (props) => {
   const coreMember = props.data.members.filter((item) => {
     return item.is_core_member === true

@@ -36,6 +36,7 @@ const Card = (props) => {
   )
   useEffect(() => {
     setCardData(props.data)
+    console.log(props.data)
   }, [props.data])
   return (
     <div className='card-container text-white'>

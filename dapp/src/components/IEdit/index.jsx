@@ -141,7 +141,8 @@ export default function index(props) {
 
   useEffect(() => {
     setInfo(formData);
-    console.log(formData);
+    // console.log(formData);
+    props.handleData(formData)
   }, [formData]);
   const changeHandle = (param1, param2, param3) => {
     return (value) => {

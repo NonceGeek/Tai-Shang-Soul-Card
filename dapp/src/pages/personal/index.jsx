@@ -10,9 +10,8 @@ let temp_data_dao = {
   name: 'Dao Name',
   dao_link: 'https://noncegeek.com/#/',
   contract_address: 'contract address',
-  description:
+  introduction:
     'Our team is working on a decentralized social product in the Web3 environment.',
-  introduction: 'Have more than 6 years of Digital Product Design experience.',
   social_links: {
     twitter: 'https://twitter.com/Web3dAppCamp',
     mirror_link: 'https://mirror.xyz/apecoder.eth',

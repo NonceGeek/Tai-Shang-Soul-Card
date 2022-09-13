@@ -30,8 +30,7 @@ const Card = (props) => {
       name: 'Dao Name',
       dao_link: 'https://noncegeek.com/#/',
       contract_address: 'contract address',
-      description: 'Our team is working on a decentralized social product in the Web3 environment.',
-      introduction: 'Have more than 6 years of Digital Product Design experience.',
+      introduction: 'Our team is working on a decentralized social product in the Web3 environment.',
       social_links: {
         twitter: "https://twitter.com/Web3dAppCamp",
         mirror_link: "https://mirror.xyz/apecoder.eth",
@@ -40,7 +39,6 @@ const Card = (props) => {
         discord: "hitchhacker@3691"
       },
       location: 'California',
-      skills: ['Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java', 'Javascript', 'C++', 'Python', 'HTML', 'Node', 'C#', 'Java'],
       awesome_things: [],
       members: [],
       partner: []

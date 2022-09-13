@@ -4,6 +4,10 @@
 
 "Let all DAOs and Buidlers fully broadcast themselves to the world."
 
+面向 DAO、开发者和其它创作者，基于 Venachain、IPFS 等技术栈，SoulCard 提供高信息密度的、可交互的、可 Mint 为 SBT 的链上名片，让用户可以在赛博世界中充分地展现自己，建立个人品牌 / DAO 品牌。
+
+Focus on DAOs, developers and other creators, based on Venachain, IPFS and other technology stacks, SoulCard provides on-chain interactive namecards with high information density that can be Mint as SBT, allowing users to fully display themselves in the cyber world and build a personal brand / DAO brand.
+
 > Deck:
 > 
 > https://github.com/WeLightProject/Tai-Shang-Soul-Card/blob/main/contents/tai_shang_soul_card_pitch_deck.pdf

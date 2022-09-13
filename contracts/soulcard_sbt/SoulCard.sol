@@ -19,6 +19,7 @@ contract SoulCard is Ownable, ERC721Enumerable {
 
   constructor(string memory tokenName, string memory tokenSymbol) public ERC721(tokenName, tokenSymbol) {}
 
+  // todo: add image by claimer
   function claim(string memory username, string memory soulcardPermaWebURL) public returns (uint256) {
 
     _tokenIds.increment();
@@ -27,7 +28,7 @@ contract SoulCard is Ownable, ERC721Enumerable {
 
     // Set the tokenURI to correct format
     string memory name = string(abi.encodePacked('SoulCard #', tokenId.toString(), ' belongs to ', username));
-    string memory description = string(abi.encodePacked('SoulCard #', tokenId.toString()));
+    string memory description = string(abi.encodePacked('SoulCard #', tokenId.toString(), "; see in:",  soulcardPermaWebURL));
 
     string memory realURI = string(
       abi.encodePacked(

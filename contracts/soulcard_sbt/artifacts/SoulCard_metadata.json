@@ -738,11 +738,11 @@
 			]
 		},
 		"soulcard_sbt/SoulCard.sol": {
-			"keccak256": "0xff4bd2f21bc5f94573d753499c0f3dc299430c9d0011f3f4f1c17f114ad32531",
+			"keccak256": "0xc960616a08a807578df2c14a087aa5a75ac4844e271bc1d43e975aa1bb2ba226",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3630d775afe32f1f6d50398f48e5637d977f7dccf7570b7795d8cf353727149b",
-				"dweb:/ipfs/Qmc6EMtMQ32eSisQRNErC9vgnQ7zuoQwEqgmeR8s3Pe3SD"
+				"bzz-raw://2e742709f281f79fa5f85bdcf0dff4b06f122892e6fe9dd18a10def76ef2d7a6",
+				"dweb:/ipfs/QmQ7s3WK3qBhngFD5aEekRJe6DYLQ4chzMGjTPRg6KfGNa"
 			]
 		}
 	},

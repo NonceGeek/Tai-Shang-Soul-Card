@@ -81,6 +81,40 @@ export default function index(props) {
     };
   };
 
+  const uploadImage = (ev) => {
+    var el = window._protected_reference = document.createElement("INPUT");
+    el.type = "file";
+    el.accept = "image/*";
+
+    // (cancel will not trigger 'change')
+    el.addEventListener('change', function(ev2) {
+      // access el.files[] to do something with it (test its length!)
+
+      // add first image, if available
+      if (el.files.length) {
+        const imgSrc = URL.createObjectURL(el.files[0]);
+
+        setFormData({
+          ...formData,
+          avatar: imgSrc,
+        })
+        // document.getElementById('out').src = imgSrc;
+      }
+
+      // test some async handling
+      new Promise(function(resolve) {
+        setTimeout(function() { console.log(el.files); resolve(); }, 1000);
+      })
+      .then(function() {
+        // clear / free reference
+        el = window._protected_reference = undefined;
+      });
+
+    });
+
+    el.click(); // open
+  };
+
   const changeDao = (param1) => {
     return (value) => {
       check_dao[param1].name = value;
@@ -128,13 +162,14 @@ export default function index(props) {
           onChange={changeHandle('introduction')}
         ></GradientInput>
       </div>
-      <div className="mb-6">
+      <div className="mb-6 flex flex-col items-start">
         <InputLabel
           text="Upload your Image"
           required={true}
           bold={true}
         ></InputLabel>
-        <Button colorStyle="green" buttonText="Upload" font="IBMPlexMono" />
+        <Button onClick={(ev) => uploadImage(ev)} colorStyle="green" buttonText="Upload" font="IBMPlexMono" />
+        <img className={`${formData.avatar ? 'w-52 h-52 object-contain' : 'w-px h-px'}`} src={formData.avatar} />
       </div>
       <div className="mb-6 flex flex-col">
         <InputLabel text="Contact Information" bold={true}></InputLabel>

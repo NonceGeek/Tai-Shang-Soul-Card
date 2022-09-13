@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { history } from 'umi';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
@@ -40,14 +41,21 @@ export default function IndexPage() {
   };
 
   const beginLogin = () => {
-    connect();
-    setCurrLoginStatus(LoginStatus.Logging);
+    if (address) {
+      setCurrLoginStatus(LoginStatus.Logging);
+    } else {
+      connect();
+      setCurrLoginStatus(LoginStatus.Logging);
+    }
   };
 
   const finishLogin = () => {
     setCurrLoginStatus(LoginStatus.LoggedIn);
   };
 
+  const goToHome = () => {
+    history.push(`/home?addr=${address}`);
+  };
   const maskBlur = {
     backdropFilter: 'blur(30px)',
   };
@@ -59,16 +67,13 @@ export default function IndexPage() {
       <div className="content w-main h-full mx-auto flex flex-col">
         <Header />
         <div className="slogon pt-40 flex flex-col items-end text-[56px] text-white font-bold">
-          <span>
-            A <GradientText text="decentralized social" />
-          </span>
-          <span>platform in the Web3</span>
-          <span>environment</span>
+          <span>Let all DAOs and Buidlers</span>
+          <span>show themselves to the</span>
+          <span>world a full play.</span>
         </div>
         <div className="vision w-full flex justify-end">
-          <span className="mt-52 w-1/2 text-right">
-            We are providing identity verification to help break down social
-            barriers and work to build a new relationship of mutual trust.
+          <span className="mt-52 w-[44%] text-right">
+          Focus on DAOs, developers and other creators, based on Venachain, IPFS and other technology stacks, SoulCard provides on-chain interactive namecards with high information density that can be Mint as SBT, allowing users to fully display themselves in the cyber world and build a personal brand / DAO brand.
           </span>
         </div>
         <div
@@ -167,7 +172,7 @@ export default function IndexPage() {
                   <div className="mt-12">
                     <img className="w-20 mx-auto" src={OkIcon} alt="" />
                   </div>
-                  <div className="mt-12 mb-12" onClick={() => hideMask()}>
+                  <div className="mt-12 mb-12" onClick={() => goToHome()}>
                     <Button
                       colorStyle="green"
                       buttonText="Start"

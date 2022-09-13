@@ -11,4 +11,14 @@ export default defineConfig({
   ],
   fastRefresh: {},
   extraPostCSSPlugins: [require("tailwindcss"), require("autoprefixer")],
+  chainWebpack(conf) {
+    // ....other config
+    conf.module
+      .rule('mjs$')
+      .test(/\.mjs$/)
+      .include
+          .add(/node_modules/)
+          .end()
+      .type('javascript/auto');
+  },
 });

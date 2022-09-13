@@ -26,6 +26,13 @@ Focus on DAOs, developers and other creators, based on Venachain, IPFS and other
 > 
 > https://github.com/WeLightProject/Tai-Shang-Soul-Card#41-dao-soulcard-example
 >
+---
+> **Metamask Config**
+>
+> RPC URL: https://venachain.hewei.in
+>
+> Chain Id: 300
+>
 
 ## 0x00 Directory Structure of Repo
 

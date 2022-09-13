@@ -44,9 +44,9 @@ const Card = (props) => {
     setState(true)
   }
   useEffect(() => {
-    setCardData(props.data)
-    console.log(props.data)
-  }, [props.data])
+    setCardData(props.data);
+    console.log(props.data);
+  }, [props.data]);
   return (
     <div className='card-container text-white relative'>
       {showPopover ? <div className='absolute p-[20px] popover text-ibm pointer'>

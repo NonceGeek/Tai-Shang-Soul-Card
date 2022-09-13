@@ -12,7 +12,7 @@ export default function index() {
   const [mode, setMode] = useState('ori')
   const [tempData, setTempData] = useState({
     name: 'Robert Fox',
-    avator: '',
+    avatar: '',
     introduction: 'Have more than 6 years of Digital Product Design experience.',
     social_links: {
       twitter: 'https://twitter.com/Web3dAppCamp',
@@ -80,28 +80,28 @@ export default function index() {
     ],
     organization: [
       {
-        avator: 'first',
+        avatar: 'first',
         name: 'NonceGeek',
         link: '',
         is_core_member: true,
         position: 'founder',
       },
       {
-        avator: 'second',
+        avatar: 'second',
         name: 'Starcoin',
         link: '',
         is_core_member: true,
         position: 'member',
       },
       {
-        avator: 'third',
+        avatar: 'third',
         name: 'NonceGeek',
         link: '',
         is_core_member: false,
         position: '',
       },
       {
-        avator: 'first',
+        avatar: 'first',
         name: 'NonceGeek',
         link: '',
         is_core_member: true,
@@ -111,7 +111,7 @@ export default function index() {
   })
   const [tempDataDao, setTempDataDao] = useState({
     name: 'Dao Name',
-    avator: '',
+    avatar: '',
     dao_link: 'https://noncegeek.com/#/',
     contract_address: 'contract address',
     introduction:
@@ -140,73 +140,73 @@ export default function index() {
     ],
     members: [
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: 'Co-founder',
         is_core_member: true,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: '',
         is_core_member: false,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: '',
         is_core_member: false,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: '',
         is_core_member: false,
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'Robert Fox',
         position: '',
         is_core_member: false,
@@ -214,23 +214,23 @@ export default function index() {
     ],
     partner: [
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
     ]

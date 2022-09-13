@@ -17,15 +17,14 @@ import dao_avator from './mock/dao_avator.png'
 import share from './mock/share.svg'
 import CloseIcon from '@/assets/img/close-icon.png'
 
-
-const addr = localStorage.getItem('addr')
+const addr = localStorage.getItem('addr');
 
 const Card = (props) => {
   const [state, setState] = useState(false)
   const [showPopover, setShowPopover] = useState(false)
   const coreMember = props.data.members.filter((item) => {
-    return item.is_core_member === true
-  })
+    return item.is_core_member === true;
+  });
   const normalMember = props.data.members.filter((item) => {
     return item.is_core_member === false
   })
@@ -56,8 +55,8 @@ const Card = (props) => {
     setState(true)
   }
   useEffect(() => {
-    setCardData(props.data)
-  }, [props.data])
+    setCardData(props.data);
+  }, [props.data]);
   return (
     <div className='card-container-dao text-white relative'>
       {showPopover ? <div className='absolute p-[20px] popover text-ibm pointer'>

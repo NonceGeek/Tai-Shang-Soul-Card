@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start win": "cross-env TAILWIND_MODE=watch umi dev",
+    "start_win": "cross-env TAILWIND_MODE=watch umi dev",
     "start": "TAILWIND_MODE=watch umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",
@@ -24,11 +24,14 @@
     "@ant-design/pro-layout": "^6.5.0",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "autoprefixer": "^9",
+    "axios": "^0.27.2",
     "classnames": "^2.3.1",
+    "ethers": "^5.7.0",
     "react": "17.x",
     "react-dom": "17.x",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-    "umi": "^3.5.34"
+    "umi": "^3.5.34",
+    "wagmi": "^0.6.6"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

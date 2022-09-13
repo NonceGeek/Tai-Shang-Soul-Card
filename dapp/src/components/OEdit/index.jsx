@@ -11,7 +11,7 @@ export default function index(props) {
   ]);
   const [formData, setFormData] = useState({
     name: 'Robert Fox',
-    avator: '',
+    avatar: '',
     dao_link: 'https://noncegeek.com/#/',
     contract_address: '9de3d8a9de3d8ad7d2g6d7d2g6fe3e2',
     introduction:
@@ -42,23 +42,23 @@ export default function index(props) {
     members: [],
     partner: [
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
       {
-        avator: 'member-avator',
+        avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
     ],
@@ -79,6 +79,40 @@ export default function index(props) {
       }
       setFormData(Object.assign({}, formData));
     };
+  };
+
+  const uploadImage = (ev) => {
+    var el = window._protected_reference = document.createElement("INPUT");
+    el.type = "file";
+    el.accept = "image/*";
+
+    // (cancel will not trigger 'change')
+    el.addEventListener('change', function(ev2) {
+      // access el.files[] to do something with it (test its length!)
+
+      // add first image, if available
+      if (el.files.length) {
+        const imgSrc = URL.createObjectURL(el.files[0]);
+
+        setFormData({
+          ...formData,
+          avatar: imgSrc,
+        })
+        // document.getElementById('out').src = imgSrc;
+      }
+
+      // test some async handling
+      new Promise(function(resolve) {
+        setTimeout(function() { console.log(el.files); resolve(); }, 1000);
+      })
+      .then(function() {
+        // clear / free reference
+        el = window._protected_reference = undefined;
+      });
+
+    });
+
+    el.click(); // open
   };
 
   const changeDao = (param1) => {
@@ -128,13 +162,14 @@ export default function index(props) {
           onChange={changeHandle('introduction')}
         ></GradientInput>
       </div>
-      <div className="mb-6">
+      <div className="mb-6 flex flex-col items-start">
         <InputLabel
           text="Upload your Image"
           required={true}
           bold={true}
         ></InputLabel>
-        <Button colorStyle="green" buttonText="Upload" font="IBMPlexMono" />
+        <Button onClick={(ev) => uploadImage(ev)} colorStyle="green" buttonText="Upload" font="IBMPlexMono" />
+        <img className={`${formData.avatar ? 'w-52 h-52 object-contain' : 'w-px h-px'}`} src={formData.avatar} />
       </div>
       <div className="mb-6 flex flex-col">
         <InputLabel text="Contact Information" bold={true}></InputLabel>

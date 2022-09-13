@@ -1,36 +1,44 @@
-# SoulCard
+# Tai Shang Soul Card
 
-* Videos:
+"让所有的 DAO 和开发者充分向世界广播自己。"
 
-> Introduction
+"Let all DAOs and Buidlers show themselves to the world a full play."
+
+面向 DAO、开发者和其它创作者，基于 Venachain、IPFS 等技术栈，SoulCard 提供高信息密度的、可交互的、可 Mint 为 SBT 的链上名片，让用户可以在赛博世界中充分地展现自己，建立个人品牌 / DAO 品牌。
+
+Focus on DAOs, developers and other creators, based on Venachain, IPFS and other technology stacks, SoulCard provides on-chain interactive namecards with high information density that can be Mint as SBT, allowing users to fully display themselves in the cyber world and build a personal brand / DAO brand.
+
+> Deck:
 > 
-> https://youtu.be/KAcfIohP-Y4
->
-> Show how demo works:
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card/blob/main/contents/tai_shang_soul_card_pitch_deck.pdf
 > 
-> https://youtu.be/_q-fa8ULqPc
+> Demo Online: https://soulcard.noncegeek.com
+>
+> SoulCard Smart Contract deployed on Venachain: 
+>
+> https://portal.noncegeek.com/live/contract
+>
+> User SoulCard Example:
+>
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card#42-user-soulcard-example
+>
+> DAO SoulCard Example:
+> 
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card#41-dao-soulcard-example
+>
+---
+> **Metamask Config**
+>
+> RPC URL: https://venachain.hewei.in
+>
+> Chain Id: 300
 >
 
-* Demoes:
-
-
-> Demo Online: https://soulcard.surge.sh/
->
-> Dynamic SoulCard Example: 
->
-> https://faasbyleeduckgo.gigalixirapp.com/dynamic/soulcard?addr=0x73c7448760517E3E6e416b2c130E3c6dB2026A1d&dao_addr_1=0xC994B5384C0d0611De2ecE7d6fF1aD16C34A812F&role_1=Dungeon%20Master
->
-> SoulCard On Arweave: https://arweave.net/qcCsz8uT6EXaKHjubhetRo_RiEP7aJmVbb21_56W3rk
->
-> Contract Example Online:
->
-> [https://moonbase.moonscan.io/address/0xFD2eAE748407bFf503212599d0992b6d26Fb310a#code](https://moonbeam.moonscan.io/address/0x91607e5C9aD97b8AA7C7c6ACC35FA366D074532D#code)
-
-## 项目目录结构
+## 0x00 Directory Structure of Repo
 
 // TODO
 
-## 0x00 Quick Introdcution
+## 0x01 Quick Introdcution
 
 NonceGeek team builds SoulCard for the social needs of all communities in a distributed society (DeSoc)-- **The chain card that marks the identity of the soul's community**
 
@@ -49,9 +57,9 @@ Compared with the traditional personal information display such as LinkedIn home
 * After the SoulCard owner joins the DAO, the SoulCard will have the information of the DAO he/she participated in, so that the owner's community can be marked efficiently and clearly.
 * SoulCard contains the Web3 footprint of its owner 👣
 
-## 0x01 Background
+## 0x02 Background
 
-### 1.1 Building a building block "soul card" based on human social nature
+### 2.1 Building a building block "soul card" based on human social nature
 
 Recently, E. Glen Weyl, Puja Ohlhaver, Vitalik Buterin and others published their paper "Decentralized Society: In Search of the Soul of Web3". The paper represents the trend of the next decade in blockchain - extending from purely distributed finance (Defi) to explore both the path of distributed finance and distributed society (DeSoc).
 
@@ -81,7 +89,7 @@ Therefore, in this case, how to efficiently make a good and deep first impressio
 
 This cannot be achieved if it is simply an unthought-out **message pile** - like the smelly, long resumes we often see in our mailboxes. Therefore, there is a need to think further about this matter at the product design level and design products that are more in line with human "social nature" - something that is currently lacking in the DeSocial space.
 
-### 1.2 Structural Hole Theory and "Crossed Souls"
+### 2.2 Structural Hole Theory and "Crossed Souls"
 > **structural holes** is a concept from [social network](https://en.wikipedia.org/wiki/Social_network) research, originally developed by [Ronald Stuart](https://en.wikipedia.org/wiki/Ronald_Stuart_Burt) Burt. The study of structural holes spans the fields of sociology, economics, and computer science. Burt introduced this concept in an attempt to explain the origin of differences in [social capital](https://en.wikipedia.org/wiki/Social_capital). Burt’s theory suggests that individuals hold certain positional advantages/disadvantages from how they are embedded in neighborhoods or other social structures. A structural hole is understood as a gap between two individuals who have complementary sources to information.
 > -- Wikipedia
 
@@ -89,13 +97,13 @@ This cannot be achieved if it is simply an unthought-out **message pile** - like
 
 Therefore, when designing the SoulCard product, we had to think more fully about how SoulCard could better bring to light the key people who fill the holes in the structure -- people who have often been invisible in the past -- and how it could be a win-win situation for both the key nodes themselves and the social networks they connect to. It's a win-win situation. For example, a key person who is both a Coder & Designer and who is an active participant in both a DevDAO and a DesignDAO has the potential to lead the exchange of resources between the two DAOs, creating new possibilities and new value. In DeSoc, we can name the soul of such a person as **"Cross-Soul "**.
 
-### 1.3 Trust in new cooperative relationships
+### 2.3 Trust in new cooperative relationships
 
 > In his Philosophy of Money and Foundations of Social Theory, Zimmer suggests that trust is an important condition for exchange mechanisms and a prerequisite for the continuity of sociality. The sociologist James Coleman devotes a large part of his magnum opus, The Foundations of Social Theory, to trust as an important component of social capital (Robert D . Trust helps to increase the efficiency of microeconomic organizations.
 
 Reducing the cost of building trust and eliminating barriers to building trust both require authenticity of information exchange (verified profile) and effectiveness of structure building (short time to the right person, shortest path to the right person).
 
-### 1.4 Decentralized diffusion of DAO brand
+### 2.4 Decentralized diffusion of DAO brand
 
 Like any other organization, DAOs still need branding. In addition to traditional brand building ideas, DAOs should also consider a more decentralized (and likewise more primitive 😁) approach to communication -
 
@@ -109,62 +117,53 @@ In this case, it is essential to let the DAO develop the Template for the busine
 
 > **Receiver:** People who see SoulCard can quickly and efficiently understand the people they are in contact with and the organizations behind them.
 
-### 1.5 Information Entropy and Value
+### 2.5 Information Entropy and Value
 
 Traditional resumes and profiles have no mechanism to avoid lengthy, dull information, and the low concentration of effective information reduces the sense of value to the Profile Owner.
 
 The traditional solution is to increase the information density and value of the profile through some resume-related courses, but we believe that this can be solved mechanically - for example, by having the SoulCard Owner provide only the 3 most valuable articles that he/she has written when providing technical articles.
 
-## 0x02 Web3 Stacks
+## 0x03 Web3 Stacks
 
-- **Arweave Network**
+- **Venachain**
+   - DAO/Users mint their SoulCards into SoulCard SBTs via Venachain Nework.
+- **Arweave Network / IPFS Network**
    - Store SoulCard on the Arweave blockchain network as an immutable page.
    - Then mint the immutable SoulCard into an NFT on any Ethereum compatible network.
 - **Moonbeam Network**
-   - DAO issues SoulCard NFT contract via Moonbeam Network.
-   - Users mint their SoulCards into SoulCard NFTs to get certified by the DAO.
+   - DAO/Users mint their SoulCards into SoulCard SBTs via Moonbeam Nework.
 
-## 0x03 SoulCard Contract
+## 0x04 SoulCard Design
 
-### 3.1 A Soulcard Example
+SoulCard is designed as interactive H5 that can export to pic, save to permaweb as IPFS,Arweave, mint into SBTs that can be saw in NFT Wallet / NFT Gallery.
 
-See:
+See more Details in:
 
-> https://arweave.net/n4FX-vDQ3au0qnMU2W_AxUwlfdiyxkpJ5bbp9LVh9Ww
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card/blob/main/contracts/README.md
 
-SoulCard is designed as HTML that can be flipped multiple times.
+![SoulCard 的服务_链接 (3)](https://tva1.sinaimg.cn/large/e6c9d24egy1h657gmoh1wj20u00xa40l.jpg)
 
-* **Page 0x01 base page**
+### 4.1 DAO Soulcard Example
 
-![image-20220531085943320](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rbdh0bkvj20xe0megmw.jpg)
+<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h657kg5087j20ns1li795.jpg" alt="organization" style="zoom:50%;" />
 
-These include:
+### 4.2 User Soulcard Example
 
-> User avatar, user address, user social media links, user basic information, user areas of expertise, SppedRun level and SpeedRun homepage link (if any)
+<img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h657jixeoaj20ns1jswjc.jpg" alt="Individual" style="zoom:50%;" />
 
-- **Page 0x02 DAO page**
-
-![image-20220531090858517](https://tva1.sinaimg.cn/large/e6c9d24egy1h2ryrjzjkej20xg0mamys.jpg)
-
-Displays information about the DAOs that SoulCard Owner has joined.
-
-- **Page 0x03 Works page**
-
-![image-20220531091038554](https://tva1.sinaimg.cn/large/e6c9d24egy1h2ryrijh8sj20xg0me3zt.jpg)
-
-`A list of SoulCard Owner's works`, either self-selected or automatically grabbed from a feed source.
-
-### 3.2 Several state of SoulCard
+### 4.3 Several state of SoulCard
 
 SoulCard is designed to have the following state:
 
-- **preview form**
+- **preview state**
 
-The SoulCard is dynamically rendered in the background according to the two index information of `addr` and `dao_addr`.
+The SoulCard is dynamically rendered by the `WYSIWYG editor`。
 
-- **Arweave PermaWeb state**
+- **PermaWeb state**
 
-Through the `Arweave Uploader` plugin, the `bundlr` network is solidified into `permaweb on Arweave`, which can be embedded and supported in `iframe` applications and pages.
+Through the API on FaaS,the soulcard is solidified into `permaweb on IPFS`, which can be embedded and supported in `iframe` applications and pages.
+
+Through the `Arweave Uploader` plugin, the soulcard is solidified into `permaweb on Arweave`, which can be embedded and supported in `iframe` applications and pages.
 
 - **PNG state**
 
@@ -174,45 +173,27 @@ Save as PNG, which can be used in applications and pages that do not support `if
 
 Through DAO's SoulCardContract Addr, the SoulCard Mint in the form of Arweave PermaWeb is converted into NFT, and this NFT needs to be approved by DAO. If the approval is passed, it can be regarded as "certified" by the DAO.
 
-### 3.3 SoulCard Template Design
+## 0x05 SoulCard Contract
 
 see in `/contracts` in Repo.
 
 SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Binding) tokens described in `<<Decentralized Society: Finding Web3's Soul>>`. Its key methods include:
 
-- `claim(_arLink)`
+- `claim(username, soulcardPermaWebURL)`
 
-   To apply for an NFT (or SBTs) under the contract, but the applicant will not get the NFT immediately after the application, but needs to be approved by the DAO Owner
+  To apply for an NFT (or SBTs) under the contract, but the applicant will not get the NFT immediately after the application, but needs to be approved by the DAO Owner
 
 - `approveClaim(tokenId)`
 
-   The DAO Owner checks whether the applied SoulCard content is true, and approves the application after verification
+  The DAO Owner checks whether the applied SoulCard content is true, and approves the application after verification
 
 - `safeTransferFrom(from, to, tokenId, _data \\nil)`
 
-   Transfers can only be made to the `0x0` address, that is, the `SoulCard` can only be transferred and cannot be destroyed.
+  Transfers can only be made to the `0x0` address, that is, the `SoulCard` can only be transferred and cannot be destroyed.
 
-## 0x04 SoulCard Contract
+## 0x06 Architecture -- dS
 
-- see in `/contracts` in Repo.
-
-  SoulCard is a non-standard ERC721 contract, an exploration of `SBTs` (Soul Binding) tokens described in `<<Decentralized Society: Finding Web3's Soul>>`. Its key methods include:
-  
-  - `claim(_arLink)`
-  
-    To apply for an NFT (or SBTs) under the contract, but the applicant will not get the NFT immediately after the application, but needs to be approved by the DAO Owner
-  
-  - `approveClaim(tokenId)`
-  
-    The DAO Owner checks whether the applied SoulCard content is true, and approves the application after verification
-  
-  - `safeTransferFrom(from, to, tokenId, _data \\nil)`
-  
-    Transfers can only be made to the `0x0` address, that is, the `SoulCard` can only be transferred and cannot be destroyed.
-
-## 0x05 Architecture -- SSD
-
-`dSS`——`dApp-Snippet-Script` architecture, is a new blockchain application development architecture proposed by NonceGeekDAO.
+`dSS`——`dApp-Snippet` architecture, is a new blockchain application development architecture proposed by NonceGeekDAO.
 
 From an architectural point of view, a "pure" dApp should be a pure front-end application to ensure decentralization:
 
@@ -234,17 +215,23 @@ In the SoulCard project, we adopted this form of architecture.
 
 Snippets See the Snippets folder under the Repo, which is loaded into **[https://faasbyleeduckgo.gigalixirapp.com/](https://faasbyleeduckgo.gigalixirapp.com/)** to provide backend services for dApps.
 
-![SoulCard架构 (1)](https://tva1.sinaimg.cn/large/e6c9d24egy1h2rz4m5ts3j21a80hsmyx.jpg)
+![SoulCard Arch](https://tva1.sinaimg.cn/large/e6c9d24egy1h657hb4ki9j216x0u0ady.jpg)
 
-## 0x06 Snippets & Components using in SoulCard
+## 0x07 Snippets & Components using in SoulCard
+
+> See API Doc in: https://github.com/WeLightProject/Tai-Shang-Soul-Card/wiki/%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1
+>
+> See Source Codes of Snippets:
+>
+> https://gist.github.com/leeduckgo/9813ca9e206bbda1afb413ecea331063
 
 ```elixir
 Snippets:
-- CodesOnChain.SoulCardRenderLive.ex
-- CodesOnChain.SoulCardRender.ex
-- CodesOnChain.SpeedRunFetcher.ex
-- CodesOnChain.TemplateManager.ex
-- CodesOnChain.UserManager.ex
+- SoulCard.UserManager.ex
+- SoulCard.InvitationManager.ex
+- SoulCard.DataHandler.ex
+- SoulCard.IpfsInteractor.ex
+- SoulCard.TemplateManager.ex
 Components:
 - ipfs.ex
 - ar_graphql_interactor.ex
@@ -255,42 +242,26 @@ Components:
 - verifier.ex
 ```
 
-- Component library:
-
-  - `ipfs.ex`: for IPFS related operations;
-  - `ar_graphql_interactor`, the GraphQL interaction module for the Arweave network;
-  - `arweave_handler.ex`, used to interact with Arweave nodes, read and write operations;
-  - `mirror_handler.ex`, which handles content stored by the Mirror app on the Arweave network;
-  - `gist_handler.ex`, which handles the content in the Gist, such as the SoulCard template stored on the Gist;
+- Snippets:
+- Components:
+- `ipfs.ex`: for IPFS related operations.
+  - `ar_graphql_interactor`, the GraphQL interaction module for the Arweave network.
+  - `arweave_handler.ex`, used to interact with Arweave nodes, read and write operations.
+  - `mirror_handler.ex`, which handles content stored by the Mirror app on the Arweave network.
+  - `gist_handler.ex`, which handles the content in the Gist, such as the SoulCard template stored on the Gist.
+  - `github_fetcher.ex`, which analyze the github account of users & DAOs.
   - `kv.ex`, a local K-V database.
   - `verifier.ex`, the information used to verify the metamask signature for authentication.
 
-  Snippets:
 
-  - `CodesOnChain.UserManager.ex`, user management, including ordinary users and DAO users. It should be noted that the user's information is stored on IPFS in the form of `json`, so it is enough to store the association of `addr-ipfs` in the local database;
-  - `CodesOnChain.TemplateManager.ex`, template management, essentially a key-value pair like `:template_list-[gist_id_1, gist_id_2, ...]`;
-  - `CodesOnChain.SoulCardRender.ex`, render metadata (such as `user-%{user: %{ipfs: ipfs}}` to get richer data;
-  - `CodesOnChain.SpeedRunFetcher.ex`, to process the data on the SpeedRun side;
-  - `CodesOnChain.SoulCardRenderLive.ex`, which renders data + templates into SoulCard pages in real time for preview and next steps.
+## 0x08 Tai Shang Portal as Explorer
 
-## 0x07 To-do-List
+see in:
 
-- [x] Register
-  - [x] Individual User Register
-  - [x] DAO Founder Register
-- [x] For DAO Founder
-  - [x] SoulCardContract
-  - [x] SoulCard DAO Homepage
-- [x] For Individual User
-  - [x] See Preview SoulCard
-  - [x] Upload SoulCard to Arweave Netwrok as permaWeb
-  - [x] Mint SoulCard as an NFT according to a DAO contract
-- [x] Whitepaper V1
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card/wiki/Tai-Shang-Portal-as-Explorer
 
-- [ ] More...
+## 0x09 Teams
 
-## 0x08 Teams
-
-NonceGeek, cool oriented programming ---
+NonceGeekDAO, cool oriented programming.
 
 > https://noncegeek.com

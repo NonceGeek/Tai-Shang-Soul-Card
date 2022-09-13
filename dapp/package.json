@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start win": "cross-env TAILWIND_MODE=watch umi dev",
+    "start_win": "cross-env TAILWIND_MODE=watch umi dev",
     "start": "TAILWIND_MODE=watch umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",

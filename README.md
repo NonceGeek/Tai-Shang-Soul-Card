@@ -12,8 +12,12 @@
 >
 > https://portal.noncegeek.com/live/contract
 >
-> SoulCard On IPFS:
+> User SoulCard Example:
 >
+> //TODO
+>
+> DAO SoulCard Example:
+> 
 > //TODO
 >
 

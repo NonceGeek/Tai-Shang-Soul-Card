@@ -1,5 +1,10 @@
 .card-container {
-    width: 336px;
+    .card-padding {
+        padding: 54px 74px;
+    }
+    .sub-header {
+        grid-template-columns: 1fr 1fr;
+    }
     .inside {
         position: relative;
         height: 336px;
@@ -100,3 +105,25 @@
     align-items: center;
     border-radius: 4px;
 }
+.popover {
+    background-color: rgba(51, 51, 51, 0.85);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border-radius: 4px;
+    right: -40px;
+    top: 30px;
+    z-index: 4;
+    .options {
+        color: white;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+        padding: 5px 33px;
+        border-radius: 6px;
+    }
+    .options:hover {
+        color: black;
+        background: linear-gradient(92.5deg, #79D5A8 3.76%, #D5F97D 98.97%);
+    }
+  }
+  .inside-container {
+      height: 100%;
+  }

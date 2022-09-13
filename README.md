@@ -20,11 +20,11 @@ Focus on DAOs, developers and other creators, based on Venachain, IPFS and other
 >
 > User SoulCard Example:
 >
-> //TODO
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card#42-user-soulcard-example
 >
 > DAO SoulCard Example:
 > 
-> 
+> https://github.com/WeLightProject/Tai-Shang-Soul-Card#41-dao-soulcard-example
 >
 
 ## 0x00 Directory Structure of Repo

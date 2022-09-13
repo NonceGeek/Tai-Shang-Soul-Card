@@ -1,6 +1,7 @@
 export interface Props {
   colorStyle: 'white' | 'green';
   buttonText: string;
+  withSpace?: boolean;
   wide?: boolean;
   font?: string;
   fontSize?: 'lg';
@@ -12,6 +13,7 @@ export default function index(props: Props) {
   const {
     colorStyle,
     buttonText,
+    withSpace = true,
     wide,
     fontSize,
     font = 'Inter',
@@ -25,7 +27,8 @@ export default function index(props: Props) {
     <span
       onClick={handleClick}
       style={style}
-      className={`px-6 py-2 rounded cursor-pointer font-bold mr-4 mb-4
+      className={`px-6 py-2 rounded cursor-pointer font-bold
+      ${withSpace && 'mr-4 mb-4'}
       ${wide && 'px-0 w-52 inline-block text-center'}
       ${colorStyle === 'white' && 'border border-solid border-white text-white'}
       ${

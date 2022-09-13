@@ -14,10 +14,12 @@ export default function index() {
       <Button
         colorStyle='white'
         buttonText='Log in'
+        withSpace={false}
       />
       <Button
         colorStyle='green'
         buttonText='Sign up'
+        withSpace={false}
       />
     </div>
   </div>

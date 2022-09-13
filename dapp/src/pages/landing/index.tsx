@@ -78,6 +78,7 @@ export default function IndexPage() {
           <Button
             colorStyle="green"
             buttonText="Get Started"
+            withSpace={false}
             font="IBMPlexMonoBold"
             fontSize="lg"
           />
@@ -150,6 +151,7 @@ export default function IndexPage() {
                     <Button
                       colorStyle="green"
                       buttonText="Remember Me"
+                      withSpace={false}
                       wide={true}
                       font="IBMPlexMonoBold"
                     />
@@ -169,6 +171,7 @@ export default function IndexPage() {
                     <Button
                       colorStyle="green"
                       buttonText="Start"
+                      withSpace={false}
                       wide={true}
                       font="IBMPlexMonoBold"
                     />

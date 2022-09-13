@@ -1,6 +1,8 @@
-# SoulCard
+# Tai Shang Soul Card
 
-* Videos:
+"让所有的 DAO 和开发者充分向世界广播自己。"
+
+"Let all DAOs and Buidlers fully broadcast themselves to the world."
 
 > Deck:
 > 

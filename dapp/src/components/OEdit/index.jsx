@@ -13,10 +13,8 @@ export default function index(props) {
     name: 'Robert Fox',
     dao_link: 'https://noncegeek.com/#/',
     contract_address: '9de3d8a9de3d8ad7d2g6d7d2g6fe3e2',
-    description:
-      'Our team is working on a decentralized social product in the Web3 environment.',
     introduction:
-      'Have more than 6 years of Digital Product Design experience.',
+      'Our team is working on a decentralized social product in the Web3 environment.',
     social_links: {
       twitter: 'https://twitter.com/Web3dAppCamp',
       mirror_link: 'https://mirror.xyz/apecoder.eth',
@@ -41,41 +39,33 @@ export default function index(props) {
       },
     ],
     members: [],
-    organization: [
+    partner: [
       {
-        avator: 'first',
-        name: 'NonceGeek',
-        link: '',
-        is_core_member: true,
-        position: 'founder',
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
       },
       {
-        avator: 'second',
-        name: 'Starcoin',
-        link: '',
-        is_core_member: true,
-        position: 'member',
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
       },
       {
-        avator: 'third',
-        name: 'NonceGeek',
-        link: '',
-        is_core_member: false,
-        position: '',
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
       },
       {
-        avator: 'first',
-        name: 'NonceGeek',
-        link: '',
-        is_core_member: true,
-        position: 'founder',
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
+      },
+      {
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
       },
     ],
   });
 
   useEffect(() => {
     setInfo(formData);
-    console.log(formData);
+    props.handleData(formData)
   }, [formData]);
   const changeHandle = (param1, param2, param3) => {
     return (value) => {

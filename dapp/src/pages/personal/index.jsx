@@ -6,133 +6,9 @@ import style from './index.less';
 import { useStorage } from '@/hooks/useStorage';
 import RightCardDao from '../../components/RightCardDao/index';
 
-let temp_data_dao = {
-  name: 'Dao Name',
-  dao_link: 'https://noncegeek.com/#/',
-  contract_address: 'contract address',
-  introduction:
-    'Our team is working on a decentralized social product in the Web3 environment.',
-  social_links: {
-    twitter: 'https://twitter.com/Web3dAppCamp',
-    mirror_link: 'https://mirror.xyz/apecoder.eth',
-    github_link: 'https://github.com/WeLightProject',
-    wechat: '197626581',
-    discord: 'hitchhacker@3691',
-  },
-  location: 'California',
-  awesome_things: [
-    {
-      project: 'Design for the transport',
-      link: 'www.baidu.com',
-    },
-    {
-      project: 'Probably One of The Most Common',
-      link: 'www.baidu.com',
-    },
-    {
-      project: 'LinkedIn Is No Longer LinkedIn Is No',
-      link: 'www.baidu.com',
-    },
-  ],
-  members: [
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: 'Co-founder',
-      is_core_member: true,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: '',
-      is_core_member: false,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: '',
-      is_core_member: false,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: '',
-      is_core_member: false,
-    },
-    {
-      avator: 'member-avator',
-      name: 'Robert Fox',
-      position: '',
-      is_core_member: false,
-    },
-  ],
-  partner: [
-    {
-      avator: 'member-avator',
-      name: 'NonceGeek DAO',
-    },
-    {
-      avator: 'member-avator',
-      name: 'NonceGeek DAO',
-    },
-    {
-      avator: 'member-avator',
-      name: 'NonceGeek DAO',
-    },
-    {
-      avator: 'member-avator',
-      name: 'NonceGeek DAO',
-    },
-    {
-      avator: 'member-avator',
-      name: 'NonceGeek DAO',
-    },
-  ],
-};
 export default function index() {
   const [individual_info, set_individual_info] = useStorage('individual_info');
+  const [mode, setMode] = useState('ori')
   const [tempData, setTempData] = useState({
     name: 'Robert Fox',
     introduction: 'Have more than 6 years of Digital Product Design experience.',
@@ -231,11 +107,142 @@ export default function index() {
       },
     ],
   })
+  const [tempDataDao, setTempDataDao] = useState({
+    name: 'Dao Name',
+    dao_link: 'https://noncegeek.com/#/',
+    contract_address: 'contract address',
+    introduction:
+      'Our team is working on a decentralized social product in the Web3 environment.',
+    social_links: {
+      twitter: 'https://twitter.com/Web3dAppCamp',
+      mirror_link: 'https://mirror.xyz/apecoder.eth',
+      github_link: 'https://github.com/WeLightProject',
+      wechat: '197626581',
+      discord: 'hitchhacker@3691',
+    },
+    location: 'California',
+    awesome_things: [
+      {
+        project: 'Design for the transport',
+        link: 'www.baidu.com',
+      },
+      {
+        project: 'Probably One of The Most Common',
+        link: 'www.baidu.com',
+      },
+      {
+        project: 'LinkedIn Is No Longer LinkedIn Is No',
+        link: 'www.baidu.com',
+      },
+    ],
+    members: [
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: 'Co-founder',
+        is_core_member: true,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: '',
+        is_core_member: false,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: '',
+        is_core_member: false,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: '',
+        is_core_member: false,
+      },
+      {
+        avator: 'member-avator',
+        name: 'Robert Fox',
+        position: '',
+        is_core_member: false,
+      },
+    ],
+    partner: [
+      {
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
+      },
+      {
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
+      },
+      {
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
+      },
+      {
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
+      },
+      {
+        avator: 'member-avator',
+        name: 'NonceGeek DAO',
+      },
+    ]
+  })
   const getData = (data) => {
     console.log(data);
   };
   const handleUpdate = (val) => {
-    setTempData(val)
+    setMode(val.mode)
+    if (val.mode === 'individual') {
+      setTempData(val.data)
+    } else {
+      console.log(val.data)
+      setTempDataDao(val.data)
+    }
   }
   useEffect(() => {
     console.log(individual_info);
@@ -252,8 +259,7 @@ export default function index() {
               <LeftEdit updateForm={handleUpdate}></LeftEdit>
             </div>
             <div className="w-2/5 h-screen p-54">
-              <RightCard data={tempData} />
-              {/* <RightCardDao data={temp_data_dao} /> */}
+              {mode === 'individual' ? <RightCard data={tempData} /> : <RightCardDao data={tempDataDao} />}
             </div>
           </main>
         </div>

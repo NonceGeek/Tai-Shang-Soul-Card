@@ -66,16 +66,16 @@ const Card = (props) => {
           {cardData.social_links.mirror_link ? <img className='mr-15' src={mirror_link} alt="" /> : <span></span>}
           <div className='ft-s-12' style={{marginTop: '4px'}}>{cardData.dao_link}</div>
         </div>
-        <div className='contract general-border' style={{paddingLeft: '14px'}}>
+        <div className='contract general-border flex pr-14 pl-14'>
           <img src={sign} alt="" />
-          <span className='ml-4 contract-address'>{cardData.contract_address}</span>
+          <span className='ml-4 word-break'>{cardData.contract_address}</span>
         </div>
         <div className='location general-border'>
           <div><img src={location} alt="" /></div>
           <div>{cardData.location}</div>
         </div>
         <div className='des general-border ft-s-14 pt-26 pl-16'>
-          {cardData.description}
+          {cardData.introduction}
         </div>
       </div>
       <div className='awsome-things general-border mt-8'>

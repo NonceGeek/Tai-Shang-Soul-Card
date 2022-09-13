@@ -12,7 +12,10 @@ export default function index(props) {
   }, [current_edit]);
 
   const handle = (val) => {
-    props.updateForm(val)
+    props.updateForm({
+      mode: current_edit,
+      data: val
+    })
   }
   return (
     <div className="flex flex-col font-IBMPlexMono">
@@ -55,7 +58,7 @@ export default function index(props) {
           )}
         </span>
       </div>
-      {current_edit === 'individual' ? <IEdit handleData={handle}></IEdit> : <OEdit></OEdit>}
+      {current_edit === 'individual' ? <IEdit handleData={handle}></IEdit> : <OEdit handleData={handle}></OEdit>}
     </div>
   );
 }

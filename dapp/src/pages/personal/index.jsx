@@ -12,6 +12,7 @@ export default function index() {
   const [mode, setMode] = useState('ori')
   const [tempData, setTempData] = useState({
     name: 'Robert Fox',
+    avator: '',
     introduction: 'Have more than 6 years of Digital Product Design experience.',
     social_links: {
       twitter: 'https://twitter.com/Web3dAppCamp',
@@ -110,6 +111,7 @@ export default function index() {
   })
   const [tempDataDao, setTempDataDao] = useState({
     name: 'Dao Name',
+    avator: '',
     dao_link: 'https://noncegeek.com/#/',
     contract_address: 'contract address',
     introduction:

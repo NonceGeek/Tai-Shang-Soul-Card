@@ -11,6 +11,10 @@ export default function index(props) {
   ]);
   const [formData, setFormData] = useState({
     name: 'Robert Fox',
+    dao_link: 'https://noncegeek.com/#/',
+    contract_address: '9de3d8a9de3d8ad7d2g6d7d2g6fe3e2',
+    description:
+      'Our team is working on a decentralized social product in the Web3 environment.',
     introduction:
       'Have more than 6 years of Digital Product Design experience.',
     social_links: {
@@ -36,32 +40,7 @@ export default function index(props) {
         link: 'www.baidu.com',
       },
     ],
-    project_whitelist: [
-      {
-        project: 'Ethereum',
-        link: 'www.google.com',
-      },
-      {
-        project: 'NonceGeek',
-        link: 'www.google.com',
-      },
-      {
-        project: 'Bitcoin',
-        link: 'www.google.com',
-      },
-      {
-        project: 'Polygon',
-        link: 'www.google.com',
-      },
-      {
-        project: 'FISCOBCOS',
-        link: 'www.google.com',
-      },
-      {
-        project: 'Venachain',
-        link: 'www.google.com',
-      },
-    ],
+    members: [],
     organization: [
       {
         avator: 'first',
@@ -196,9 +175,9 @@ export default function index(props) {
       <div className="mb-6">
         <InputLabel text="Your Website" bold={true}></InputLabel>
         <GradientInput
-          value={formData.name}
-          onChange={changeHandle('name')}
-          placeholder="111"
+          value={formData.dao_link}
+          onChange={changeHandle('dao_link')}
+          placeholder=""
         ></GradientInput>
       </div>
       <div className="mb-6">
@@ -233,8 +212,8 @@ export default function index(props) {
       <div className="mb-6 flex flex-col">
         <InputLabel text="Add Your Contract Address" bold={true}></InputLabel>
         <GradientInput
-          value={formData.social_links.discord}
-          onChange={changeHandle('social_links', 'discord')}
+          value={formData.contract_address}
+          onChange={changeHandle('contract_address')}
         ></GradientInput>
       </div>
       <div className="mb-6">

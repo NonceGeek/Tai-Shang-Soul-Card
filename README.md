@@ -2,7 +2,7 @@
 
 "让所有的 DAO 和开发者充分向世界广播自己。"
 
-"Let all DAOs and Buidlers fully broadcast themselves to the world."
+"Let all DAOs and Buidlers show themselves to the world a full play."
 
 面向 DAO、开发者和其它创作者，基于 Venachain、IPFS 等技术栈，SoulCard 提供高信息密度的、可交互的、可 Mint 为 SBT 的链上名片，让用户可以在赛博世界中充分地展现自己，建立个人品牌 / DAO 品牌。
 

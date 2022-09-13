@@ -3,7 +3,7 @@ import './index.less'
 
 import address from './mock/address.svg'
 import location from './mock/location.svg'
-import avator from './mock/avator.png'
+import avatar from './mock/avatar.png'
 import wechat from './mock/wechat.svg'
 import mirror_link from './mock/miro.svg'
 import github_link from './mock/telegram.svg'
@@ -19,7 +19,7 @@ const Card = (props) => {
   const [cardData, setCardData] = useState(
     {
       name: 'Robert Fox',
-      avator: '',
+      avatar: '',
       introduction: 'Have more than 6 years of Digital Product Design experience.',
       social_links: {
         twitter: "https://twitter.com/Web3dAppCamp",
@@ -62,8 +62,8 @@ const Card = (props) => {
             })}
           </div>
         </div>
-        <div className='avator general-border'>
-          <img src={avator} alt="" />
+        <div className='avatar general-border'>
+          <img src={avatar} alt="" />
         </div>
         <div className='contact general-border'>
           {cardData.social_links.discord ? <img className='mr-15' src={discord} alt="" /> : <span></span>}
@@ -97,7 +97,7 @@ const Card = (props) => {
         <div className='dao-list'>
           {cardData.organization.map((item) => {
             return <div className='flex border-t pt-4 pl-4'>
-              <div><img src={require(`./mock/temp-${item.avator}.png`)} alt="" /></div>
+              <div><img src={require(`./mock/temp-${item.avatar}.png`)} alt="" /></div>
               <div className=''>
                 <div className='dao-name ft-s-24 ft-700 mb-10 text-ibm-bold'>{item.name}</div>
                 {item.is_core_member ? <div className='flex position text-ibm'>

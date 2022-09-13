@@ -40,7 +40,7 @@ export default function index(props) {
   ]);
   const [formData, setFormData] = useState({
     name: 'Robert Fox',
-    avator: '',
+    avatar: '',
     introduction:
       'Have more than 6 years of Digital Product Design experience.',
     social_links: {
@@ -110,28 +110,28 @@ export default function index(props) {
     ],
     organization: [
       {
-        avator: 'first',
+        avatar: 'first',
         name: 'NonceGeek',
         link: '',
         is_core_member: true,
         position: 'founder',
       },
       {
-        avator: 'second',
+        avatar: 'second',
         name: 'Starcoin',
         link: '',
         is_core_member: true,
         position: 'member',
       },
       {
-        avator: 'third',
+        avatar: 'third',
         name: 'NonceGeek',
         link: '',
         is_core_member: false,
         position: '',
       },
       {
-        avator: 'first',
+        avatar: 'first',
         name: 'NonceGeek',
         link: '',
         is_core_member: true,

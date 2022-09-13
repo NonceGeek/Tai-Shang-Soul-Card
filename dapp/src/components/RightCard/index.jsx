@@ -19,6 +19,7 @@ const Card = (props) => {
   const [cardData, setCardData] = useState(
     {
       name: 'Robert Fox',
+      avator: '',
       introduction: 'Have more than 6 years of Digital Product Design experience.',
       social_links: {
         twitter: "https://twitter.com/Web3dAppCamp",

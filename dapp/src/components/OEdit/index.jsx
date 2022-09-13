@@ -252,14 +252,6 @@ export default function index(props) {
           onClick={addDAO}
         />
       </div>
-      <div className="fixed top-[600px] right-[600px]">
-        <Button
-          colorStyle="green"
-          buttonText="Save"
-          font="IBMPlexMono"
-          onClick={saveEdit}
-        />
-      </div>
     </div>
   );
 }

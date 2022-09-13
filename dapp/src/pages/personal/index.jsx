@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import RightCard from '@/components/RightCard/index';
 import Header from '@/components/Header';
 import LeftEdit from '@/components/LeftEdit';
-import style from './index.less';
+import './index.less';
 import { useStorage } from '@/hooks/useStorage';
 import RightCardDao from '../../components/RightCardDao/index';
+import Button from '@/components/Button';
 
 export default function index() {
   const [individual_info, set_individual_info] = useStorage('individual_info');
   const [mode, setMode] = useState('ori')
   const [tempData, setTempData] = useState({
     name: 'Robert Fox',
+    avator: '',
     introduction: 'Have more than 6 years of Digital Product Design experience.',
     social_links: {
       twitter: 'https://twitter.com/Web3dAppCamp',
@@ -109,6 +111,7 @@ export default function index() {
   })
   const [tempDataDao, setTempDataDao] = useState({
     name: 'Dao Name',
+    avator: '',
     dao_link: 'https://noncegeek.com/#/',
     contract_address: 'contract address',
     introduction:
@@ -244,6 +247,13 @@ export default function index() {
       setTempDataDao(val.data)
     }
   }
+  const saveEdit = () => {
+    if (mode === 'individual') {
+      console.log(tempData)
+    } else {
+      console.log(tempDataDao)
+    }
+  };
   useEffect(() => {
     console.log(individual_info);
   }, [individual_info]);
@@ -253,6 +263,14 @@ export default function index() {
         <div className="w-main m-auto">
           {/* 替换成组件 */}
           <Header></Header>
+          <div className="save-btn relative">
+            <Button
+              colorStyle="green"
+              buttonText="Save"
+              font="IBMPlexMono"
+              onClick={saveEdit}
+            />
+          </div>
           <main className="flex">
             <div className="w-2/3 h-[1000px] overflow-y-scroll pt-[14px] text-white">
               {/* edit component */}

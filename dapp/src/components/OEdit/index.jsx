@@ -11,6 +11,7 @@ export default function index(props) {
   ]);
   const [formData, setFormData] = useState({
     name: 'Robert Fox',
+    avator: '',
     dao_link: 'https://noncegeek.com/#/',
     contract_address: '9de3d8a9de3d8ad7d2g6d7d2g6fe3e2',
     introduction:
@@ -250,14 +251,6 @@ export default function index(props) {
           buttonText="Add"
           font="IBMPlexMono"
           onClick={addDAO}
-        />
-      </div>
-      <div className="fixed top-[600px] right-[600px]">
-        <Button
-          colorStyle="green"
-          buttonText="Save"
-          font="IBMPlexMono"
-          onClick={saveEdit}
         />
       </div>
     </div>

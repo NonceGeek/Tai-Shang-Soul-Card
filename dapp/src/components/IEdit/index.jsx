@@ -40,6 +40,7 @@ export default function index(props) {
   ]);
   const [formData, setFormData] = useState({
     name: 'Robert Fox',
+    avator: '',
     introduction:
       'Have more than 6 years of Digital Product Design experience.',
     social_links: {
@@ -359,14 +360,6 @@ export default function index(props) {
           buttonText="Add"
           font="IBMPlexMono"
           onClick={addDAO}
-        />
-      </div>
-      <div className="fixed top-[600px] right-[600px]">
-        <Button
-          colorStyle="green"
-          buttonText="Save"
-          font="IBMPlexMono"
-          onClick={saveEdit}
         />
       </div>
     </div>

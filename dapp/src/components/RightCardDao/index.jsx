@@ -28,6 +28,7 @@ const Card = (props) => {
   const [cardData, setCardData] = useState(
     {
       name: 'Dao Name',
+      avator: '',
       dao_link: 'https://noncegeek.com/#/',
       contract_address: 'contract address',
       introduction: 'Our team is working on a decentralized social product in the Web3 environment.',

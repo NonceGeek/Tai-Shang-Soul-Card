@@ -286,6 +286,6 @@ Components:
 
 ## 0x08 Teams
 
-NonceGeek, cool oriented programming ---
+NonceGeekDAO, cool oriented programming ---
 
 > https://noncegeek.com

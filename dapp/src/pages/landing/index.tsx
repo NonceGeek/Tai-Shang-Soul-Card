@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { history } from 'umi';
 
 import Button from '@/components/Button';
 import Header from '@/components/Header';
@@ -40,14 +41,21 @@ export default function IndexPage() {
   };
 
   const beginLogin = () => {
-    connect();
-    setCurrLoginStatus(LoginStatus.Logging);
+    if (address) {
+      setCurrLoginStatus(LoginStatus.Logging);
+    } else {
+      connect();
+      setCurrLoginStatus(LoginStatus.Logging);
+    }
   };
 
   const finishLogin = () => {
     setCurrLoginStatus(LoginStatus.LoggedIn);
   };
 
+  const goToHome = () => {
+    history.push(`/home?addr=${address}`);
+  };
   const maskBlur = {
     backdropFilter: 'blur(30px)',
   };
@@ -167,7 +175,7 @@ export default function IndexPage() {
                   <div className="mt-12">
                     <img className="w-20 mx-auto" src={OkIcon} alt="" />
                   </div>
-                  <div className="mt-12 mb-12" onClick={() => hideMask()}>
+                  <div className="mt-12 mb-12" onClick={() => goToHome()}>
                     <Button
                       colorStyle="green"
                       buttonText="Start"

@@ -121,7 +121,7 @@ const Card = (props) => {
             <div className="skills-list">
               {cardData.skills.map((item) => {
                 return (
-                  <div className="list-item bg-white mr-[5] ft-s-10 mb-[5px] general-border">
+                  <div className="list-item bg-white mr-[5px] ft-s-10 mb-[5px] general-border">
                     {item}
                   </div>
                 );

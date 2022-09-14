@@ -269,12 +269,17 @@ export default function index() {
               {/* edit component */}
               <LeftEdit updateForm={handleUpdate}></LeftEdit>
             </div>
+<<<<<<< HEAD
             <div className="w-2/5 h-screen p-54">
               {mode === 'individual' ? (
                 <RightCard data={tempData} />
               ) : (
                 <RightCardDao data={tempDataDao} />
               )}
+=======
+            <div className="w-2/5 h-screen">
+              {mode === 'individual' ? <RightCard data={tempData} /> : <RightCardDao data={tempDataDao} />}
+>>>>>>> 14c1a5214c060cd385f9af4e7c2247bf7369e800
             </div>
           </main>
         </div>

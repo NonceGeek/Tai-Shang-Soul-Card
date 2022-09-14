@@ -8,12 +8,12 @@ import RightCardDao from '../../components/RightCardDao/index';
 import Button from '@/components/Button';
 
 export default function index() {
-  const [individual_info, set_individual_info] = useStorage('individual_info');
-  const [mode, setMode] = useState('ori')
+  const [mode, setMode] = useState('ori');
   const [tempData, setTempData] = useState({
     name: 'Robert Fox',
     avatar: '',
-    introduction: 'Have more than 6 years of Digital Product Design experience.',
+    introduction:
+      'Have more than 6 years of Digital Product Design experience.',
     social_links: {
       twitter: 'https://twitter.com/Web3dAppCamp',
       mirror_link: 'https://mirror.xyz/apecoder.eth',
@@ -108,7 +108,7 @@ export default function index() {
         position: 'founder',
       },
     ],
-  })
+  });
   const [tempDataDao, setTempDataDao] = useState({
     name: 'Dao Name',
     avatar: '',
@@ -233,30 +233,23 @@ export default function index() {
         avatar: 'member-avatar',
         name: 'NonceGeek DAO',
       },
-    ]
-  })
-  const getData = (data) => {
-    console.log(data);
-  };
+    ],
+  });
   const handleUpdate = (val) => {
-    setMode(val.mode)
+    setMode(val.mode);
     if (val.mode === 'individual') {
-      setTempData(val.data)
+      setTempData(val.data);
     } else {
-      console.log(val.data)
-      setTempDataDao(val.data)
+      setTempDataDao(val.data);
     }
-  }
+  };
   const saveEdit = () => {
     if (mode === 'individual') {
-      console.log(tempData)
+      console.log(tempData);
     } else {
-      console.log(tempDataDao)
+      console.log(tempDataDao);
     }
   };
-  useEffect(() => {
-    console.log(individual_info);
-  }, [individual_info]);
   return (
     <>
       <div className="w-screen bg-black">
@@ -277,7 +270,11 @@ export default function index() {
               <LeftEdit updateForm={handleUpdate}></LeftEdit>
             </div>
             <div className="w-2/5 h-screen p-54">
-              {mode === 'individual' ? <RightCard data={tempData} /> : <RightCardDao data={tempDataDao} />}
+              {mode === 'individual' ? (
+                <RightCard data={tempData} />
+              ) : (
+                <RightCardDao data={tempDataDao} />
+              )}
             </div>
           </main>
         </div>

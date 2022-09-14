@@ -13,7 +13,7 @@ import twitter from './mock/twitter.svg'
 import circle from './mock/right-circle-arrow.svg'
 import c from './mock/c.svg'
 import m from './mock/m.svg'
-import dao_avator from './mock/dao_avator.png'
+import dao_avatar from './mock/dao_avatar.png'
 import share from './mock/share.svg'
 import CloseIcon from '@/assets/img/close-icon.png'
 
@@ -33,7 +33,7 @@ const Card = (props) => {
   const [cardData, setCardData] = useState(
     {
       name: 'Dao Name',
-      avator: '',
+      avatar: '',
       dao_link: 'https://noncegeek.com/#/',
       contract_address: 'contract address',
       introduction: 'Our team is working on a decentralized social product in the Web3 environment.',
@@ -76,7 +76,7 @@ const Card = (props) => {
         </div>
         <div className='inside text-ibm mt-[8px]'>
           <div className='basic-info general-border'>
-            <img src={dao_avator} alt="" />
+            <img src={dao_avatar} alt="" />
           </div>
           <div className='contact general-border'>
             {cardData.social_links.discord ? <img className='mr-[15px]' src={discord} alt="" /> : <span></span>}
@@ -115,7 +115,7 @@ const Card = (props) => {
           <div className='dao-list'>
             {coreMember.map((item, index) => {
               return <div className='flex pt-[4px] pl-[8px] mb-[15px]' key={index}>
-                <div><img src={require(`./mock/${item.avator}.png`)} alt="" /></div>
+                <div><img src={require(`./mock/${item.avatar}.png`)} alt="" /></div>
                 <div className='ml-[10px]'>
                   <div className='dao-name ft-s-14 ft-700 mb-[5px] line-height-one text-ibm-bold word-break'>{item.name}</div>
                   {item.is_core_member ? <div className='flex position text-ibm'>
@@ -130,7 +130,7 @@ const Card = (props) => {
               <div className='relative normal-container flex pl-[8px]'>
                 {normalMember.splice(0, 4).map((item, index) => {
                   return <div className='absolute member-ele' style={{left: `${index * 25 + 8}px`}} key={index}>
-                    <img src={require(`./mock/${item.avator}.png`)} alt="" />
+                    <img src={require(`./mock/${item.avatar}.png`)} alt="" />
                   </div>
                 })}
                 <div className='ml-[150px]'>{allMembers} &nbsp;members</div>
@@ -142,7 +142,7 @@ const Card = (props) => {
           <div className='partner'>
             {cardData.partner.map((item, index) => {
               return <div className='flex border-t p-[8px] dao-ele' key={index}>
-                <img src={require(`./mock/${item.avator}.png`)} alt="" />
+                <img src={require(`./mock/${item.avatar}.png`)} alt="" />
                 <span className='ml-[10px] text-ibm-bold'>{item.name}</span>
               </div>
             })}

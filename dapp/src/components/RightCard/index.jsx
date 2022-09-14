@@ -246,19 +246,19 @@ const Card = (props) => {
                   className="options ft-s-16 pointer"
                   onClick={() => handleShareclick()}
                 >
-                  Share Soul Card
+                  Link
                 </div>
                 <div
                   className="options ft-s-16 pointer"
                   onClick={() => setShowPopover(false)}
                 >
-                  Mint NFT
+                  PNG
                 </div>
                 <div
                   className="options ft-s-16 pointer"
                   onClick={() => setShowPopover(false)}
                 >
-                  Export to Gist
+                  SVG
                 </div>
               </div>
             </div>

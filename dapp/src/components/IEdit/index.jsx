@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import InputLabel from '@/components/InputLabel';
 import GradientInput from '@/components/GradientInput';
 import Button from '@/components/Button';
-import { useStorage } from '@/hooks/useStorage.ts';
+import { useLocation } from 'umi';
 export default function index(props) {
-  const [info, setInfo] = useStorage('individual_info');
+  const location = useLocation();
   const [skills, setSkills] = useState({
     'Frontend technology stack': [
       { name: 'HTMl', status: false },
@@ -35,12 +35,16 @@ export default function index(props) {
   });
   const [check_skill, set_check_skill] = useState([]);
   const [check_dao, set_check_dao] = useState([
-    { name: 'NonceGeek' },
-    { name: 'Starcoin' },
+    // { name: 'NonceGeek' },
+    // { name: 'Starcoin' },
   ]);
   const [formData, setFormData] = useState({
     name: 'Robert Fox',
     avatar: '',
+    github: {
+      avatar: '',
+      name: '',
+    },
     introduction:
       'Have more than 6 years of Digital Product Design experience.',
     social_links: {
@@ -139,12 +143,6 @@ export default function index(props) {
       },
     ],
   });
-
-  useEffect(() => {
-    setInfo(formData);
-    // console.log(formData);
-    props.handleData(formData)
-  }, [formData]);
   const changeHandle = (param1, param2, param3) => {
     return (value) => {
       if (param3) {
@@ -159,12 +157,12 @@ export default function index(props) {
   };
 
   const uploadImage = (ev) => {
-    var el = window._protected_reference = document.createElement("INPUT");
-    el.type = "file";
-    el.accept = "image/*";
+    var el = (window._protected_reference = document.createElement('INPUT'));
+    el.type = 'file';
+    el.accept = 'image/*';
 
     // (cancel will not trigger 'change')
-    el.addEventListener('change', function(ev2) {
+    el.addEventListener('change', function (ev2) {
       // access el.files[] to do something with it (test its length!)
 
       // add first image, if available
@@ -174,19 +172,20 @@ export default function index(props) {
         setFormData({
           ...formData,
           avatar: imgSrc,
-        })
+        });
         // document.getElementById('out').src = imgSrc;
       }
 
       // test some async handling
-      new Promise(function(resolve) {
-        setTimeout(function() { console.log(el.files); resolve(); }, 1000);
-      })
-      .then(function() {
+      new Promise(function (resolve) {
+        setTimeout(function () {
+          // console.log(el.files);
+          resolve();
+        }, 1000);
+      }).then(function () {
         // clear / free reference
         el = window._protected_reference = undefined;
       });
-
     });
 
     el.click(); // open
@@ -232,13 +231,26 @@ export default function index(props) {
     formData.awesome_things.push({ project: '', link: '' });
     setFormData({ ...formData });
   };
-  const saveEdit = () => {
-    console.log(formData);
+  const loginGithub = () => {
+    window.location.href =
+      'https://github.com/login/oauth/authorize?client_id=9b26616a898147b1a598&redirect_uri=https://api-vercel-tan.vercel.app/api/github/oauth';
   };
+  useEffect(() => {
+    props.handleData(formData);
+  }, [formData]);
+
   useEffect(() => {
     formData.skills = [...check_skill];
     setFormData({ ...formData });
   }, [check_skill]);
+  useEffect(() => {
+    console.log(location);
+    if (location.query.login) {
+      formData.social_links.github_link = `https://github.com/${location.query.login}`;
+      formData.github.avatar = location.query.avatar_url;
+      formData.github.name = location.query.login;
+    }
+  }, [location.query]);
   return (
     <div className=" relative">
       <div className="mb-6">
@@ -266,8 +278,18 @@ export default function index(props) {
           required={true}
           bold={true}
         ></InputLabel>
-        <Button onClick={(ev) => uploadImage(ev)} colorStyle="green" buttonText="Upload" font="IBMPlexMono" />
-        <img className={`${formData.avatar ? 'w-52 h-52 object-contain' : 'w-px h-px'}`} src={formData.avatar} />
+        <Button
+          onClick={(ev) => uploadImage(ev)}
+          colorStyle="green"
+          buttonText="Upload"
+          font="IBMPlexMono"
+        />
+        <img
+          className={`${
+            formData.avatar ? 'w-52 h-52 object-contain' : 'w-px h-px'
+          }`}
+          src={formData.avatar}
+        />
       </div>
       <div className="mb-6 flex flex-col">
         <InputLabel text="Contact Information" bold={true}></InputLabel>
@@ -327,7 +349,24 @@ export default function index(props) {
       </div>
       <div className="mb-6">
         <InputLabel text="Connect to Your Github" bold={true}></InputLabel>
-        <Button colorStyle="green" buttonText="Connect" font="IBMPlexMono" />
+        {formData.github.avatar ? (
+          <div className="flex items-center rounded border border-[#4D6138] border-solid bg-[#071518] pl-8 h-[40px] w-[421px] mb-4">
+            <img
+              src={formData.github.avatar}
+              className="h-[30px] mx-2 rounded-[30px]"
+              alt=""
+            />
+            <span>{formData.github.name}</span>
+          </div>
+        ) : (
+          <></>
+        )}
+        <Button
+          colorStyle="green"
+          buttonText="Connect"
+          font="IBMPlexMono"
+          onClick={loginGithub}
+        />
       </div>
       <div className="mb-6">
         <InputLabel text="Build Your Techstack" bold={true}></InputLabel>

@@ -103,7 +103,7 @@ const Card = (props) => {
         </div>
         <div className="inside text-ibm mt-[8px]">
           <div className="basic-info general-border">
-            <img src={cardData.avatar ? cardData.avatar : dao_avatar} alt="" />
+            <img className='max-w-full max-h-full' src={cardData.avatar ? cardData.avatar : dao_avatar} alt="" />
           </div>
           <div className="contact general-border">
             {cardData.social_links.discord ? (

@@ -128,8 +128,8 @@ const Card = (props) => {
               })}
             </div>
           </div>
-          <div className="avatar general-border">
-            <img src={cardData.avatar ? cardData.avatar : avatar} alt="" />
+          <div className="avatar general-border flex justify-center items-center">
+            <img className='max-w-full max-h-full' src={cardData.avatar ? cardData.avatar : avatar} alt="" />
           </div>
           <div className="contact general-border">
             {cardData.social_links.discord ? (

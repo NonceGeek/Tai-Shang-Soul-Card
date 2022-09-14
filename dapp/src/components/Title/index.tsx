@@ -1,9 +1,9 @@
 export interface Props {
   text: string,
   left?: boolean,
-  fontSize?: number,
+  fontSize?: string,
 }
 
-export default function index({ text, left = false, fontSize = 20 }: Props) {
-  return <div className={`left ${left ? 'w-[200px]' : ''} font-IBMPlexMonoBold text-[${fontSize}px]`}>{text}</div>
+export default function index({ text, left = false, fontSize = 'lg' }: Props) {
+  return <div className={`left ${left ? 'w-[200px]' : ''} font-IBMPlexMonoBold ${fontSize === 'lg' ? 'text-[20px]' : 'text-[16px]'}`}>{text}</div>
 }

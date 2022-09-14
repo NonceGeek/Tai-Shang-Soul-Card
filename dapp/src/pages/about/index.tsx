@@ -16,7 +16,7 @@ export default function AboutPage() {
             <Title text="Application" left={true} />
             <div className="flex-grow flex items-center border-solid border border-white/50 p-4 gap-x-4">
               <div className="flex-grow flex flex-col items-center">
-                <Title text='SoulCard' fontSize={16} />
+                <Title text='SoulCard' fontSize='sm' />
                 <GradientLine />
                 <div className="w-full mt-2 flex justify-between items-center gap-x-4">
                   <Card text={'SoulCard\nEditor'} height='md' />
@@ -26,7 +26,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="flex-grow flex flex-col items-center">
-                <Title text='TaiShang Portal' fontSize={16} />
+                <Title text='TaiShang Portal' fontSize='sm' />
                 <GradientLine />
                 <div className="w-full mt-2 flex flex-col justify-between items-center gap-y-1">
                   <Card text={'NFT Gallery'} width='full' height='sm' />
@@ -55,17 +55,17 @@ export default function AboutPage() {
             <Title text="Contracts" left={true} />
             <div className="flex-grow flex items-center border-solid border border-white/50 p-4 gap-x-4">
               <div className="w-2/3 flex flex-col justify-between items-center gap-y-2">
-                <Title text='Universal DID Solution' fontSize={16} />
+                <Title text='Universal DID Solution' fontSize='sm' />
                 <GradientLine />
                 <div className="w-full flex gap-x-4">
                   <div className='w-full flex flex-col justify-between items-center gap-y-2'>
-                    <Title text='TaiShang Portal' fontSize={16} />
+                    <Title text='TaiShang Portal' fontSize='sm' />
                     <GradientLine />
                     <Card text={'Addresses Verified'} width='full' height='sm' />
                     <Card text={'Addresses Unverified'} width='full' height='sm' />
                   </div>
                   <div className='w-full flex flex-col justify-between items-center gap-y-2'>
-                    <Title text='Endpoint Aggregator' fontSize={16} />
+                    <Title text='Endpoint Aggregator' fontSize='sm' />
                     <GradientLine />
                     <Card text={'Formal Endpoints'} width='full' height='sm' />
                     <Card text={'Informal Endpoints'} width='full' height='sm' />

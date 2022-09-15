@@ -1,22 +1,23 @@
-import { history } from 'umi'
+import { history, NavLink } from 'umi'
 
 import Button from '../Button/index'
 
 import LogoImg from '@/assets/img/logo.png'
 
 export default function index() {
-  const goLandingPage = () => {
-    history.push('/')
+  const navLinkActiveStyle = {
+    borderTop: '4px solid transparent',
+    borderBottom: '4px solid white',
   }
   
   return <div className='header w-main py-4 flex justify-between items-center'>
-    <div className="left flex items-center cursor-pointer" onClick={() => goLandingPage()}>
+    <NavLink className="left flex items-center cursor-pointer" to="/">
       <img className='logo w-12 h-12' src={LogoImg} alt="logo" />
       <span className='site-name pl-3 text-[32px] text-white font-Audiowide'>SoulCard</span>
-    </div>
+    </NavLink>
     <div className="right flex items-center gap-x-8 text-[20px]">
-      <a className='!text-white' href="/home">Home</a>
-      <a className='!text-white' href="/about">About us</a>
+      <NavLink className='!text-white' to="/editor" activeStyle={navLinkActiveStyle}>Editor</NavLink>
+      <NavLink className='!text-white' to="/about" activeStyle={navLinkActiveStyle}>About us</NavLink>
       <Button
         colorStyle='white'
         buttonText='Log in'

@@ -28,8 +28,7 @@ const Card = (props) => {
         avatar: '',
         name: '',
       },
-      slogan:
-        'Have more than 6 years of Digital Product Design experience.',
+      slogan: 'Have more than 6 years of Digital Product Design experience.',
       social_links: {
         twitter: 'https://twitter.com/Web3dAppCamp',
         mirror_link: 'https://mirror.xyz/apecoder.eth',
@@ -107,7 +106,9 @@ const Card = (props) => {
       <div className="card-padding">
         <div className="inside text-ibm">
           <div className="basic-info general-border">
-            <div className="ft-s-24 text-ibm-bold">{cardData.basic_info.name}</div>
+            <div className="ft-s-24 text-ibm-bold">
+              {cardData.basic_info.name}
+            </div>
             <div className="flex">
               <img src={address} alt="" />
               <span className="ml-[10px] ft-s-14 bg-grey text-gray addr">
@@ -129,7 +130,10 @@ const Card = (props) => {
             <div className="skills-list">
               {cardData.basic_info.skills.map((item, index) => {
                 return (
-                  <div className="list-item bg-white mr-[5px] ft-s-10 mb-[5px] general-border" key={index}>
+                  <div
+                    className="list-item bg-white mr-[5px] ft-s-10 mb-[5px] general-border"
+                    key={index}
+                  >
                     {item}
                   </div>
                 );
@@ -137,7 +141,13 @@ const Card = (props) => {
             </div>
           </div>
           <div className="avatar general-border flex justify-center items-center">
-            <img className='max-w-full max-h-full' src={cardData.basic_info.avatar ? cardData.basic_info.avatar : avatar} alt="" />
+            <img
+              className="max-w-full max-h-full"
+              src={
+                cardData.basic_info.avatar ? cardData.basic_info.avatar : avatar
+              }
+              alt=""
+            />
           </div>
           <div className="contact general-border">
             {cardData.basic_info.social_links.discord ? (
@@ -173,8 +183,11 @@ const Card = (props) => {
           </div>
           {cardData.awesome_things.map((item, index) => {
             return (
-              <div className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex" key={index}>
-                <div>{item.project}</div>
+              <div
+                className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex"
+                key={index}
+              >
+                <div>{item.title}</div>
                 <div className="circle-button pointer">
                   <img src={circle} alt="" />
                 </div>
@@ -189,7 +202,10 @@ const Card = (props) => {
           <div className="p-[8px]">
             {cardData.project_whitelist.map((item, index) => {
               return (
-                <div className="project-item pointer mr-[8px] ft-s-12 text-ibm" key={index}>
+                <div
+                  className="project-item pointer mr-[8px] ft-s-12 text-ibm"
+                  key={index}
+                >
                   {item.project}
                 </div>
               );

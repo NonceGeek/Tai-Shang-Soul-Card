@@ -264,44 +264,6 @@ export default function index() {
       setTempDataDao(val.data);
     }
   };
-  const info = {
-    basic_info: {
-      avatar: 'test',
-      name: 'Robert Fox',
-      slogan: 'Have more than 6 years of Digital Product Design experience.',
-      social_links: {
-        twitter: 'https://twitter.com/Web3dAppCamp',
-        'mirror_link ': 'https://mirror.xyz/apecoder.eth',
-        'github_link ': 'https://github.com/WeLightProject',
-        'wechat ': '197626581',
-        'discord ': 'hitchhacker@3691',
-      },
-      location: 'California',
-      skills: [
-        'Javascript',
-        'C++',
-        'Python',
-        'HTML',
-        'Node',
-        'C#',
-        'Java',
-        'Javascript',
-        'C++',
-        'Python',
-        'HTML',
-        'Node',
-        'C#',
-        'Java',
-      ],
-    },
-    awesome_things: [
-      {
-        title: 'Design for the transport',
-        link: 'www.baidu.com',
-      },
-    ],
-    daos_joined: ['0x73c7448760517E3E6e416b2c130E3c6dB2026A1d'],
-  };
   const saveEdit = async () => {
     if (mode === 'individual') {
       const res = await get_user({ params: [address] });
@@ -318,7 +280,6 @@ export default function index() {
         const x = await create_user(JSON.stringify(data));
         console.log(x);
       }
-      console.log(tempData);
     } else {
       console.log(tempDataDao);
     }
@@ -345,7 +306,7 @@ export default function index() {
 
             <div className="w-2/5 h-screen">
               {mode === 'individual' ? (
-                <RightCard data={tempData}/>
+                <RightCard data={tempData} />
               ) : (
                 <RightCardDao data={tempDataDao} />
               )}

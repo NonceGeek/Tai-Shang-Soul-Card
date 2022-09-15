@@ -150,7 +150,7 @@ export default function index(props) {
     }
   };
   const addProject = () => {
-    formData.awesome_things.push({ project: '', link: '' });
+    formData.awesome_things.push({ title: '', link: '' });
     setFormData({ ...formData });
   };
   const loginGithub = () => {
@@ -162,7 +162,7 @@ export default function index(props) {
   }, [formData]);
 
   useEffect(() => {
-    formData.skills = [...check_skill];
+    formData.basic_info.skills = [...check_skill];
     setFormData({ ...formData });
   }, [check_skill]);
   useEffect(() => {
@@ -256,8 +256,8 @@ export default function index(props) {
             return (
               <div className="mb-4" key={index}>
                 <GradientInput
-                  value={formData.awesome_things[index].project}
-                  onChange={changeHandle('awesome_things', index, 'project')}
+                  value={formData.awesome_things[index].title}
+                  onChange={changeHandle('awesome_things', index, 'title')}
                   width="md"
                   label="Project"
                 ></GradientInput>

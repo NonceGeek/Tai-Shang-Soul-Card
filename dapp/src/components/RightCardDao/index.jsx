@@ -45,13 +45,13 @@ const Card = (props) => {
         telegram: '',
       },
       location: 'California',
-      homepage: "https://noncegeek.com",
+      homepage: 'https://noncegeek.com',
       contract_addresses: [
         {
-          addr: "0x0", 
-          alias: "BYAC NFT"
-        }
-      ]
+          addr: '0x0',
+          alias: 'BYAC NFT',
+        },
+      ],
     },
     awesome_things: [],
     members: [],
@@ -111,7 +111,15 @@ const Card = (props) => {
         </div>
         <div className="inside text-ibm mt-[8px]">
           <div className="basic-info general-border">
-            <img className='max-w-full max-h-full' src={cardData.basic_info.avatar ? cardData.basic_info.avatar : dao_avatar} alt="" />
+            <img
+              className="max-w-full max-h-full"
+              src={
+                cardData.basic_info.avatar
+                  ? cardData.basic_info.avatar
+                  : dao_avatar
+              }
+              alt=""
+            />
           </div>
           <div className="contact general-border">
             {cardData.basic_info.social_links.discord ? (
@@ -167,9 +175,9 @@ const Card = (props) => {
             return (
               <div
                 className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex"
-                key={item.project}
+                key={item.title}
               >
-                <div>{item.project}</div>
+                <div>{item.title}</div>
                 <div className="circle-button pointer">
                   <img src={circle} alt="" />
                 </div>

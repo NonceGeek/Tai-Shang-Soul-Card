@@ -48,6 +48,7 @@ export default function index(props) {
       },
       slogan: 'Have more than 6 years of Digital Product Design experience.',
       social_links: {
+        telegram: '197626581',
         twitter: 'https://twitter.com/Web3dAppCamp',
         mirror_link: 'https://mirror.xyz/apecoder.eth',
         github_link: 'https://github.com/WeLightProject',
@@ -87,11 +88,8 @@ export default function index(props) {
       // add first image, if available
       if (el.files.length) {
         const imgSrc = URL.createObjectURL(el.files[0]);
-
-        setFormData({
-          ...formData,
-          avatar: imgSrc,
-        });
+        formData.basic_info.avatar = imgSrc;
+        setFormData({ ...formData });
         // document.getElementById('out').src = imgSrc;
       }
 
@@ -139,11 +137,16 @@ export default function index(props) {
     };
   };
   const addDAO = () => {
-    if (check_dao[check_dao.length - 1].name != '') {
+    if (check_dao.length) {
+      if (check_dao[check_dao.length - 1].name != '') {
+        check_dao.push({ name: '' });
+        set_check_dao([...check_dao]);
+      } else {
+        alert('please edit previous data');
+      }
+    } else {
       check_dao.push({ name: '' });
       set_check_dao([...check_dao]);
-    } else {
-      alert('please edit previous data');
     }
   };
   const addProject = () => {
@@ -238,6 +241,12 @@ export default function index(props) {
           onChange={changeHandle('basic_info', 'social_links', 'twitter')}
           width="md"
           label="Twitter"
+        ></GradientInput>
+        <GradientInput
+          value={formData.basic_info.social_links.mirror_link}
+          onChange={changeHandle('basic_info', 'social_links', 'mirror_link')}
+          width="md"
+          label="Mirror"
         ></GradientInput>
       </div>
       <div className="mb-6">

@@ -21,36 +21,43 @@ const Card = (props) => {
   const [state, setState] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const [cardData, setCardData] = useState({
-    name: 'Robert Fox',
-    avatar: '',
-    introduction:
-      'Have more than 6 years of Digital Product Design experience.',
-    social_links: {
-      twitter: 'https://twitter.com/Web3dAppCamp',
-      mirror_link: 'https://mirror.xyz/apecoder.eth',
-      github_link: 'https://github.com/WeLightProject',
-      wechat: '197626581',
-      discord: 'hitchhacker@3691',
+    basic_info: {
+      name: 'Robert Fox',
+      avatar: '',
+      github: {
+        avatar: '',
+        name: '',
+      },
+      slogan:
+        'Have more than 6 years of Digital Product Design experience.',
+      social_links: {
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        mirror_link: 'https://mirror.xyz/apecoder.eth',
+        github_link: 'https://github.com/WeLightProject',
+        wechat: '197626581',
+        discord: 'hitchhacker@3691',
+      },
+      location: 'California',
+      skills: [
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+      ],
     },
-    location: 'California',
-    skills: [
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-    ],
     awesome_things: [],
     project_whitelist: [],
+    daos_joined: ['0x73c7448760517E3E6e416b2c130E3c6dB2026A1d'],
     organization: [],
   });
   const handleShareclick = () => {
@@ -58,8 +65,8 @@ const Card = (props) => {
     setState(true);
   };
   useEffect(() => {
-    setCardData(props.data);
-    console.log(props.data);
+    // setCardData(props.data);
+    console.log(cardData);
   }, [props.data]);
   return (
     <div className="card-container text-white relative">
@@ -99,7 +106,7 @@ const Card = (props) => {
       <div className="card-padding">
         <div className="inside text-ibm">
           <div className="basic-info general-border">
-            <div className="ft-s-24 text-ibm-bold">{cardData.name}</div>
+            <div className="ft-s-24 text-ibm-bold">{cardData.basic_info.name}</div>
             <div className="flex">
               <img src={address} alt="" />
               <span className="ml-[10px] ft-s-14 bg-grey text-gray addr">
@@ -107,19 +114,19 @@ const Card = (props) => {
               </span>
             </div>
             <div className="intro mt-[5px] text-blur-white">
-              {cardData.introduction}
+              {cardData.basic_info.slogan}
             </div>
           </div>
           <div className="location general-border">
             <div>
               <img src={location} alt="" />
             </div>
-            <div>{cardData.location}</div>
+            <div>{cardData.basic_info.location}</div>
           </div>
           <div className="skills general-border">
             <div className="ft-s-16 text-ibm-bold">Skills</div>
             <div className="skills-list">
-              {cardData.skills.map((item, index) => {
+              {cardData.basic_info.skills.map((item, index) => {
                 return (
                   <div className="list-item bg-white mr-[5px] ft-s-10 mb-[5px] general-border" key={index}>
                     {item}
@@ -129,30 +136,30 @@ const Card = (props) => {
             </div>
           </div>
           <div className="avatar general-border flex justify-center items-center">
-            <img className='max-w-full max-h-full' src={cardData.avatar ? cardData.avatar : avatar} alt="" />
+            <img className='max-w-full max-h-full' src={cardData.basic_info.avatar ? cardData.basic_info.avatar : avatar} alt="" />
           </div>
           <div className="contact general-border">
-            {cardData.social_links.discord ? (
+            {cardData.basic_info.social_links.discord ? (
               <img className="mr-[15px]" src={discord} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.github_link ? (
+            {cardData.basic_info.social_links.github_link ? (
               <img className="mr-[15px]" src={github_link} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.wechat ? (
+            {cardData.basic_info.social_links.wechat ? (
               <img className="mr-[15px]" src={wechat} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.twitter ? (
+            {cardData.basic_info.social_links.twitter ? (
               <img className="mr-[15px]" src={twitter} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.mirror_link ? (
+            {cardData.basic_info.social_links.mirror_link ? (
               <img className="mr-[15px]" src={mirror_link} alt="" />
             ) : (
               <span></span>

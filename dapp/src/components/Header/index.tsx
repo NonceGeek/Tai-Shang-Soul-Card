@@ -1,4 +1,4 @@
-import { history, NavLink } from 'umi'
+import { NavLink } from 'umi'
 
 import Button from '../Button/index'
 

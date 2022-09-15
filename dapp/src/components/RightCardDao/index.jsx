@@ -62,7 +62,7 @@ const Card = (props) => {
     setState(true);
   };
   useEffect(() => {
-    // setCardData(props.data);
+    setCardData(props.data);
   }, [props.data]);
   return (
     <div className="card-container-dao text-white relative">

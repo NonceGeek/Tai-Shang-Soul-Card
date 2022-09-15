@@ -56,12 +56,15 @@ export default function IndexPage() {
   const goToHome = () => {
     history.push(`/home?addr=${address}`);
   };
+
   const maskBlur = {
     backdropFilter: 'blur(30px)',
   };
+
   useEffect(() => {
     console.log(address);
   }, [address]);
+
   return (
     <div className="page w-full min-h-screen relative bg-black text-white font-IBMPlexMono">
       <div className="content w-main h-full mx-auto flex flex-col">
@@ -136,7 +139,7 @@ export default function IndexPage() {
                       htmlFor="agree"
                       className="ml-2 opacity-50 font-IBMPlexMono text-[12px]"
                     >
-                      I agree to Top5 Terms and Privacy Policy.
+                      I agree to SoulCard Terms and Privacy Policy.
                     </label>
                   </div>
                 </>

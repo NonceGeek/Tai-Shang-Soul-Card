@@ -272,7 +272,7 @@ export default function index() {
 
             <div className="w-2/5 h-screen">
               {mode === 'individual' ? (
-                <RightCard data={tempData} />
+                <RightCard />
               ) : (
                 <RightCardDao data={tempDataDao} />
               )}

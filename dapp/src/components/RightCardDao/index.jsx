@@ -31,20 +31,27 @@ const Card = (props) => {
   const allMembers = props.data.members.length;
 
   const [cardData, setCardData] = useState({
-    name: 'Dao Name',
-    avatar: '',
-    dao_link: 'https://noncegeek.com/#/',
-    contract_address: 'contract address',
-    introduction:
-      'Our team is working on a decentralized social product in the Web3 environment.',
-    social_links: {
-      twitter: 'https://twitter.com/Web3dAppCamp',
-      mirror_link: 'https://mirror.xyz/apecoder.eth',
-      github_link: 'https://github.com/WeLightProject',
-      wechat: '197626581',
-      discord: 'hitchhacker@3691',
+    basic_info: {
+      name: 'Dao Name',
+      avatar: '',
+      slogan:
+        'Our team is working on a decentralized social product in the Web3 environment.',
+      social_links: {
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        mirror_link: 'https://mirror.xyz/apecoder.eth',
+        github_link: 'https://github.com/WeLightProject',
+        wechat: '197626581',
+        discord: 'hitchhacker@3691',
+      },
+      location: 'California',
+      homepage: "https://noncegeek.com",
+      contract_addresses: [
+        {
+          addr: "0x0", 
+          alias: "BYAC NFT"
+        }
+      ]
     },
-    location: 'California',
     awesome_things: [],
     members: [],
     partner: [],
@@ -54,7 +61,7 @@ const Card = (props) => {
     setState(true);
   };
   useEffect(() => {
-    setCardData(props.data);
+    // setCardData(props.data);
   }, [props.data]);
   return (
     <div className="card-container-dao text-white relative">
@@ -93,7 +100,7 @@ const Card = (props) => {
       </div>
       <div className="card-padding">
         <div className="text-imb-bold ft-s-64 line-height-one">
-          {cardData.name}
+          {cardData.basic_info.name}
         </div>
         <div className="flex">
           <img src={address} alt="" />
@@ -103,52 +110,52 @@ const Card = (props) => {
         </div>
         <div className="inside text-ibm mt-[8px]">
           <div className="basic-info general-border">
-            <img className='max-w-full max-h-full' src={cardData.avatar ? cardData.avatar : dao_avatar} alt="" />
+            <img className='max-w-full max-h-full' src={cardData.basic_info.avatar ? cardData.basic_info.avatar : dao_avatar} alt="" />
           </div>
           <div className="contact general-border">
-            {cardData.social_links.discord ? (
+            {cardData.basic_info.social_links.discord ? (
               <img className="mr-[15px]" src={discord} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.github_link ? (
+            {cardData.basic_info.social_links.github_link ? (
               <img className="mr-[15px]" src={github_link} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.wechat ? (
+            {cardData.basic_info.social_links.wechat ? (
               <img className="mr-[15px]" src={wechat} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.twitter ? (
+            {cardData.basic_info.social_links.twitter ? (
               <img className="mr-[15px]" src={twitter} alt="" />
             ) : (
               <span></span>
             )}
-            {cardData.social_links.mirror_link ? (
+            {cardData.basic_info.social_links.mirror_link ? (
               <img className="mr-[15px]" src={mirror_link} alt="" />
             ) : (
               <span></span>
             )}
             <div className="ft-s-12" style={{ marginTop: '4px' }}>
-              {cardData.dao_link}
+              {cardData.basic_info.homepage}
             </div>
           </div>
           <div className="contract general-border flex pr-[14px] pl-[14px]">
             <img src={sign} alt="" />
             <span className="ml-[4px] word-break">
-              {cardData.contract_address}
+              {cardData.basic_info.contract_addresses.addr}
             </span>
           </div>
           <div className="location general-border">
             <div>
               <img src={location} alt="" />
             </div>
-            <div>{cardData.location}</div>
+            <div>{cardData.basic_info.location}</div>
           </div>
           <div className="des general-border ft-s-14 pt-[26px] pl-[16px]">
-            {cardData.introduction}
+            {cardData.basic_info.slogan}
           </div>
         </div>
         <div className="awsome-things general-border mt-[8px]">

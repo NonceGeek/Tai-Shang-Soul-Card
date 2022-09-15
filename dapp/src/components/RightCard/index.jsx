@@ -119,9 +119,9 @@ const Card = (props) => {
           <div className="skills general-border">
             <div className="ft-s-16 text-ibm-bold">Skills</div>
             <div className="skills-list">
-              {cardData.skills.map((item) => {
+              {cardData.skills.map((item, index) => {
                 return (
-                  <div className="list-item bg-white mr-[5px] ft-s-10 mb-[5px] general-border">
+                  <div className="list-item bg-white mr-[5px] ft-s-10 mb-[5px] general-border" key={index}>
                     {item}
                   </div>
                 );
@@ -163,9 +163,9 @@ const Card = (props) => {
           <div className="awsome-things-title ft-s-16 fw-700 text-ibm-bold">
             Awesome Things
           </div>
-          {cardData.awesome_things.map((item) => {
+          {cardData.awesome_things.map((item, index) => {
             return (
-              <div className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex">
+              <div className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex" key={index}>
                 <div>{item.project}</div>
                 <div className="circle-button pointer">
                   <img src={circle} alt="" />
@@ -179,9 +179,9 @@ const Card = (props) => {
             Project Whitelist
           </div>
           <div className="p-[8px]">
-            {cardData.project_whitelist.map((item) => {
+            {cardData.project_whitelist.map((item, index) => {
               return (
-                <div className="project-item pointer mr-[8px] ft-s-12 text-ibm">
+                <div className="project-item pointer mr-[8px] ft-s-12 text-ibm" key={index}>
                   {item.project}
                 </div>
               );
@@ -193,9 +193,9 @@ const Card = (props) => {
             DAO/Organization
           </div>
           <div className="dao-list">
-            {cardData.organization.map((item) => {
+            {cardData.organization.map((item, index) => {
               return (
-                <div className="flex border-t pt-[4px] pl-[4px]">
+                <div className="flex border-t pt-[4px] pl-[4px]" key={index}>
                   <div>
                     <img
                       src={require(`./mock/temp-${item.avatar}.png`)}

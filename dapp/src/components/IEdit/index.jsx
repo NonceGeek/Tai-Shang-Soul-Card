@@ -323,7 +323,7 @@ export default function index(props) {
         <div className="mb-2">
           {formData.awesome_things.map((item, index) => {
             return (
-              <div className="mb-4">
+              <div className="mb-4" key={index}>
                 <GradientInput
                   value={formData.awesome_things[index].project}
                   onChange={changeHandle('awesome_things', index, 'project')}
@@ -370,9 +370,9 @@ export default function index(props) {
       </div>
       <div className="mb-6">
         <InputLabel text="Build Your Techstack" bold={true}></InputLabel>
-        {Reflect.ownKeys(skills).map((key) => {
+        {Reflect.ownKeys(skills).map((key, index) => {
           return (
-            <div>
+            <div key={index}>
               <InputLabel text={key} key={key}></InputLabel>
               <div className="flex flex-wrap">
                 {skills[key].map((skill) => {
@@ -407,7 +407,7 @@ export default function index(props) {
         <div className="mb-2">
           {check_dao.map((item, index) => {
             return (
-              <div className="flex items-center">
+              <div className="flex items-center" key={index}>
                 <GradientInput
                   value={check_dao[index].name}
                   onChange={changeDao(index)}

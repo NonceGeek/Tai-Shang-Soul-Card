@@ -66,7 +66,7 @@ const Card = (props) => {
     setState(true);
   };
   useEffect(() => {
-    // setCardData(props.data);
+    setCardData(props.data);
     console.log(cardData);
   }, [props.data]);
   return (

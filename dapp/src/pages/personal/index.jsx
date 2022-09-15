@@ -15,34 +15,35 @@ export default function index() {
   const { address } = useAccount();
   const [mode, setMode] = useState('ori');
   const [tempData, setTempData] = useState({
-    name: 'Robert Fox',
-    avatar: '',
-    introduction:
-      'Have more than 6 years of Digital Product Design experience.',
-    social_links: {
-      twitter: 'https://twitter.com/Web3dAppCamp',
-      mirror_link: 'https://mirror.xyz/apecoder.eth',
-      github_link: 'https://github.com/WeLightProject',
-      wechat: '197626581',
-      discord: 'hitchhacker@3691',
+    basic_info: {
+      avatar: 'test',
+      name: 'Robert Fox',
+      slogan: 'Have more than 6 years of Digital Product Design experience.',
+      social_links: {
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        'mirror_link ': 'https://mirror.xyz/apecoder.eth',
+        'github_link ': 'https://github.com/WeLightProject',
+        'wechat ': '197626581',
+        'discord ': 'hitchhacker@3691',
+      },
+      location: 'California',
+      skills: [
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+      ],
     },
-    location: 'California',
-    skills: [
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-    ],
     awesome_things: [
       {
         project: 'Design for the transport',
@@ -115,20 +116,35 @@ export default function index() {
     ],
   });
   const [tempDataDao, setTempDataDao] = useState({
-    name: 'Dao Name',
-    avatar: '',
-    dao_link: 'https://noncegeek.com/#/',
-    contract_address: 'contract address',
-    introduction:
-      'Our team is working on a decentralized social product in the Web3 environment.',
-    social_links: {
-      twitter: 'https://twitter.com/Web3dAppCamp',
-      mirror_link: 'https://mirror.xyz/apecoder.eth',
-      github_link: 'https://github.com/WeLightProject',
-      wechat: '197626581',
-      discord: 'hitchhacker@3691',
+    basic_info: {
+      avatar: 'test',
+      name: 'Robert Fox',
+      slogan: 'Have more than 6 years of Digital Product Design experience.',
+      social_links: {
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        'mirror_link ': 'https://mirror.xyz/apecoder.eth',
+        'github_link ': 'https://github.com/WeLightProject',
+        'wechat ': '197626581',
+        'discord ': 'hitchhacker@3691',
+      },
+      location: 'California',
+      skills: [
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+      ],
     },
-    location: 'California',
     awesome_things: [
       {
         project: 'Design for the transport',
@@ -329,7 +345,7 @@ export default function index() {
 
             <div className="w-2/5 h-screen">
               {mode === 'individual' ? (
-                <RightCard />
+                <RightCard data={tempData}/>
               ) : (
                 <RightCardDao data={tempDataDao} />
               )}

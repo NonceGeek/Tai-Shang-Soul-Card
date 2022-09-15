@@ -110,7 +110,7 @@ export default function index(props) {
     }
   };
   const addProject = () => {
-    formData.awesome_things.push({ project: '', link: '' });
+    formData.awesome_things.push({ title: '', link: '' });
     setFormData({ ...formData });
   };
   const addContract = () => {
@@ -211,8 +211,8 @@ export default function index(props) {
             return (
               <div className="mb-4" key={index}>
                 <GradientInput
-                  value={formData.awesome_things[index].project}
-                  onChange={changeHandle('awesome_things', index, 'project')}
+                  value={formData.awesome_things[index].title}
+                  onChange={changeHandle('awesome_things', index, 'title')}
                   width="md"
                   label="Project"
                 ></GradientInput>

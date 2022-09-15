@@ -325,10 +325,10 @@ export default function index() {
   };
   return (
     <>
-      <div className="w-screen bg-black">
+      <div className="w-full bg-black">
         <div className="w-main m-auto">
           {/* 替换成组件 */}
-          <Header></Header>
+          <Header />
           <div className="save-btn relative">
             <Button
               colorStyle="green"

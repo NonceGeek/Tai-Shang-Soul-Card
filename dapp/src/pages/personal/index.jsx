@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSignMessage, useAccount } from 'wagmi';
 import RightCard from '@/components/RightCard/index';
 import Header from '@/components/Header';
 import LeftEdit from '@/components/LeftEdit';
@@ -6,8 +7,12 @@ import './index.less';
 import { useStorage } from '@/hooks/useStorage';
 import RightCardDao from '../../components/RightCardDao/index';
 import Button from '@/components/Button';
-
+import { rand_msg } from '@/requests/DataHandler';
+import { create_user, get_user, update_user } from '@/requests/UserManager';
 export default function index() {
+  const { signMessageAsync } = useSignMessage();
+
+  const { address } = useAccount();
   const [mode, setMode] = useState('ori');
   const [tempData, setTempData] = useState({
     name: 'Robert Fox',
@@ -243,8 +248,60 @@ export default function index() {
       setTempDataDao(val.data);
     }
   };
-  const saveEdit = () => {
+  const info = {
+    basic_info: {
+      avatar: 'test',
+      name: 'Robert Fox',
+      slogan: 'Have more than 6 years of Digital Product Design experience.',
+      social_links: {
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        'mirror_link ': 'https://mirror.xyz/apecoder.eth',
+        'github_link ': 'https://github.com/WeLightProject',
+        'wechat ': '197626581',
+        'discord ': 'hitchhacker@3691',
+      },
+      location: 'California',
+      skills: [
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+        'Javascript',
+        'C++',
+        'Python',
+        'HTML',
+        'Node',
+        'C#',
+        'Java',
+      ],
+    },
+    awesome_things: [
+      {
+        title: 'Design for the transport',
+        link: 'www.baidu.com',
+      },
+    ],
+    daos_joined: ['0x73c7448760517E3E6e416b2c130E3c6dB2026A1d'],
+  };
+  const saveEdit = async () => {
     if (mode === 'individual') {
+      const res = await get_user({ params: [address] });
+      const isCreated = res.data.result;
+      if (isCreated) {
+      } else {
+        const res = await rand_msg({ params: [] });
+        const message = res.data.result;
+        const signature = await signMessageAsync({ message });
+        const data = {
+          params: [tempData, 'user', address, message, signature],
+        };
+        console.log(data);
+        const x = await create_user(JSON.stringify(data));
+        console.log(x);
+      }
       console.log(tempData);
     } else {
       console.log(tempDataDao);

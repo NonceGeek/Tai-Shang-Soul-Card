@@ -16,8 +16,8 @@ export default function index() {
       <span className='site-name pl-3 text-[32px] text-white font-Audiowide'>SoulCard</span>
     </NavLink>
     <div className="right flex items-center gap-x-8 text-[20px]">
-      <NavLink className='!text-white' to="/editor" activeStyle={navLinkActiveStyle}>Editor</NavLink>
-      <NavLink className='!text-white' to="/about" activeStyle={navLinkActiveStyle}>About us</NavLink>
+      <NavLink className='!text-white font-IBMPlexMono' to="/editor" activeStyle={navLinkActiveStyle}>Editor</NavLink>
+      <NavLink className='!text-white font-IBMPlexMono' to="/about" activeStyle={navLinkActiveStyle}>About us</NavLink>
       <Button
         colorStyle='white'
         buttonText='Log in'

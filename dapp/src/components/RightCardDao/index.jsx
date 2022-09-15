@@ -42,6 +42,7 @@ const Card = (props) => {
         github_link: 'https://github.com/WeLightProject',
         wechat: '197626581',
         discord: 'hitchhacker@3691',
+        telegram: '',
       },
       location: 'California',
       homepage: "https://noncegeek.com",

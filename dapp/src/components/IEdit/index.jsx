@@ -39,109 +39,29 @@ export default function index(props) {
     // { name: 'Starcoin' },
   ]);
   const [formData, setFormData] = useState({
-    name: 'Robert Fox',
-    avatar: '',
-    github: {
+    basic_info: {
+      name: 'Robert Fox',
       avatar: '',
-      name: '',
+      github: {
+        avatar: '',
+        name: '',
+      },
+      slogan: 'Have more than 6 years of Digital Product Design experience.',
+      social_links: {
+        telegram: '197626581',
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        mirror_link: 'https://mirror.xyz/apecoder.eth',
+        github_link: 'https://github.com/WeLightProject',
+        wechat: '197626581',
+        discord: 'hitchhacker@3691',
+      },
+      location: 'California',
+      skills: ['Javascript', 'C++', 'Python', 'HTML'],
     },
-    introduction:
-      'Have more than 6 years of Digital Product Design experience.',
-    social_links: {
-      twitter: 'https://twitter.com/Web3dAppCamp',
-      mirror_link: 'https://mirror.xyz/apecoder.eth',
-      github_link: 'https://github.com/WeLightProject',
-      wechat: '197626581',
-      discord: 'hitchhacker@3691',
-      telegram: '9478981157',
-    },
-    location: 'California',
-    skills: [
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-      'Javascript',
-      'C++',
-      'Python',
-      'HTML',
-      'Node',
-      'C#',
-      'Java',
-    ],
-    awesome_things: [
-      {
-        project: 'Design for the transport',
-        link: 'www.baidu.com',
-      },
-      {
-        project: 'Probably One of The Most Common',
-        link: 'www.baidu.com',
-      },
-      {
-        project: 'LinkedIn Is No Longer LinkedIn Is No',
-        link: 'www.baidu.com',
-      },
-    ],
-    project_whitelist: [
-      {
-        project: 'Ethereum',
-        link: 'www.google.com',
-      },
-      {
-        project: 'NonceGeek',
-        link: 'www.google.com',
-      },
-      {
-        project: 'Bitcoin',
-        link: 'www.google.com',
-      },
-      {
-        project: 'Polygon',
-        link: 'www.google.com',
-      },
-      {
-        project: 'FISCOBCOS',
-        link: 'www.google.com',
-      },
-      {
-        project: 'Venachain',
-        link: 'www.google.com',
-      },
-    ],
-    organization: [
-      {
-        avatar: 'first',
-        name: 'NonceGeek',
-        link: '',
-        is_core_member: true,
-        position: 'founder',
-      },
-      {
-        avatar: 'second',
-        name: 'Starcoin',
-        link: '',
-        is_core_member: true,
-        position: 'member',
-      },
-      {
-        avatar: 'third',
-        name: 'NonceGeek',
-        link: '',
-        is_core_member: false,
-        position: '',
-      },
-      {
-        avatar: 'first',
-        name: 'NonceGeek',
-        link: '',
-        is_core_member: true,
-        position: 'founder',
-      },
-    ],
+    awesome_things: [],
+    project_whitelist: [],
+    daos_joined: [],
+    organization: [],
   });
   const changeHandle = (param1, param2, param3) => {
     return (value) => {
@@ -168,11 +88,8 @@ export default function index(props) {
       // add first image, if available
       if (el.files.length) {
         const imgSrc = URL.createObjectURL(el.files[0]);
-
-        setFormData({
-          ...formData,
-          avatar: imgSrc,
-        });
+        formData.basic_info.avatar = imgSrc;
+        setFormData({ ...formData });
         // document.getElementById('out').src = imgSrc;
       }
 
@@ -220,11 +137,16 @@ export default function index(props) {
     };
   };
   const addDAO = () => {
-    if (check_dao[check_dao.length - 1].name != '') {
+    if (check_dao.length) {
+      if (check_dao[check_dao.length - 1].name != '') {
+        check_dao.push({ name: '' });
+        set_check_dao([...check_dao]);
+      } else {
+        alert('please edit previous data');
+      }
+    } else {
       check_dao.push({ name: '' });
       set_check_dao([...check_dao]);
-    } else {
-      alert('please edit previous data');
     }
   };
   const addProject = () => {
@@ -246,9 +168,9 @@ export default function index(props) {
   useEffect(() => {
     console.log(location);
     if (location.query.login) {
-      formData.social_links.github_link = `https://github.com/${location.query.login}`;
-      formData.github.avatar = location.query.avatar_url;
-      formData.github.name = location.query.login;
+      formData.basic_info.social_links.github_link = `https://github.com/${location.query.login}`;
+      formData.basic_info.github.avatar = location.query.avatar_url;
+      formData.basic_info.github.name = location.query.login;
     }
   }, [location.query]);
   return (
@@ -256,9 +178,9 @@ export default function index(props) {
       <div className="mb-6">
         <InputLabel text="Name" required={true} bold={true}></InputLabel>
         <GradientInput
-          value={formData.name}
-          onChange={changeHandle('name')}
-          placeholder="111"
+          value={formData.basic_info.name}
+          onChange={changeHandle('basic_info', 'name')}
+          placeholder="KT"
         ></GradientInput>
       </div>
       <div className="mb-6">
@@ -268,8 +190,9 @@ export default function index(props) {
           bold={true}
         ></InputLabel>
         <GradientInput
-          value={formData.introduction}
-          onChange={changeHandle('introduction')}
+          value={formData.basic_info.slogan}
+          onChange={changeHandle('basic_info', 'slogan')}
+          placeholder="eg: I am a developer who is seeking..."
         ></GradientInput>
       </div>
       <div className="mb-6 flex flex-col items-start">
@@ -286,36 +209,44 @@ export default function index(props) {
         />
         <img
           className={`${
-            formData.avatar ? 'w-52 h-52 object-contain' : 'w-px h-px'
+            formData.basic_info.avatar
+              ? 'w-52 h-52 object-contain'
+              : 'w-px h-px'
           }`}
-          src={formData.avatar}
+          src={formData.basic_info.avatar}
         />
       </div>
       <div className="mb-6 flex flex-col">
         <InputLabel text="Contact Information" bold={true}></InputLabel>
         <GradientInput
-          value={formData.social_links.discord}
-          onChange={changeHandle('social_links', 'discord')}
+          value={formData.basic_info.social_links.discord}
+          onChange={changeHandle('basic_info', 'social_links', 'discord')}
           width="md"
           label="Discord"
         ></GradientInput>
         <GradientInput
-          value={formData.social_links.telegram}
-          onChange={changeHandle('social_links', 'telegram')}
+          value={formData.basic_info.social_links.telegram}
+          onChange={changeHandle('basic_info', 'social_links', 'telegram')}
           width="md"
           label="Telegram"
         ></GradientInput>
         <GradientInput
-          value={formData.social_links.wechat}
-          onChange={changeHandle('social_links', 'wechat')}
+          value={formData.basic_info.social_links.wechat}
+          onChange={changeHandle('basic_info', 'social_links', 'wechat')}
           width="md"
           label="WeChat"
         ></GradientInput>
         <GradientInput
-          value={formData.social_links.twitter}
-          onChange={changeHandle('social_links', 'twitter')}
+          value={formData.basic_info.social_links.twitter}
+          onChange={changeHandle('basic_info', 'social_links', 'twitter')}
           width="md"
           label="Twitter"
+        ></GradientInput>
+        <GradientInput
+          value={formData.basic_info.social_links.mirror_link}
+          onChange={changeHandle('basic_info', 'social_links', 'mirror_link')}
+          width="md"
+          label="Mirror"
         ></GradientInput>
       </div>
       <div className="mb-6">
@@ -349,14 +280,14 @@ export default function index(props) {
       </div>
       <div className="mb-6">
         <InputLabel text="Connect to Your Github" bold={true}></InputLabel>
-        {formData.github.avatar ? (
+        {formData.basic_info.github.avatar ? (
           <div className="flex items-center rounded border border-[#4D6138] border-solid bg-[#071518] pl-8 h-[40px] w-[421px] mb-4">
             <img
-              src={formData.github.avatar}
+              src={formData.basic_info.github.avatar}
               className="h-[30px] mx-2 rounded-[30px]"
               alt=""
             />
-            <span>{formData.github.name}</span>
+            <span>{formData.basic_info.github.name}</span>
           </div>
         ) : (
           <></>

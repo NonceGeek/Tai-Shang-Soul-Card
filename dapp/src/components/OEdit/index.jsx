@@ -10,67 +10,42 @@ export default function index(props) {
     { name: 'Starcoin' },
   ]);
   const [formData, setFormData] = useState({
-    name: 'Robert Fox',
-    avatar: '',
-    dao_link: 'https://noncegeek.com/#/',
-    contract_address: '9de3d8a9de3d8ad7d2g6d7d2g6fe3e2',
-    introduction:
-      'Our team is working on a decentralized social product in the Web3 environment.',
-    social_links: {
-      twitter: 'https://twitter.com/Web3dAppCamp',
-      mirror_link: 'https://mirror.xyz/apecoder.eth',
-      github_link: 'https://github.com/WeLightProject',
-      wechat: '197626581',
-      discord: 'hitchhacker@3691',
-      telegram: '9478981157',
+    basic_info: {
+      name: 'Dao Name',
+      avatar: '',
+      slogan:
+        'Our team is working on a decentralized social product in the Web3 environment.',
+      social_links: {
+        telegram: '111',
+        twitter: 'https://twitter.com/Web3dAppCamp',
+        mirror_link: 'https://mirror.xyz/apecoder.eth',
+        github_link: 'https://github.com/WeLightProject',
+        wechat: '197626581',
+        discord: 'hitchhacker@3691',
+      },
+      location: 'California',
+      homepage: 'https://noncegeek.com',
+      contract_addresses: [
+        {
+          addr: '0x0',
+          alias: 'BYAC NFT',
+        },
+      ],
     },
-    location: 'California',
-    awesome_things: [
-      {
-        project: 'Design for the transport',
-        link: 'www.baidu.com',
-      },
-      {
-        project: 'Probably One of The Most Common',
-        link: 'www.baidu.com',
-      },
-      {
-        project: 'LinkedIn Is No Longer LinkedIn Is No',
-        link: 'www.baidu.com',
-      },
-    ],
+    awesome_things: [],
     members: [],
-    partner: [
-      {
-        avatar: 'member-avatar',
-        name: 'NonceGeek DAO',
-      },
-      {
-        avatar: 'member-avatar',
-        name: 'NonceGeek DAO',
-      },
-      {
-        avatar: 'member-avatar',
-        name: 'NonceGeek DAO',
-      },
-      {
-        avatar: 'member-avatar',
-        name: 'NonceGeek DAO',
-      },
-      {
-        avatar: 'member-avatar',
-        name: 'NonceGeek DAO',
-      },
-    ],
+    partner: [],
   });
 
   useEffect(() => {
     setInfo(formData);
-    props.handleData(formData)
+    props.handleData(formData);
   }, [formData]);
-  const changeHandle = (param1, param2, param3) => {
+  const changeHandle = (param1, param2, param3, param4) => {
     return (value) => {
-      if (param3) {
+      if (param4) {
+        formData[param1][param2][param3][param4] = value;
+      } else if (param3) {
         formData[param1][param2][param3] = value;
       } else if (param2) {
         formData[param1][param2] = value;
@@ -82,34 +57,34 @@ export default function index(props) {
   };
 
   const uploadImage = (ev) => {
-    var el = window._protected_reference = document.createElement("INPUT");
-    el.type = "file";
-    el.accept = "image/*";
+    var el = (window._protected_reference = document.createElement('INPUT'));
+    el.type = 'file';
+    el.accept = 'image/*';
 
     // (cancel will not trigger 'change')
-    el.addEventListener('change', function(ev2) {
+    el.addEventListener('change', function (ev2) {
       // access el.files[] to do something with it (test its length!)
 
       // add first image, if available
       if (el.files.length) {
         const imgSrc = URL.createObjectURL(el.files[0]);
-
+        formData.basic_info.avatar = imgSrc;
         setFormData({
           ...formData,
-          avatar: imgSrc,
-        })
+        });
         // document.getElementById('out').src = imgSrc;
       }
 
       // test some async handling
-      new Promise(function(resolve) {
-        setTimeout(function() { console.log(el.files); resolve(); }, 1000);
-      })
-      .then(function() {
+      new Promise(function (resolve) {
+        setTimeout(function () {
+          console.log(el.files);
+          resolve();
+        }, 1000);
+      }).then(function () {
         // clear / free reference
         el = window._protected_reference = undefined;
       });
-
     });
 
     el.click(); // open
@@ -122,21 +97,26 @@ export default function index(props) {
     };
   };
   const addDAO = () => {
-    if (check_dao[check_dao.length - 1].name != '') {
+    if (check_dao.length) {
+      if (check_dao[check_dao.length - 1].name != '') {
+        check_dao.push({ name: '' });
+        set_check_dao([...check_dao]);
+      } else {
+        alert('please edit previous data');
+      }
+    } else {
       check_dao.push({ name: '' });
       set_check_dao([...check_dao]);
-    } else {
-      alert('please edit previous data');
     }
   };
   const addProject = () => {
     formData.awesome_things.push({ project: '', link: '' });
     setFormData({ ...formData });
   };
-  const saveEdit = () => {
-    console.log(formData);
+  const addContract = () => {
+    formData.basic_info.contract_addresses.push({ addr: '', alias: '' });
+    setFormData({ ...formData });
   };
-
   return (
     <div className=" relative">
       <div className="mb-6">
@@ -146,9 +126,9 @@ export default function index(props) {
           bold={true}
         ></InputLabel>
         <GradientInput
-          value={formData.name}
-          onChange={changeHandle('name')}
-          placeholder="111"
+          value={formData.basic_info.name}
+          onChange={changeHandle('basic_info', 'name')}
+          placeholder=""
         ></GradientInput>
       </div>
       <div className="mb-6">
@@ -158,8 +138,8 @@ export default function index(props) {
           bold={true}
         ></InputLabel>
         <GradientInput
-          value={formData.introduction}
-          onChange={changeHandle('introduction')}
+          value={formData.basic_info.slogan}
+          onChange={changeHandle('basic_info', 'slogan')}
         ></GradientInput>
       </div>
       <div className="mb-6 flex flex-col items-start">
@@ -168,41 +148,59 @@ export default function index(props) {
           required={true}
           bold={true}
         ></InputLabel>
-        <Button onClick={(ev) => uploadImage(ev)} colorStyle="green" buttonText="Upload" font="IBMPlexMono" />
-        <img className={`${formData.avatar ? 'w-52 h-52 object-contain' : 'w-px h-px'}`} src={formData.avatar} />
+        <Button
+          onClick={(ev) => uploadImage(ev)}
+          colorStyle="green"
+          buttonText="Upload"
+          font="IBMPlexMono"
+        />
+        <img
+          className={`${
+            formData.basic_info.avatar
+              ? 'w-52 h-52 object-contain'
+              : 'w-px h-px'
+          }`}
+          src={formData.basic_info.avatar}
+        />
       </div>
       <div className="mb-6 flex flex-col">
         <InputLabel text="Contact Information" bold={true}></InputLabel>
         <GradientInput
-          value={formData.social_links.discord}
-          onChange={changeHandle('social_links', 'discord')}
+          value={formData.basic_info.social_links.discord}
+          onChange={changeHandle('basic_info', 'social_links', 'discord')}
           width="md"
           label="Discord"
         ></GradientInput>
         <GradientInput
-          value={formData.social_links.telegram}
-          onChange={changeHandle('social_links', 'telegram')}
+          value={formData.basic_info.social_links.telegram}
+          onChange={changeHandle('basic_info', 'social_links', 'telegram')}
           width="md"
           label="Telegram"
         ></GradientInput>
         <GradientInput
-          value={formData.social_links.wechat}
-          onChange={changeHandle('social_links', 'wechat')}
+          value={formData.basic_info.social_links.wechat}
+          onChange={changeHandle('basic_info', 'social_links', 'wechat')}
           width="md"
           label="WeChat"
         ></GradientInput>
         <GradientInput
-          value={formData.social_links.twitter}
-          onChange={changeHandle('social_links', 'twitter')}
+          value={formData.basic_info.social_links.twitter}
+          onChange={changeHandle('basic_info', 'social_links', 'twitter')}
           width="md"
           label="Twitter"
+        ></GradientInput>
+        <GradientInput
+          value={formData.basic_info.social_links.mirror_link}
+          onChange={changeHandle('basic_info', 'social_links', 'mirror_link')}
+          width="md"
+          label="Mirror"
         ></GradientInput>
       </div>
       <div className="mb-6">
         <InputLabel text="Your Website" bold={true}></InputLabel>
         <GradientInput
-          value={formData.dao_link}
-          onChange={changeHandle('dao_link')}
+          value={formData.basic_info.homepage}
+          onChange={changeHandle('basic_info', 'homepage')}
           placeholder=""
         ></GradientInput>
       </div>
@@ -235,12 +233,56 @@ export default function index(props) {
           onClick={addProject}
         />
       </div>
-      <div className="mb-6 flex flex-col">
+      <div className="mb-6">
         <InputLabel text="Add Your Contract Address" bold={true}></InputLabel>
-        <GradientInput
-          value={formData.contract_address}
-          onChange={changeHandle('contract_address')}
-        ></GradientInput>
+        {formData.basic_info.contract_addresses.map((item, index) => {
+          return (
+            <div className="mb-4" key={index}>
+              <GradientInput
+                value={formData.basic_info.contract_addresses[index].addr}
+                onChange={changeHandle(
+                  'basic_info',
+                  'contract_addresses',
+                  index,
+                  'addr',
+                )}
+              ></GradientInput>
+              <div className="flex items-center">
+                <GradientInput
+                  value={formData.basic_info.contract_addresses[index].alias}
+                  onChange={changeHandle(
+                    'basic_info',
+                    'contract_addresses',
+                    index,
+                    'alias',
+                  )}
+                  width="sm"
+                  label="Name Your Address"
+                ></GradientInput>
+                <Button
+                  colorStyle="green"
+                  buttonText="Confirm"
+                  font="IBMPlexMono"
+                  style={{
+                    height: '20px',
+                    display: 'flex',
+                    fontSize: '10px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: '8px',
+                    marginLeft: '8px',
+                  }}
+                />
+              </div>
+            </div>
+          );
+        })}
+        <Button
+          colorStyle="green"
+          buttonText="Add"
+          font="IBMPlexMono"
+          onClick={addContract}
+        />
       </div>
       <div className="mb-6">
         <InputLabel text="Invite Related Members" bold={true}></InputLabel>

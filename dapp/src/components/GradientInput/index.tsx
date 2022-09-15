@@ -5,7 +5,7 @@ import ok from '@/assets/img/input.png';
 export interface Props {
   value: string;
   placeholder?: string;
-  width?: 'lg' | 'md';
+  width?: 'lg' | 'md' | 'sm';
   label?: string;
   onChange?: (value: string) => void;
 }
@@ -38,6 +38,10 @@ export default function index(props: Props) {
           <label className="text-[14px] inline-block w-28">
             {label ? label : ''}
           </label>
+        ) : width === 'sm' ? (
+          <label className="text-[14px] inline-block w-[220px]">
+            {label ? label : ''}
+          </label>
         ) : (
           <></>
         )}
@@ -49,10 +53,14 @@ export default function index(props: Props) {
           placeholder={placeholder}
           className={classNames(
             'rounded border border-[#4D6138] border-solid bg-[#071518] outline-none pl-3 h-[28px] placeholder-[#4F595B]',
-            width === 'md' ? 'w-[311px]' : 'w-[442px]',
+            width === 'md'
+              ? 'w-[311px]'
+              : width === 'sm'
+              ? 'w-[222px]'
+              : 'w-[442px]',
           )}
         />
-        {value.replace(' ', '') !== '' ? (
+        {value && value.replace(' ', '') !== '' ? (
           <img src={ok} alt="" className="w-6 mx-4" />
         ) : (
           <></>

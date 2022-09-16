@@ -62,11 +62,9 @@ export default function IndexPage() {
   const maskBlur = {
     backdropFilter: 'blur(30px)',
   };
-
   useEffect(() => {
-    console.log(address);
-  }, [address]);
-
+    disconnect();
+  }, []);
   return (
     <div className="page w-full min-h-screen relative bg-black text-white font-IBMPlexMono">
       <div className="content w-main h-full mx-auto flex flex-col">

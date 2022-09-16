@@ -56,7 +56,9 @@ const Card = (props) => {
     },
     awesome_things: [],
     members: [],
-    partner: [],
+    partners: [],
+    core_members: [],
+    sub_daos: [],
   });
   const handleShareclick = () => {
     setShowPopover(false);
@@ -241,7 +243,7 @@ const Card = (props) => {
             Partner
           </div>
           <div className="partner">
-            {cardData.partner.map((item, index) => {
+            {cardData.partners.map((item, index) => {
               return (
                 <div className="flex border-t p-[8px] dao-ele" key={index}>
                   <img src={require(`./mock/${item.avatar}.png`)} alt="" />

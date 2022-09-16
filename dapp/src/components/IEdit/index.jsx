@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { history } from 'umi';
 import InputLabel from '@/components/InputLabel';
 import GradientInput from '@/components/GradientInput';
 import Button from '@/components/Button';
 import { useLocation } from 'umi';
+import { get_user } from '@/requests/UserManager';
+import { useAccount } from 'wagmi';
 export default function index(props) {
+  const { address } = useAccount();
   const location = useLocation();
   const [skills, setSkills] = useState({
     'Frontend technology stack': [
@@ -40,23 +44,23 @@ export default function index(props) {
   ]);
   const [formData, setFormData] = useState({
     basic_info: {
-      name: 'Robert Fox',
+      name: '',
       avatar: '',
       github: {
         avatar: '',
         name: '',
       },
-      slogan: 'Have more than 6 years of Digital Product Design experience.',
+      slogan: '',
       social_links: {
-        telegram: '197626581',
-        twitter: 'https://twitter.com/Web3dAppCamp',
-        mirror_link: 'https://mirror.xyz/apecoder.eth',
-        github_link: 'https://github.com/WeLightProject',
-        wechat: '197626581',
-        discord: 'hitchhacker@3691',
+        telegram: '',
+        twitter: '',
+        mirror_link: '',
+        github_link: '',
+        wechat: '',
+        discord: '',
       },
-      location: 'California',
-      skills: ['Javascript', 'C++', 'Python', 'HTML'],
+      location: '',
+      skills: [],
     },
     awesome_things: [],
     project_whitelist: [],
@@ -158,9 +162,22 @@ export default function index(props) {
       'https://github.com/login/oauth/authorize?client_id=9b26616a898147b1a598&redirect_uri=https://api-vercel-tan.vercel.app/api/github/oauth';
   };
   useEffect(() => {
+    if (!address) {
+      history.push(`/`);
+    }
+  }, []);
+  useEffect(async () => {
+    if (address) {
+      const res = await get_user({ params: [address] });
+      if (res.data.result.user) {
+        const data = res.data.result.user.payload;
+        setFormData({ ...data });
+      }
+    }
+  }, [address]);
+  useEffect(() => {
     props.handleData(formData);
   }, [formData]);
-
   useEffect(() => {
     formData.basic_info.skills = [...check_skill];
     setFormData({ ...formData });

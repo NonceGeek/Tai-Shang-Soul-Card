@@ -4,11 +4,10 @@ import RightCard from '@/components/RightCard/index';
 import Header from '@/components/Header';
 import LeftEdit from '@/components/LeftEdit';
 import './index.less';
-import { useStorage } from '@/hooks/useStorage';
 import RightCardDao from '../../components/RightCardDao/index';
 import Button from '@/components/Button';
 import { rand_msg } from '@/requests/DataHandler';
-import { create_user, get_user, update_user } from '@/requests/UserManager';
+import { create_user } from '@/requests/UserManager';
 export default function index() {
   const { signMessageAsync } = useSignMessage();
 
@@ -233,7 +232,7 @@ export default function index() {
         is_core_member: false,
       },
     ],
-    partner: [
+    partners: [
       {
         avatar: 'member-avatar',
         name: 'NonceGeek DAO',
@@ -255,6 +254,8 @@ export default function index() {
         name: 'NonceGeek DAO',
       },
     ],
+    core_members: [],
+    sub_daos: [],
   });
   const handleUpdate = (val) => {
     setMode(val.mode);
@@ -266,22 +267,46 @@ export default function index() {
   };
   const saveEdit = async () => {
     if (mode === 'individual') {
-      const res = await get_user({ params: [address] });
-      const isCreated = res.data.result;
-      if (isCreated) {
+      // const res = await get_user({ params: [address] });
+      // const isCreated = res.data.result;
+      // if (isCreated) {
+      // } else {
+      //   const res = await rand_msg({ params: [] });
+      //   const message = res.data.result;
+      //   const signature = await signMessageAsync({ message });
+      //   const data = {
+      //     params: [tempData, 'user', address, message, signature],
+      //   };
+      //   console.log(data);
+      //   const x = await create_user(JSON.stringify(data));
+      //   console.log(x);
+      // }
+      const res = await rand_msg({ params: [] });
+      const message = res.data.result;
+      const signature = await signMessageAsync({ message });
+      const data = {
+        params: [tempData, 'user', address, message, signature],
+      };
+      const re = await create_user(JSON.stringify(data));
+      if (re.data.result.status === 'ok') {
+        alert('sussess');
       } else {
-        const res = await rand_msg({ params: [] });
-        const message = res.data.result;
-        const signature = await signMessageAsync({ message });
-        const data = {
-          params: [tempData, 'user', address, message, signature],
-        };
-        console.log(data);
-        const x = await create_user(JSON.stringify(data));
-        console.log(x);
+        alert(re.data.result.payload);
       }
     } else {
-      console.log(tempDataDao);
+      const res = await rand_msg({ params: [] });
+      const message = res.data.result;
+      const signature = await signMessageAsync({ message });
+      const data = {
+        params: [tempDataDao, 'dao', address, message, signature],
+      };
+      console.log(data);
+      const re = await create_user(JSON.stringify(data));
+      if (re.data.result.status === 'ok') {
+        alert('sussess');
+      } else {
+        alert(re.data.result.payload);
+      }
     }
   };
   return (

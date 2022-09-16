@@ -10,6 +10,7 @@ import mirror_link from './mock/miro.svg';
 import github_link from './mock/telegram.svg';
 import discord from './mock/discord.svg';
 import twitter from './mock/twitter.svg';
+import telegram from './mock/telegram.svg';
 import circle from './mock/right-circle-arrow.svg';
 import c from './mock/c.svg';
 import m from './mock/m.svg';
@@ -64,6 +65,27 @@ const Card = (props) => {
     setShowPopover(false);
     setState(true);
   };
+  const copy = (value, type = 'input') => {
+    const input = document.createElement(type);
+    input.setAttribute('readonly', 'readonly'); // 设置为只读, 防止在 ios 下拉起键盘
+    // input.setAttribute('value', value); // textarea 不能用此方式赋值, 否则无法复制内容
+    input.value = value;
+    console.log(value)
+    document.body.appendChild(input);
+    input.setSelectionRange(0, 9999); // 防止 ios 下没有全选内容而无法复制
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+  }
+  const handleContact = (needJump, link) => {
+    copy(link)
+    if (needJump) {
+      window.open(link)
+    }
+  }
+  const jump = (link) => {
+    window.open(link)
+  }
   useEffect(() => {
     setCardData(props.data);
   }, [props.data]);
@@ -115,7 +137,7 @@ const Card = (props) => {
         <div className="inside text-ibm mt-[8px]">
           <div className="basic-info general-border">
             <img
-              className="max-w-full max-h-full"
+              className="max-w-full max-h-full avator"
               src={
                 cardData.basic_info.avatar
                   ? cardData.basic_info.avatar
@@ -126,27 +148,32 @@ const Card = (props) => {
           </div>
           <div className="contact general-border">
             {cardData.basic_info.social_links.discord ? (
-              <img className="mr-[15px]" src={discord} alt="" />
+              <img onClick={() => handleContact(false, cardData.basic_info.social_links.discord)} className="mr-[15px] pointer" src={discord} alt="" />
             ) : (
               <span></span>
             )}
             {cardData.basic_info.social_links.github_link ? (
-              <img className="mr-[15px]" src={github_link} alt="" />
+              <img onClick={() => handleContact(false, cardData.basic_info.social_links.github_link)} className="mr-[15px] pointer" src={github_link} alt="" />
             ) : (
               <span></span>
             )}
             {cardData.basic_info.social_links.wechat ? (
-              <img className="mr-[15px]" src={wechat} alt="" />
+              <img onClick={() => handleContact(false, cardData.basic_info.social_links.wechat)} className="mr-[15px] pointer" src={wechat} alt="" />
             ) : (
               <span></span>
             )}
             {cardData.basic_info.social_links.twitter ? (
-              <img className="mr-[15px]" src={twitter} alt="" />
+              <img onClick={() => handleContact(false, cardData.basic_info.social_links.twitter)} className="mr-[15px] pointer" src={twitter} alt="" />
             ) : (
               <span></span>
             )}
             {cardData.basic_info.social_links.mirror_link ? (
-              <img className="mr-[15px]" src={mirror_link} alt="" />
+              <img onClick={() => handleContact(true, cardData.basic_info.social_links.mirror_link)} className="mr-[15px] pointer" src={mirror_link} alt="" />
+            ) : (
+              <span></span>
+            )}
+            {cardData.basic_info.social_links.telegram ? (
+              <img onClick={() => handleContact(true, cardData.basic_info.social_links.telegram)} className="mr-[15px] pointer" src={telegram} alt="" />
             ) : (
               <span></span>
             )}
@@ -182,7 +209,7 @@ const Card = (props) => {
               >
                 <div>{item.title}</div>
                 <div className="circle-button pointer">
-                  <img src={circle} alt="" />
+                  <img onClick={() => jump(item.link)} src={circle} alt="" />
                 </div>
               </div>
             );

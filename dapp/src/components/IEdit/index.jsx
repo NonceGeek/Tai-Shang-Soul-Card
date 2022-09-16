@@ -197,7 +197,7 @@ export default function index(props) {
         <GradientInput
           value={formData.basic_info.name}
           onChange={changeHandle('basic_info', 'name')}
-          placeholder="KT"
+          placeholder="eg: KT"
         ></GradientInput>
       </div>
       <div className="mb-6">
@@ -240,30 +240,35 @@ export default function index(props) {
           onChange={changeHandle('basic_info', 'social_links', 'discord')}
           width="md"
           label="Discord"
+          placeholder="eg: SoulCard#9087"
         ></GradientInput>
         <GradientInput
           value={formData.basic_info.social_links.telegram}
           onChange={changeHandle('basic_info', 'social_links', 'telegram')}
           width="md"
           label="Telegram"
+          placeholder="eg: 9478981157"
         ></GradientInput>
         <GradientInput
           value={formData.basic_info.social_links.wechat}
           onChange={changeHandle('basic_info', 'social_links', 'wechat')}
           width="md"
           label="WeChat"
+          placeholder="eg: SoulCard0012"
         ></GradientInput>
         <GradientInput
           value={formData.basic_info.social_links.twitter}
           onChange={changeHandle('basic_info', 'social_links', 'twitter')}
           width="md"
           label="Twitter"
+          placeholder="eg: @SoulCard"
         ></GradientInput>
         <GradientInput
           value={formData.basic_info.social_links.mirror_link}
           onChange={changeHandle('basic_info', 'social_links', 'mirror_link')}
           width="md"
           label="Mirror"
+          placeholder="eg: https://noncegeek.com/#/"
         ></GradientInput>
       </div>
       <div className="mb-6">
@@ -277,12 +282,14 @@ export default function index(props) {
                   onChange={changeHandle('awesome_things', index, 'title')}
                   width="md"
                   label="Project"
+                  placeholder="eg: SoulCard project "
                 ></GradientInput>
                 <GradientInput
                   value={formData.awesome_things[index].link}
                   onChange={changeHandle('awesome_things', index, 'link')}
                   width="md"
                   label="Link"
+                  placeholder="eg: https://noncegeek.com/#/"
                 ></GradientInput>
               </div>
             );
@@ -359,6 +366,7 @@ export default function index(props) {
                 <GradientInput
                   value={check_dao[index].name}
                   onChange={changeDao(index)}
+                  placeholder="eg: DAO Name "
                 ></GradientInput>
                 <Button
                   colorStyle="green"

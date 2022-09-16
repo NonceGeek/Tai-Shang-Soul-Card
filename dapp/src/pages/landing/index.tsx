@@ -59,12 +59,10 @@ export default function IndexPage() {
     history.push(`/editor`);
   };
 
-  const maskBlur = {
-    backdropFilter: 'blur(30px)',
-  };
   useEffect(() => {
     disconnect();
   }, []);
+
   return (
     <div className="page w-full min-h-screen relative bg-black text-white font-IBMPlexMono">
       <div className="content w-main h-full mx-auto flex flex-col">
@@ -186,7 +184,7 @@ export default function IndexPage() {
       {showMask && (
         <div
           className="mask fixed top-0 left-0 right-0 bottom-0 bg-black/30 flex justify-center items-center"
-          style={maskBlur}
+          style={{backdropFilter: 'blur(30px)'}}
         >
           <div className="dialog-wrapper">
             <div className="dialog w-[422px] bg-black p-4 flex flex-col items-center">

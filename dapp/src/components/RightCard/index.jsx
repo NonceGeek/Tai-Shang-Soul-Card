@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './index.less';
 import styles from './module.less';
-
+import { SoulCardAddress, SoulCardABI } from '@/assets/js/SoulCard';
 import address from './mock/address.svg';
+import telegram from './mock/telegram.svg';
 import location from './mock/location.svg';
 import avatar from './mock/avatar.png';
 import wechat from './mock/wechat.svg';
@@ -14,9 +15,19 @@ import circle from './mock/right-circle-arrow.svg';
 import c from './mock/c.svg';
 import CloseIcon from '@/assets/img/close-icon.png';
 import share from './mock/share.svg';
-import { useAccount } from 'wagmi';
+import { useAccount, useContractWrite } from 'wagmi';
 import { render_and_put_to_ipfs } from '@/requests/DataHandler';
+import { get_user } from '@/requests/UserManager';
 const Card = (props) => {
+  const [name, set_name] = useState('');
+  const [ipfs_link, set_ipfs_link] = useState('');
+  const { data, write } = useContractWrite({
+    mode: 'recklesslyUnprepared',
+    addressOrName: SoulCardAddress,
+    contractInterface: SoulCardABI,
+    functionName: 'claim',
+    args: [name, ipfs_link],
+  });
   const { address } = useAccount();
   const [state, setState] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
@@ -64,11 +75,20 @@ const Card = (props) => {
     setShowPopover(false);
     setState(true);
   };
-  const clickLink = () => {
-    const res = render_and_put_to_ipfs({
-      params: ['0x428a42C00E8e9aeEC5d04321a2B42BE3f3B56028', 'user', 0],
+  const clickLink = async () => {
+    render_and_put_to_ipfs({
+      params: [address, 'user', 0],
     });
-    console.log(res);
+    const res = await get_user({ params: [address] });
+    if (
+      res.data.result &&
+      res.data.result.ipfs_link &&
+      res.data.result.user.payload
+    ) {
+      set_name(res.data.result.user.payload.basic_info.name);
+      set_ipfs_link(res.data.result.ipfs_link);
+    }
+    alert('已上传至IPFS');
   };
   const copy = (value, type = 'input') => {
     const input = document.createElement(type);
@@ -88,6 +108,11 @@ const Card = (props) => {
       window.open(link);
     }
   };
+  const mintNFT = async () => {
+    write();
+    // write();
+    // setShowPopover(false)
+  };
   const jump = (link) => {
     window.open(link);
   };
@@ -105,10 +130,7 @@ const Card = (props) => {
           >
             Share Soul Card
           </div>
-          <div
-            className="options ft-s-14 mb-[8px]"
-            onClick={() => setShowPopover(false)}
-          >
+          <div className="options ft-s-14 mb-[8px]" onClick={mintNFT}>
             Mint NFT
           </div>
           <div

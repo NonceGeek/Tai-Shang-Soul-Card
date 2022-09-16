@@ -47,7 +47,7 @@ export default function index(props) {
   useEffect(async () => {
     if (address) {
       const res = await get_user({ params: [address] });
-      if (res.data.result.dao) {
+      if (res.data.result && res.data.result.dao) {
         const data = res.data.result.dao.payload;
         setFormData({ ...data });
       }

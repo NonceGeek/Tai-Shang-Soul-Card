@@ -169,7 +169,7 @@ export default function index(props) {
   useEffect(async () => {
     if (address) {
       const res = await get_user({ params: [address] });
-      if (res.data.result.user) {
+      if (res.data.result && res.data.result.user) {
         const data = res.data.result.user.payload;
         setFormData({ ...data });
       }

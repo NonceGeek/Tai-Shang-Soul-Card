@@ -48,15 +48,22 @@ export default function index() {
         About us
       </NavLink>
       {!address && (
-        <Button
-          colorStyle='white'
-          buttonText='Connect'
-          withSpace={false}
-          onClick={() => connect()}
-        />
+        <>
+          <Button
+            colorStyle='white'
+            buttonText='Connect'
+            withSpace={false}
+            onClick={() => connect()}
+          />
+          <Button
+            colorStyle='green'
+            buttonText='Sign up'
+            withSpace={false}
+          />
+        </>
       )}
       {address && (
-        <div className='user rounded p-1 pl-3 bg-[#333333] flex items-center cursor-pointer'>
+        <div className='user rounded p-1 pl-3 bg-[#262626] flex items-center cursor-pointer'>
           <div className="network flex items-center gap-x-2">
             <div className="icon w-6 h-6 rounded-full bg-white flex justify-center items-center">
               <img className='w-5 h-5' src={IconEth} alt="" />
@@ -71,11 +78,6 @@ export default function index() {
           </div>
         </div>
       )}
-      <Button
-        colorStyle='green'
-        buttonText='Sign up'
-        withSpace={false}
-      />
     </div>
   </div>
 }

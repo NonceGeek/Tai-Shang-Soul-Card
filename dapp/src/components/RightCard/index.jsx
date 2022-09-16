@@ -15,6 +15,7 @@ import c from './mock/c.svg';
 import CloseIcon from '@/assets/img/close-icon.png';
 import share from './mock/share.svg';
 import { useAccount } from 'wagmi';
+import { render_and_put_to_ipfs } from '@/requests/DataHandler';
 const Card = (props) => {
   const { address } = useAccount();
   const [state, setState] = useState(false);
@@ -62,6 +63,12 @@ const Card = (props) => {
   const handleShareclick = () => {
     setShowPopover(false);
     setState(true);
+  };
+  const clickLink = () => {
+    const res = render_and_put_to_ipfs({
+      params: ['0x428a42C00E8e9aeEC5d04321a2B42BE3f3B56028', 'user', 0],
+    });
+    console.log(res);
   };
   useEffect(() => {
     setCardData(props.data);
@@ -265,10 +272,7 @@ const Card = (props) => {
                 WHICH FOTMATE DO YOU PREFER?
               </div>
               <div>
-                <div
-                  className="options ft-s-16 pointer"
-                  onClick={() => handleShareclick()}
-                >
+                <div className="options ft-s-16 pointer" onClick={clickLink}>
                   Link
                 </div>
                 <div

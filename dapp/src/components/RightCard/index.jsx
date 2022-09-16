@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './index.less';
 import styles from './module.less';
-
+import { SoulCardAddress, SoulCardABI } from '@/assets/js/SoulCard';
 import address from './mock/address.svg';
+import telegram from './mock/telegram.svg';
 import location from './mock/location.svg';
 import avatar from './mock/avatar.png';
 import wechat from './mock/wechat.svg';
@@ -14,8 +15,19 @@ import circle from './mock/right-circle-arrow.svg';
 import c from './mock/c.svg';
 import CloseIcon from '@/assets/img/close-icon.png';
 import share from './mock/share.svg';
-import { useAccount } from 'wagmi';
+import { useAccount, useContractWrite } from 'wagmi';
+import { render_and_put_to_ipfs } from '@/requests/DataHandler';
+import { get_user } from '@/requests/UserManager';
 const Card = (props) => {
+  const [name, set_name] = useState('');
+  const [ipfs_link, set_ipfs_link] = useState('');
+  const { data, write } = useContractWrite({
+    mode: 'recklesslyUnprepared',
+    addressOrName: SoulCardAddress,
+    contractInterface: SoulCardABI,
+    functionName: 'claim',
+    args: [name, ipfs_link],
+  });
   const { address } = useAccount();
   const [state, setState] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
@@ -63,27 +75,47 @@ const Card = (props) => {
     setShowPopover(false);
     setState(true);
   };
+  const clickLink = async () => {
+    render_and_put_to_ipfs({
+      params: [address, 'user', 0],
+    });
+    const res = await get_user({ params: [address] });
+    if (
+      res.data.result &&
+      res.data.result.ipfs_link &&
+      res.data.result.user.payload
+    ) {
+      set_name(res.data.result.user.payload.basic_info.name);
+      set_ipfs_link(res.data.result.ipfs_link);
+    }
+    alert('已上传至IPFS');
+  };
   const copy = (value, type = 'input') => {
     const input = document.createElement(type);
     input.setAttribute('readonly', 'readonly'); // 设置为只读, 防止在 ios 下拉起键盘
     // input.setAttribute('value', value); // textarea 不能用此方式赋值, 否则无法复制内容
     input.value = value;
-    console.log(value)
+    console.log(value);
     document.body.appendChild(input);
     input.setSelectionRange(0, 9999); // 防止 ios 下没有全选内容而无法复制
     input.select();
     document.execCommand('copy');
     document.body.removeChild(input);
-  }
+  };
   const handleContact = (needJump, link) => {
-    copy(link)
+    copy(link);
     if (needJump) {
-      window.open(link)
+      window.open(link);
     }
-  }
+  };
+  const mintNFT = async () => {
+    write();
+    // write();
+    // setShowPopover(false)
+  };
   const jump = (link) => {
-    window.open(link)
-  }
+    window.open(link);
+  };
   useEffect(() => {
     setCardData(props.data);
     console.log(cardData);
@@ -98,10 +130,7 @@ const Card = (props) => {
           >
             Share Soul Card
           </div>
-          <div
-            className="options ft-s-14 mb-[8px]"
-            onClick={() => setShowPopover(false)}
-          >
+          <div className="options ft-s-14 mb-[8px]" onClick={mintNFT}>
             Mint NFT
           </div>
           <div
@@ -171,35 +200,83 @@ const Card = (props) => {
           </div>
           <div className="contact general-border">
             {cardData.basic_info.social_links.discord ? (
-                <img onClick={() => handleContact(false, cardData.basic_info.social_links.discord)} className="mr-[15px] pointer" src={discord} alt="" />
-              ) : (
-                <span></span>
-              )}
-              {cardData.basic_info.social_links.github_link ? (
-                <img onClick={() => handleContact(false, cardData.basic_info.social_links.github_link)} className="mr-[15px] pointer" src={github_link} alt="" />
-              ) : (
-                <span></span>
-              )}
-              {cardData.basic_info.social_links.wechat ? (
-                <img onClick={() => handleContact(false, cardData.basic_info.social_links.wechat)} className="mr-[15px] pointer" src={wechat} alt="" />
-              ) : (
-                <span></span>
-              )}
-              {cardData.basic_info.social_links.twitter ? (
-                <img onClick={() => handleContact(false, cardData.basic_info.social_links.twitter)} className="mr-[15px] pointer" src={twitter} alt="" />
-              ) : (
-                <span></span>
-              )}
-              {cardData.basic_info.social_links.mirror_link ? (
-                <img onClick={() => handleContact(true, cardData.basic_info.social_links.mirror_link)} className="mr-[15px] pointer" src={mirror_link} alt="" />
-              ) : (
-                <span></span>
-              )}
-              {cardData.basic_info.social_links.telegram ? (
-                <img onClick={() => handleContact(true, cardData.basic_info.social_links.telegram)} className="mr-[15px] pointer" src={telegram} alt="" />
-              ) : (
-                <span></span>
-              )}
+              <img
+                onClick={() =>
+                  handleContact(false, cardData.basic_info.social_links.discord)
+                }
+                className="mr-[15px] pointer"
+                src={discord}
+                alt=""
+              />
+            ) : (
+              <span></span>
+            )}
+            {cardData.basic_info.social_links.github_link ? (
+              <img
+                onClick={() =>
+                  handleContact(
+                    false,
+                    cardData.basic_info.social_links.github_link,
+                  )
+                }
+                className="mr-[15px] pointer"
+                src={github_link}
+                alt=""
+              />
+            ) : (
+              <span></span>
+            )}
+            {cardData.basic_info.social_links.wechat ? (
+              <img
+                onClick={() =>
+                  handleContact(false, cardData.basic_info.social_links.wechat)
+                }
+                className="mr-[15px] pointer"
+                src={wechat}
+                alt=""
+              />
+            ) : (
+              <span></span>
+            )}
+            {cardData.basic_info.social_links.twitter ? (
+              <img
+                onClick={() =>
+                  handleContact(false, cardData.basic_info.social_links.twitter)
+                }
+                className="mr-[15px] pointer"
+                src={twitter}
+                alt=""
+              />
+            ) : (
+              <span></span>
+            )}
+            {cardData.basic_info.social_links.mirror_link ? (
+              <img
+                onClick={() =>
+                  handleContact(
+                    true,
+                    cardData.basic_info.social_links.mirror_link,
+                  )
+                }
+                className="mr-[15px] pointer"
+                src={mirror_link}
+                alt=""
+              />
+            ) : (
+              <span></span>
+            )}
+            {cardData.basic_info.social_links.telegram ? (
+              <img
+                onClick={() =>
+                  handleContact(true, cardData.basic_info.social_links.telegram)
+                }
+                className="mr-[15px] pointer"
+                src={telegram}
+                alt=""
+              />
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
         <div className="awsome-things general-border mt-[8px]">
@@ -247,7 +324,7 @@ const Card = (props) => {
                 <div className="flex border-t pt-[4px] pl-[4px]" key={index}>
                   <div>
                     <img
-                      style={{height: '40px', width: '40px'}}
+                      style={{ height: '40px', width: '40px' }}
                       src={require(`./mock/temp-${item.avatar}.png`)}
                       alt=""
                     />
@@ -292,10 +369,7 @@ const Card = (props) => {
                 WHICH FOTMATE DO YOU PREFER?
               </div>
               <div>
-                <div
-                  className="options ft-s-16 pointer"
-                  onClick={() => handleShareclick()}
-                >
+                <div className="options ft-s-16 pointer" onClick={clickLink}>
                   Link
                 </div>
                 <div

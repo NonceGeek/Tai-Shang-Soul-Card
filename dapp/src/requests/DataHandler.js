@@ -16,3 +16,10 @@ export const analyze_github = (data) =>
   );
 export const rand_msg = (data) =>
   axios.post('/api/v1/run?name=SoulCard.DataHandler&func_name=rand_msg', data);
+
+export const render_and_put_to_ipfs = (data) => {
+  axios.post(
+    '/api/v1/run?name=SoulCard.DataHandler&func_name=render_and_put_to_ipfs',
+    data,
+  );
+};

@@ -277,6 +277,14 @@ export default function index(props) {
           src={formData.basic_info.avatar}
         />
       </div>
+      <div className="mb-6">
+        <InputLabel text="City" bold={true}></InputLabel>
+        <GradientInput
+          value={formData.basic_info.location}
+          onChange={changeHandle('basic_info', 'location')}
+          placeholder="Shanghai, China"
+        ></GradientInput>
+      </div>
       <div className="mb-6 flex flex-col">
         <InputLabel text="Contact Information" bold={true}></InputLabel>
         <GradientInput

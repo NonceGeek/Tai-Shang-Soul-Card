@@ -3,13 +3,24 @@ import { history } from 'umi';
 import InputLabel from '@/components/InputLabel';
 import GradientInput from '@/components/GradientInput';
 import Button from '@/components/Button';
-import { get_user } from '@/requests/UserManager';
+import { get_user, get_role_map } from '@/requests/UserManager';
 import { useAccount } from 'wagmi';
 export default function index(props) {
   const { address } = useAccount();
+  const [all_dao, set_all_dao] = useState([]);
   const [check_dao, set_check_dao] = useState([
-    { name: 'NonceGeek' },
-    { name: 'Starcoin' },
+    // { name: 'NonceGeek' },
+    // { name: 'Starcoin' },
+  ]);
+  const [search_dao, set_serch_dao] = useState([
+    // {
+    //   addr: '0x19E7E376E7C213B7E7e7e46cc70A5dD086DAff2A',
+    //   name: 'KT DAO',
+    // },
+    // {
+    //   addr: '0x714c3d100be311005c16556b74d58f486ac46734',
+    //   name: 'NonceGeekDAO',
+    // },
   ]);
   const [formData, setFormData] = useState({
     basic_info: {
@@ -39,9 +50,13 @@ export default function index(props) {
     core_members: [],
     sub_daos: [],
   });
-  useEffect(() => {
+  useEffect(async () => {
     if (!address) {
       history.push(`/`);
+    }
+    const res = await get_role_map({ params: ['dao'] });
+    if (res.data.result) {
+      set_all_dao([...res.data.result]);
     }
   }, []);
   useEffect(async () => {
@@ -109,7 +124,13 @@ export default function index(props) {
     return (value) => {
       check_dao[param1].name = value;
       set_check_dao([...check_dao]);
+      const daoArr = all_dao.filter((item) => item.name.indexOf(value) != -1);
+      set_serch_dao([...daoArr]);
     };
+  };
+  const searchDAO = (param1, value) => {
+    check_dao[param1].name = value;
+    set_check_dao([...check_dao]);
   };
   const addDAO = () => {
     if (check_dao.length) {
@@ -122,6 +143,29 @@ export default function index(props) {
     } else {
       check_dao.push({ name: '' });
       set_check_dao([...check_dao]);
+    }
+  };
+  const confirmDao = async (value) => {
+    if (!all_dao.length) {
+      alert('请添加DAO');
+    } else {
+      const daoArr = all_dao.filter((item) => item.name == value);
+      if (!daoArr.length) {
+        alert('DAO不存在');
+      } else {
+        const dao = daoArr[0];
+        if (formData.partners.some((item) => item === dao.addr)) {
+          alert('你已经加入');
+        } else {
+          const res = await get_user({ params: [dao.addr] });
+          formData.partners.push({
+            name: res.data.result.dao.payload.basic_info.name,
+            avatar: res.data.result.dao.payload.basic_info.avatar,
+          });
+          setFormData({ ...formData });
+          alert('成功加入dao');
+        }
+      }
     }
   };
   const addProject = () => {
@@ -324,27 +368,62 @@ export default function index(props) {
         <div className="mb-2">
           {check_dao.map((item, index) => {
             return (
-              <div className="flex items-center" key={index}>
-                <GradientInput
-                  value={check_dao[index].name}
-                  onChange={changeDao(index)}
-                  placeholder="eg: SoulCard project "
-                ></GradientInput>
-                <Button
-                  colorStyle="green"
-                  buttonText="Confirm"
-                  font="IBMPlexMono"
-                  style={{
-                    height: '20px',
-                    display: 'flex',
-                    fontSize: '10px',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginBottom: '8px',
-                    marginLeft: '8px',
-                  }}
-                />
-              </div>
+              <>
+                <div className="flex items-center" key={index}>
+                  <GradientInput
+                    value={check_dao[index].name}
+                    onChange={changeDao(index)}
+                    placeholder="eg: SoulCard project "
+                  ></GradientInput>
+                  <Button
+                    colorStyle="green"
+                    buttonText="Confirm"
+                    font="IBMPlexMono"
+                    style={{
+                      height: '20px',
+                      display: 'flex',
+                      fontSize: '10px',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      marginBottom: '8px',
+                      marginLeft: '8px',
+                    }}
+                    onClick={() => confirmDao(check_dao[index].name)}
+                  />
+                </div>
+                {search_dao.length !== 0 && (
+                  <div className="mb-2 border border-white border-solid bg-[#343434] w-[354px] flex flex-col py-2 cursor-default">
+                    {search_dao.map((item, index2) => {
+                      if (index2 === search_dao.length - 1) {
+                        return (
+                          <span
+                            className="ml-4"
+                            onClick={() => {
+                              searchDAO(index, item.name);
+                            }}
+                          >
+                            {item.name}
+                          </span>
+                        );
+                      }
+                      return (
+                        <>
+                          {' '}
+                          <span
+                            className="ml-4"
+                            onClick={() => {
+                              searchDAO(index, item.name);
+                            }}
+                          >
+                            {item.name}
+                          </span>
+                          <hr className="w-[90%]" />
+                        </>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
             );
           })}
         </div>

@@ -246,7 +246,14 @@ const Card = (props) => {
             {cardData.partners.map((item, index) => {
               return (
                 <div className="flex border-t p-[8px] dao-ele" key={index}>
-                  <img src={require(`./mock/${item.avatar}.png`)} alt="" />
+                  <img
+                    src={
+                      item.avatar
+                        ? item.avatar
+                        : require(`./mock/${item.avatar}.png`)
+                    }
+                    alt=""
+                  />
                   <span className="ml-[10px] text-ibm-bold">{item.name}</span>
                 </div>
               );

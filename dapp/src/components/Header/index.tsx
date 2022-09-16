@@ -1,10 +1,14 @@
 import { NavLink } from 'umi'
 
+import { useAccount } from 'wagmi'
+
 import Button from '../Button/index'
 
 import LogoImg from '@/assets/img/logo.png'
 
 export default function index() {
+  const { address, isConnected } = useAccount()
+
   const navLinkActiveStyle = {
     borderTop: '4px solid transparent',
     borderBottom: '4px solid white',
@@ -16,8 +20,20 @@ export default function index() {
       <span className='site-name pl-3 text-[32px] text-white font-Audiowide'>SoulCard</span>
     </NavLink>
     <div className="right flex items-center gap-x-8 text-[20px]">
-      <NavLink className='!text-white font-IBMPlexMono' to="/editor" activeStyle={navLinkActiveStyle}>Editor</NavLink>
-      <NavLink className='!text-white font-IBMPlexMono' to="/about" activeStyle={navLinkActiveStyle}>About us</NavLink>
+      {address && (
+        <NavLink
+          className='!text-white font-IBMPlexMono'
+          to="/editor"
+          activeStyle={navLinkActiveStyle}>
+            Editor
+        </NavLink>
+      )}
+      <NavLink
+        className='!text-white font-IBMPlexMono'
+        to="/about"
+        activeStyle={navLinkActiveStyle}>
+          About us
+      </NavLink>
       <Button
         colorStyle='white'
         buttonText='Log in'

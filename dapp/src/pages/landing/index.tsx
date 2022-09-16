@@ -14,7 +14,7 @@ import OkIcon from '@/assets/img/ok.png';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 
-import { showAccount } from '@/utils/funUtils';
+import { showAccount, viewAccount } from '@/utils/funUtils';
 import './index.less';
 
 enum LoginStatus {
@@ -241,8 +241,9 @@ export default function IndexPage() {
                     Skip approving every interaction with your wallet by
                     allowing SoulCard to remember you.
                   </div>
-                  <div className="address mt-5 px-1 py-2 bg-[#4a4a4a] opacity-50">
-                    <span className="font-Inter font-bold text-[#c5c5c5] text-[14px]">
+                  <div className="address mt-5 px-6 py-2 bg-[#4a4a4a] opacity-50 hover:opacity-100 cursor-pointer"
+                  onClick={() => viewAccount(address)}>
+                    <span className="font-Inter font-bold text-[#c5c5c5] text-[14px] tracking-widest">
                       {address && showAccount(address)}
                     </span>
                   </div>

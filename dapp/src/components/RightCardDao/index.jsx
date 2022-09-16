@@ -17,9 +17,10 @@ import dao_avatar from './mock/dao_avatar.png';
 import share from './mock/share.svg';
 import CloseIcon from '@/assets/img/close-icon.png';
 
-const addr = localStorage.getItem('addr');
+import { useAccount } from 'wagmi';
 
 const Card = (props) => {
+  const { address } = useAccount();
   const [state, setState] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const coreMember = props.data.members.filter((item) => {
@@ -55,7 +56,9 @@ const Card = (props) => {
     },
     awesome_things: [],
     members: [],
-    partner: [],
+    partners: [],
+    core_members: [],
+    sub_daos: [],
   });
   const handleShareclick = () => {
     setShowPopover(false);
@@ -106,7 +109,7 @@ const Card = (props) => {
         <div className="flex">
           <img src={address} alt="" />
           <span className="ml-[10px] ft-s-14 bg-grey text-gray addr word-break">
-            {addr}
+            {address}
           </span>
         </div>
         <div className="inside text-ibm mt-[8px]">
@@ -240,7 +243,7 @@ const Card = (props) => {
             Partner
           </div>
           <div className="partner">
-            {cardData.partner.map((item, index) => {
+            {cardData.partners.map((item, index) => {
               return (
                 <div className="flex border-t p-[8px] dao-ele" key={index}>
                   <img src={require(`./mock/${item.avatar}.png`)} alt="" />

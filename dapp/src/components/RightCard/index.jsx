@@ -14,10 +14,9 @@ import circle from './mock/right-circle-arrow.svg';
 import c from './mock/c.svg';
 import CloseIcon from '@/assets/img/close-icon.png';
 import share from './mock/share.svg';
-
-const addr = localStorage.getItem('addr');
-
+import { useAccount } from 'wagmi';
 const Card = (props) => {
+  const { address } = useAccount();
   const [state, setState] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const [cardData, setCardData] = useState({
@@ -112,7 +111,7 @@ const Card = (props) => {
             <div className="flex">
               <img src={address} alt="" />
               <span className="ml-[10px] ft-s-14 bg-grey text-gray addr">
-                {addr}
+                {address}
               </span>
             </div>
             <div className="intro mt-[5px] text-blur-white">

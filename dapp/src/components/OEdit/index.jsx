@@ -1,44 +1,59 @@
 import React, { useState, useEffect } from 'react';
+import { history } from 'umi';
 import InputLabel from '@/components/InputLabel';
 import GradientInput from '@/components/GradientInput';
 import Button from '@/components/Button';
-import { useStorage } from '@/hooks/useStorage.ts';
+import { get_user } from '@/requests/UserManager';
+import { useAccount } from 'wagmi';
 export default function index(props) {
-  const [info, setInfo] = useStorage('individual_info');
+  const { address } = useAccount();
   const [check_dao, set_check_dao] = useState([
     { name: 'NonceGeek' },
     { name: 'Starcoin' },
   ]);
   const [formData, setFormData] = useState({
     basic_info: {
-      name: 'Dao Name',
+      name: '',
       avatar: '',
-      slogan:
-        'Our team is working on a decentralized social product in the Web3 environment.',
+      slogan: '',
       social_links: {
-        telegram: '111',
-        twitter: 'https://twitter.com/Web3dAppCamp',
-        mirror_link: 'https://mirror.xyz/apecoder.eth',
-        github_link: 'https://github.com/WeLightProject',
-        wechat: '197626581',
-        discord: 'hitchhacker@3691',
+        telegram: '',
+        twitter: '',
+        mirror_link: '',
+        github_link: '',
+        wechat: '',
+        discord: '',
       },
-      location: 'California',
-      homepage: 'https://noncegeek.com',
+      location: '',
+      homepage: '',
       contract_addresses: [
         {
-          addr: '0x0',
-          alias: 'BYAC NFT',
+          addr: '',
+          alias: '',
         },
       ],
     },
     awesome_things: [],
     members: [],
-    partner: [],
+    partners: [],
+    core_members: [],
+    sub_daos: [],
   });
-
   useEffect(() => {
-    setInfo(formData);
+    if (!address) {
+      history.push(`/`);
+    }
+  }, []);
+  useEffect(async () => {
+    if (address) {
+      const res = await get_user({ params: [address] });
+      if (res.data.result.dao) {
+        const data = res.data.result.dao.payload;
+        setFormData({ ...data });
+      }
+    }
+  }, [address]);
+  useEffect(() => {
     props.handleData(formData);
   }, [formData]);
   const changeHandle = (param1, param2, param3, param4) => {

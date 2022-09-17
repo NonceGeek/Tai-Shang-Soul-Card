@@ -83,14 +83,29 @@ const Card = (props) => {
       set_name(res.data.result.user.payload.basic_info.name);
       set_ipfs_link(res.data.result.ipfs_link);
     }
-    alert('已上传至IPFS');
+    alert(`已上传至IPFS:${res.data.result.ipfs_link}`);
   };
   const mintNFT = async () => {
-    write();
+    const res = await get_user({ params: [address] });
+    if (res.data.result && res.data.result.dao) {
+      write();
+      setTimeout(() => {
+        alert(
+          `check tx: https://portal.noncegeek.com/live/tx?hash=${data.hash}`,
+        );
+      }, 8000);
+    } else {
+      alert('please SAVE');
+    }
   };
-  const handleShareclick = () => {
-    setShowPopover(false);
-    setState(true);
+  const handleShareclick = async () => {
+    const res = await get_user({ params: [address] });
+    if (res.data.result && res.data.result.dao) {
+      setShowPopover(false);
+      setState(true);
+    } else {
+      alert('please SAVE');
+    }
   };
   const copy = (value, type = 'input') => {
     const input = document.createElement(type);
@@ -349,7 +364,7 @@ const Card = (props) => {
                     src={
                       item.avatar
                         ? item.avatar
-                        : require(`./mock/${item.avatar}.png`)
+                        : require(`./mock/dao_avatar.png`)
                     }
                     alt=""
                   />

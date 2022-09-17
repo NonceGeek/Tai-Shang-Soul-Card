@@ -310,35 +310,32 @@ export default function index() {
     }
   };
   return (
-    <>
-      <div className="w-full bg-black">
-        <div className="w-main m-auto">
-          {/* 替换成组件 */}
-          <Header />
-          <div className="save-btn relative">
-            <Button
-              colorStyle="green"
-              buttonText="Save"
-              font="IBMPlexMono"
-              onClick={saveEdit}
-            />
-          </div>
-          <main className="flex">
-            <div className="w-2/3 h-[1000px] overflow-y-scroll pt-[14px] text-white">
-              {/* edit component */}
-              <LeftEdit updateForm={handleUpdate}></LeftEdit>
-            </div>
+    <div className="editor w-full h-screen overflow-hidden flex flex-col bg-black">
+      <div className='flex-grow-0 w-full flex justify-center'>
+        <Header />
+      </div>
+      <div className="flex-grow w-main mx-auto overflow-hidden flex">
+        <div className="left w-2/3 overflow-y-scroll pt-[14px] text-white">
+          <LeftEdit updateForm={handleUpdate}></LeftEdit>
+        </div>
 
-            <div className="w-2/5 h-screen">
-              {mode === 'individual' ? (
-                <RightCard data={tempData} />
-              ) : (
-                <RightCardDao data={tempDataDao} />
-              )}
-            </div>
-          </main>
+        <div className="right w-2/5 overflow-y-scroll">
+          {mode === 'individual' ? (
+            <RightCard data={tempData} />
+          ) : (
+            <RightCardDao data={tempDataDao} />
+          )}
         </div>
       </div>
-    </>
+      <div className="flex-grow-0 bg-black py-4 flex justify-center items-center">
+        <Button
+          colorStyle="green"
+          buttonText="Save"
+          withSpace={false}
+          font="IBMPlexMono"
+          onClick={saveEdit}
+        />
+      </div>
+    </div>
   );
 }

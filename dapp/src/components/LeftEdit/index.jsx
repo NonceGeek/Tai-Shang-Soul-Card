@@ -17,6 +17,15 @@ export default function index(props) {
       data: val
     })
   }
+
+  const viewExample = () => {
+    if (current_edit === 'individual') {
+      window.open('', '_blank')
+    } else {
+      window.open('', '_blank')
+    }
+  }
+
   return (
     <div className="flex flex-col font-IBMPlexMono">
       <GradientFont text="Hi," style={{ fontSize: '80px' }}></GradientFont>
@@ -58,6 +67,10 @@ export default function index(props) {
           )}
         </span>
       </div>
+      <div
+        className="-mt-4 mb-8 font-bold text-[20px] text-xc2-a underline cursor-pointer"
+        onClick={() => viewExample()}
+      >SoulCard Example</div>
       {current_edit === 'individual' ? <IEdit handleData={handle}></IEdit> : <OEdit handleData={handle}></OEdit>}
     </div>
   );

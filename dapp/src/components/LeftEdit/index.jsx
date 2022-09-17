@@ -20,9 +20,9 @@ export default function index(props) {
 
   const viewExample = () => {
     if (current_edit === 'individual') {
-      window.open('', '_blank')
+      window.open('https://soulcard.noncegeek.com/example/output.html', '_blank')
     } else {
-      window.open('', '_blank')
+      window.open('https://soulcard.noncegeek.com/example/cardDao.html', '_blank')
     }
   }
 

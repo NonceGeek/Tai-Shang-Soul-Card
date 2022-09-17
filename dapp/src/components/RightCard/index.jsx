@@ -118,10 +118,8 @@ const Card = (props) => {
     if (res.data.result && res.data.result.user) {
       write();
       setTimeout(() => {
-        alert(
-          `check tx: https://portal.noncegeek.com/live/tx?hash=${data.hash}`,
-        );
-      }, 8000);
+        alert(`check tx: https://portal.noncegeek.com`);
+      }, 5000);
     } else {
       alert('please SAVE');
     }

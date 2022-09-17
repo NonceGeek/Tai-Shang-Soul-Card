@@ -5,6 +5,7 @@ import GradientInput from '@/components/GradientInput';
 import Button from '@/components/Button';
 import { get_user, get_role_map } from '@/requests/UserManager';
 import { useAccount } from 'wagmi';
+import { message } from 'antd';
 export default function index(props) {
   const { address } = useAccount();
   const [all_dao, set_all_dao] = useState([]);
@@ -138,7 +139,7 @@ export default function index(props) {
         check_dao.push({ name: '' });
         set_check_dao([...check_dao]);
       } else {
-        alert('please edit previous data');
+        message.warn('please edit previous data');
       }
     } else {
       check_dao.push({ name: '' });
@@ -147,15 +148,15 @@ export default function index(props) {
   };
   const confirmDao = async (value) => {
     if (!all_dao.length) {
-      alert('请添加DAO');
+      message.info('请添加DAO');
     } else {
       const daoArr = all_dao.filter((item) => item.name == value);
       if (!daoArr.length) {
-        alert('DAO不存在');
+        message.error('DAO不存在');
       } else {
         const dao = daoArr[0];
         if (formData.partners.some((item) => item === dao.addr)) {
-          alert('你已经加入');
+          message.warn('你已经加入');
         } else {
           const res = await get_user({ params: [dao.addr] });
           formData.partners.push({
@@ -163,7 +164,7 @@ export default function index(props) {
             avatar: res.data.result.dao.payload.basic_info.avatar,
           });
           setFormData({ ...formData });
-          alert('成功加入dao');
+          message.success('成功加入dao');
         }
       }
     }

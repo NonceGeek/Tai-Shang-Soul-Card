@@ -6,6 +6,7 @@ import Button from '@/components/Button';
 import { useLocation } from 'umi';
 import { get_user, get_role_map } from '@/requests/UserManager';
 import { useAccount } from 'wagmi';
+import { message } from 'antd';
 export default function index(props) {
   const { address } = useAccount();
   const location = useLocation();
@@ -168,7 +169,7 @@ export default function index(props) {
         check_dao.push({ name: '' });
         set_check_dao([...check_dao]);
       } else {
-        alert('please edit previous data');
+        message.warn('please edit previous data');
       }
     } else {
       check_dao.push({ name: '' });
@@ -177,15 +178,15 @@ export default function index(props) {
   };
   const confirmDao = async (value) => {
     if (!all_dao.length) {
-      alert('请添加DAO');
+      message.info('请添加DAO');
     } else {
       const daoArr = all_dao.filter((item) => item.name == value);
       if (!daoArr.length) {
-        alert('DAO不存在');
+        message.error('DAO不存在');
       } else {
         const dao = daoArr[0];
         if (formData.daos_joined.some((item) => item.addr === dao.addr)) {
-          alert('你已经加入');
+          message.warn('你已经加入DAO');
         } else {
           const res = await get_user({ params: [dao.addr] });
           formData.daos_joined.push({
@@ -194,7 +195,7 @@ export default function index(props) {
             addr: dao.addr,
           });
           setFormData({ ...formData });
-          alert('成功加入dao');
+          message.success('成功加入DAO');
         }
       }
     }

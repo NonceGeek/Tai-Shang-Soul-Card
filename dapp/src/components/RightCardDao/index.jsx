@@ -83,15 +83,22 @@ const Card = (props) => {
     ) {
       set_name(res.data.result.user.payload.basic_info.name);
       set_ipfs_link(res.data.result.ipfs_link);
+      message.success({
+        content: `已上传至IPFS,点击跳转查看`,
+        style: { cursor: 'pointer' },
+        duration: 3,
+        onClick: () => {
+          window.open(res.data.result.ipfs_link);
+        },
+      });
     }
-    alert(`已上传至IPFS:${res.data.result.ipfs_link}`);
   };
   const mintNFT = async () => {
     const res = await get_user({ params: [address] });
     if (res.data.result && res.data.result.dao) {
       write();
     } else {
-      alert('please SAVE');
+      message.error('please SAVE');
     }
   };
   const handleShareclick = async () => {
@@ -100,7 +107,7 @@ const Card = (props) => {
       setShowPopover(false);
       setState(true);
     } else {
-      alert('please SAVE');
+      message.error('please SAVE');
     }
   };
   const copy = (value, type = 'input') => {
@@ -134,7 +141,7 @@ const Card = (props) => {
         message.success({
           content: `Mint Success,please click to view tx`,
           style: { cursor: 'pointer' },
-          duration: 5000,
+          duration: 3,
           onClick: () => {
             window.open(
               `https://portal.noncegeek.com/live/nft?nft_contract_id=2&addr=${address}`,

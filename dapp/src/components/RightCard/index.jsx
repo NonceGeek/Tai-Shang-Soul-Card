@@ -78,7 +78,7 @@ const Card = (props) => {
       setShowPopover(false);
       setState(true);
     } else {
-      alert('please SAVE');
+      message.error('please SAVE');
     }
   };
   const clickLink = async () => {
@@ -93,8 +93,15 @@ const Card = (props) => {
     ) {
       set_name(res.data.result.user.payload.basic_info.name);
       set_ipfs_link(res.data.result.ipfs_link);
+      message.success({
+        content: `已上传至IPFS,点击跳转查看`,
+        style: { cursor: 'pointer' },
+        duration: 3,
+        onClick: () => {
+          window.open(res.data.result.ipfs_link);
+        },
+      });
     }
-    alert(`已上传至IPFS:${res.data.result.ipfs_link}`);
   };
   const copy = (value, type = 'input') => {
     const input = document.createElement(type);
@@ -119,7 +126,7 @@ const Card = (props) => {
     if (res.data.result && res.data.result.user) {
       write();
     } else {
-      alert('please SAVE');
+      message.error('please SAVE');
     }
   };
   const jump = (link) => {
@@ -136,7 +143,7 @@ const Card = (props) => {
         message.success({
           content: `Mint Success,please click to view tx`,
           style: { cursor: 'pointer' },
-          duration: 5000,
+          duration: 3,
           onClick: () => {
             window.open(
               `https://portal.noncegeek.com/live/nft?nft_contract_id=1&addr=${address}`,

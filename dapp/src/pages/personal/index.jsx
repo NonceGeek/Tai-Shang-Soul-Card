@@ -8,6 +8,7 @@ import RightCardDao from '../../components/RightCardDao/index';
 import Button from '@/components/Button';
 import { rand_msg } from '@/requests/DataHandler';
 import { create_user } from '@/requests/UserManager';
+import { message } from 'antd';
 export default function index() {
   const { signMessageAsync } = useSignMessage();
 
@@ -282,36 +283,35 @@ export default function index() {
       //   console.log(x);
       // }
       const res = await rand_msg({ params: [] });
-      const message = res.data.result;
-      const signature = await signMessageAsync({ message });
+      const msg = res.data.result;
+      const signature = await signMessageAsync({ message: msg });
       const data = {
-        params: [tempData, 'user', address, message, signature],
+        params: [tempData, 'user', address, msg, signature],
       };
       const re = await create_user(JSON.stringify(data));
       if (re.data.result.status === 'ok') {
-        alert('sussess');
+        message.success('sussess');
       } else {
-        alert(re.data.result.payload);
+        message.error(re.data.result.payload);
       }
     } else {
       const res = await rand_msg({ params: [] });
-      const message = res.data.result;
-      const signature = await signMessageAsync({ message });
+      const msg = res.data.result;
+      const signature = await signMessageAsync({ message: msg });
       const data = {
-        params: [tempDataDao, 'dao', address, message, signature],
+        params: [tempDataDao, 'dao', address, msg, signature],
       };
-      console.log(data);
       const re = await create_user(JSON.stringify(data));
       if (re.data.result.status === 'ok') {
-        alert('sussess');
+        message.success('sussess');
       } else {
-        alert(re.data.result.payload);
+        message.error(re.data.result.payload);
       }
     }
   };
   return (
     <div className="editor w-full h-screen overflow-hidden flex flex-col bg-black">
-      <div className='flex-grow-0 w-full flex justify-center'>
+      <div className="flex-grow-0 w-full flex justify-center">
         <Header />
       </div>
       <div className="flex-grow w-main mx-auto overflow-hidden flex">

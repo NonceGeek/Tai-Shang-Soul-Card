@@ -302,7 +302,7 @@ const Card = (props) => {
         </div>
         <div className="awsome-things general-border mt-[8px]">
           <div className="awsome-things-title ft-s-16 fw-700 text-ibm-bold border-b">
-            DAO/Organization
+            Members Introduction
           </div>
           <div className="c-icon flex m-[8px]">
             <img src={c} alt="" />

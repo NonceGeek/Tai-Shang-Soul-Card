@@ -21,6 +21,7 @@ import { useAccount, useContractWrite } from 'wagmi';
 import { render_and_put_to_ipfs } from '@/requests/DataHandler';
 import { get_user } from '@/requests/UserManager';
 import { message } from 'antd';
+
 const Card = (props) => {
   const [name, set_name] = useState('');
   const [ipfs_link, set_ipfs_link] = useState('');
@@ -121,6 +122,12 @@ const Card = (props) => {
     input.select();
     document.execCommand('copy');
     document.body.removeChild(input);
+
+    message.success({
+      content: `已复制`,
+      style: { cursor: 'pointer' },
+      duration: 3,
+    })
   };
   const handleContact = (needJump, link) => {
     copy(link);
@@ -134,6 +141,7 @@ const Card = (props) => {
   useEffect(() => {
     setCardData(props.data);
   }, [props.data]);
+
   return (
     <>
       {isLoading && message.loading('Mint NFT Loading...')}
@@ -296,7 +304,7 @@ const Card = (props) => {
                 {cardData.basic_info.homepage}
               </div>
             </div>
-            <div className="contract general-border flex pr-[14px] pl-[14px]">
+            <div className="contract general-border flex pr-[14px] pl-[14px] cursor-pointer" onClick={() => copy(cardData.basic_info.contract_addresses[0].addr)}>
               <img src={sign} alt="" />
               <span className="ml-[4px] word-break">
                 {cardData.basic_info.contract_addresses[0].alias

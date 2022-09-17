@@ -8,7 +8,7 @@ import location from './mock/location.svg';
 import avatar from './mock/avatar.png';
 import wechat from './mock/wechat.svg';
 import mirror_link from './mock/miro.svg';
-import github_link from './mock/telegram.svg';
+import github_link from './mock/github.svg';
 import discord from './mock/discord.svg';
 import twitter from './mock/twitter.svg';
 import circle from './mock/right-circle-arrow.svg';
@@ -209,13 +209,13 @@ const Card = (props) => {
               alt=""
             />
           </div>
-          <div className="contact general-border">
+          <div className="contact general-border flex justify-between gap-x-1">
             {cardData.basic_info.social_links.discord ? (
               <img
                 onClick={() =>
                   handleContact(false, cardData.basic_info.social_links.discord)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={discord}
                 alt=""
               />
@@ -230,7 +230,7 @@ const Card = (props) => {
                     cardData.basic_info.social_links.github_link,
                   )
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={github_link}
                 alt=""
               />
@@ -242,7 +242,7 @@ const Card = (props) => {
                 onClick={() =>
                   handleContact(false, cardData.basic_info.social_links.wechat)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={wechat}
                 alt=""
               />
@@ -254,7 +254,7 @@ const Card = (props) => {
                 onClick={() =>
                   handleContact(false, cardData.basic_info.social_links.twitter)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={twitter}
                 alt=""
               />
@@ -269,7 +269,7 @@ const Card = (props) => {
                     cardData.basic_info.social_links.mirror_link,
                   )
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={mirror_link}
                 alt=""
               />
@@ -281,7 +281,7 @@ const Card = (props) => {
                 onClick={() =>
                   handleContact(true, cardData.basic_info.social_links.telegram)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={telegram}
                 alt=""
               />

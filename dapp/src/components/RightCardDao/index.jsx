@@ -183,13 +183,13 @@ const Card = (props) => {
               alt=""
             />
           </div>
-          <div className="contact general-border">
+          <div className="contact general-border flex justify-between flex-wrap">
             {cardData.basic_info.social_links.discord ? (
               <img
                 onClick={() =>
                   handleContact(false, cardData.basic_info.social_links.discord)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={discord}
                 alt=""
               />
@@ -204,7 +204,7 @@ const Card = (props) => {
                     cardData.basic_info.social_links.github_link,
                   )
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={github_link}
                 alt=""
               />
@@ -216,7 +216,7 @@ const Card = (props) => {
                 onClick={() =>
                   handleContact(false, cardData.basic_info.social_links.wechat)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={wechat}
                 alt=""
               />
@@ -228,7 +228,7 @@ const Card = (props) => {
                 onClick={() =>
                   handleContact(false, cardData.basic_info.social_links.twitter)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={twitter}
                 alt=""
               />
@@ -243,7 +243,7 @@ const Card = (props) => {
                     cardData.basic_info.social_links.mirror_link,
                   )
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={mirror_link}
                 alt=""
               />
@@ -255,7 +255,7 @@ const Card = (props) => {
                 onClick={() =>
                   handleContact(true, cardData.basic_info.social_links.telegram)
                 }
-                className="mr-[15px] pointer"
+                className="pointer"
                 src={telegram}
                 alt=""
               />

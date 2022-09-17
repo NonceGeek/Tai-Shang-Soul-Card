@@ -5,6 +5,7 @@ import GradientInput from '@/components/GradientInput';
 import Button from '@/components/Button';
 import { useLocation } from 'umi';
 import { get_user, get_role_map } from '@/requests/UserManager';
+import { analyze_github } from '@/requests/DataHandler';
 import { useAccount } from 'wagmi';
 import { message } from 'antd';
 export default function index(props) {
@@ -209,6 +210,11 @@ export default function index(props) {
       'https://github.com/login/oauth/authorize?client_id=9b26616a898147b1a598&redirect_uri=https://api-vercel-tan.vercel.app/api/github/oauth';
   };
   useEffect(async () => {
+    const res = await analyze_github({
+      params: [address, formData.basic_info.github.name],
+    });
+  }, [formData.basic_info.github.name]);
+  useEffect(async () => {
     if (!address) {
       history.push(`/`);
     }
@@ -233,12 +239,25 @@ export default function index(props) {
     formData.basic_info.skills = [...check_skill];
     setFormData({ ...formData });
   }, [check_skill]);
-  useEffect(() => {
-    console.log(location);
+  useEffect(async () => {
     if (location.query.login) {
       formData.basic_info.social_links.github_link = `https://github.com/${location.query.login}`;
       formData.basic_info.github.avatar = location.query.avatar_url;
       formData.basic_info.github.name = location.query.login;
+      const res = await analyze_github({
+        params: [address, formData.basic_info.github.name],
+      });
+      if (
+        res.data.result.WeLightProject.if_in_owner &&
+        res.data.result.WeLightProject.repo_list.length
+      ) {
+        console.log(res.data.result.WeLightProject.repo_list);
+        const projects = res.data.result.WeLightProject.repo_list.filter(
+          (item) => item.if_in,
+        );
+        formData.project_whitelist = [...projects];
+        setFormData({ ...formData });
+      }
     }
   }, [location.query]);
   return (

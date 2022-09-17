@@ -350,8 +350,11 @@ const Card = (props) => {
                   <div
                     className="project-item pointer mr-[8px] ft-s-12 text-ibm"
                     key={index}
+                    onClick={() => {
+                      window.open(item.link);
+                    }}
                   >
-                    {item.project}
+                    {item.name}
                   </div>
                 );
               })}

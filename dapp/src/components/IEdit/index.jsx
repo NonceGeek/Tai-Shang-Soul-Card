@@ -10,31 +10,36 @@ export default function index(props) {
   const { address } = useAccount();
   const location = useLocation();
   const [skills, setSkills] = useState({
-    'Frontend technology stack': [
-      { name: 'HTMl', status: false },
-      { name: 'CSS', status: false },
+    'Frontend Techstacks': [
       { name: 'Javascript', status: false },
       { name: 'React', status: false },
+      { name: 'Vue', status: false },
       { name: 'scaffold-eth', status: false },
     ],
-    'Backend technology stack': [
+    'Backend Techstacks': [
+      { name: 'Rust', status: false },
+      { name: 'Golang', status: false },
       { name: 'Java', status: false },
       { name: 'C', status: false },
       { name: 'C#', status: false },
       { name: 'C++', status: false },
       { name: 'Python', status: false },
-      { name: 'Node', status: false },
-      { name: 'Golang', status: false },
       { name: 'Elixir', status: false },
-      { name: 'Rust', status: false },
     ],
-    'Contract technology stack': [
+    'Smart Contract Techstacks': [
       { name: 'Solidity', status: false },
       { name: 'Move', status: false },
     ],
-    'Blockchain technology stack': [
-      { name: 'Ethereum', status: false },
-      { name: 'Arweave', status: false },
+    'Blockchain Techstacks': [
+      { name: 'NFT', status: false },
+      { name: 'Defi', status: false },
+      { name: 'EVM', status: false },
+      { name: 'ZK', status: false },
+      { name: 'Security', status: false },
+      { name: 'Consensus', status: false },
+      { name: 'dApp', status: false },
+      { name: 'Storage', status: false },
+      { name: 'Substrate', status: false },
     ],
   });
   const [check_skill, set_check_skill] = useState([]);

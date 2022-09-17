@@ -319,13 +319,17 @@ const Card = (props) => {
             DAO/Organization
           </div>
           <div className="dao-list">
-            {cardData.organization.map((item, index) => {
+            {cardData.daos_joined.map((item, index) => {
               return (
                 <div className="flex border-t pt-[4px] pl-[4px]" key={index}>
                   <div>
                     <img
                       style={{ height: '40px', width: '40px' }}
-                      src={require(`./mock/temp-${item.avatar}.png`)}
+                      src={
+                        item.avatar
+                          ? item.avatar
+                          : require(`./mock/temp-${item.avatar}.png`)
+                      }
                       alt=""
                     />
                   </div>
@@ -333,16 +337,12 @@ const Card = (props) => {
                     <div className="dao-name ft-s-24 ft-700 mb-[10px] text-ibm-bold">
                       {item.name}
                     </div>
-                    {item.is_core_member ? (
-                      <div className="flex position text-ibm">
-                        <div className="c-icon flex mr-[8px]">
-                          <img src={c} alt="" />
-                        </div>
-                        <span>{item.position}</span>
+                    <div className="flex position text-ibm">
+                      <div className="c-icon flex mr-[8px]">
+                        <img src={c} alt="" />
                       </div>
-                    ) : (
-                      ''
-                    )}
+                      <span>position</span>
+                    </div>
                   </div>
                 </div>
               );

@@ -370,7 +370,7 @@ export default function index(props) {
       </div>
       <div className="mb-6">
         <InputLabel
-          text="Add Your Associating Company/DAO"
+          text="Add Your Parnter"
           bold={true}
         ></InputLabel>
         <div className="mb-2">

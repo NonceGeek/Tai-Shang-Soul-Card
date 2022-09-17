@@ -299,7 +299,9 @@ const Card = (props) => {
             <div className="contract general-border flex pr-[14px] pl-[14px]">
               <img src={sign} alt="" />
               <span className="ml-[4px] word-break">
-                {cardData.basic_info.contract_addresses.addr}
+                {cardData.basic_info.contract_addresses[0].alias
+                  ? cardData.basic_info.contract_addresses[0].alias
+                  : cardData.basic_info.contract_addresses[0].addr}
               </span>
             </div>
             <div className="location general-border">

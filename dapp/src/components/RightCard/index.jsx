@@ -142,7 +142,7 @@ const Card = (props) => {
             Share Soul Card
           </div>
           <div className="options ft-s-14 mb-[8px]" onClick={mintNFT}>
-            Mint NFT
+            Mint SBT
           </div>
           <div
             className="options ft-s-14"

@@ -179,13 +179,14 @@ export default function index(props) {
         alert('DAO不存在');
       } else {
         const dao = daoArr[0];
-        if (formData.daos_joined.some((item) => item === dao.addr)) {
+        if (formData.daos_joined.some((item) => item.addr === dao.addr)) {
           alert('你已经加入');
         } else {
           const res = await get_user({ params: [dao.addr] });
           formData.daos_joined.push({
             name: res.data.result.dao.payload.basic_info.name,
             avatar: res.data.result.dao.payload.basic_info.avatar,
+            addr: dao.addr,
           });
           setFormData({ ...formData });
           alert('成功加入dao');

@@ -21,7 +21,7 @@ import { get_user } from '@/requests/UserManager';
 const Card = (props) => {
   const [name, set_name] = useState('');
   const [ipfs_link, set_ipfs_link] = useState('');
-  const { data, write } = useContractWrite({
+  const { data, write, isSuccess } = useContractWrite({
     mode: 'recklesslyUnprepared',
     addressOrName: SoulCardAddress,
     contractInterface: SoulCardABI,
@@ -71,9 +71,14 @@ const Card = (props) => {
     daos_joined: ['0x73c7448760517E3E6e416b2c130E3c6dB2026A1d'],
     organization: [],
   });
-  const handleShareclick = () => {
-    setShowPopover(false);
-    setState(true);
+  const handleShareclick = async () => {
+    const res = await get_user({ params: [address] });
+    if (res.data.result && res.data.result.user) {
+      setShowPopover(false);
+      setState(true);
+    } else {
+      alert('please SAVE');
+    }
   };
   const clickLink = async () => {
     render_and_put_to_ipfs({
@@ -88,7 +93,7 @@ const Card = (props) => {
       set_name(res.data.result.user.payload.basic_info.name);
       set_ipfs_link(res.data.result.ipfs_link);
     }
-    alert('已上传至IPFS');
+    alert(`已上传至IPFS:${res.data.result.ipfs_link}`);
   };
   const copy = (value, type = 'input') => {
     const input = document.createElement(type);
@@ -109,9 +114,15 @@ const Card = (props) => {
     }
   };
   const mintNFT = async () => {
-    write();
-    // write();
-    // setShowPopover(false)
+    const res = await get_user({ params: [address] });
+    if (res.data.result && res.data.result.user) {
+      write();
+      setTimeout(() => {
+        alert(`check tx: https://portal.noncegeek.com`);
+      }, 5000);
+    } else {
+      alert('please SAVE');
+    }
   };
   const jump = (link) => {
     window.open(link);
@@ -299,7 +310,7 @@ const Card = (props) => {
         </div>
         <div className="awsome-things general-border mt-[8px] pb-[20px]">
           <div className="awsome-things-title ft-s-16 fw-700 border-b text-ibm-bold">
-            Project Whitelist
+            Project Contributed
           </div>
           <div className="p-[8px]">
             {cardData.project_whitelist.map((item, index) => {
@@ -319,13 +330,17 @@ const Card = (props) => {
             DAO/Organization
           </div>
           <div className="dao-list">
-            {cardData.organization.map((item, index) => {
+            {cardData.daos_joined.map((item, index) => {
               return (
                 <div className="flex border-t pt-[4px] pl-[4px]" key={index}>
                   <div>
                     <img
                       style={{ height: '40px', width: '40px' }}
-                      src={require(`./mock/temp-${item.avatar}.png`)}
+                      src={
+                        item.avatar
+                          ? item.avatar
+                          : require(`./mock/dao_avatar.png`)
+                      }
                       alt=""
                     />
                   </div>
@@ -333,16 +348,12 @@ const Card = (props) => {
                     <div className="dao-name ft-s-24 ft-700 mb-[10px] text-ibm-bold">
                       {item.name}
                     </div>
-                    {item.is_core_member ? (
-                      <div className="flex position text-ibm">
-                        <div className="c-icon flex mr-[8px]">
-                          <img src={c} alt="" />
-                        </div>
-                        <span>{item.position}</span>
+                    <div className="flex position text-ibm">
+                      <div className="c-icon flex mr-[8px]">
+                        <img src={c} alt="" />
                       </div>
-                    ) : (
-                      ''
-                    )}
+                      <span>position</span>
+                    </div>
                   </div>
                 </div>
               );

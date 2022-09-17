@@ -11,10 +11,10 @@ export default function index(props) {
   const location = useLocation();
   const [skills, setSkills] = useState({
     'Frontend Techstacks': [
-      { name: 'Javascript', status: false },
+      { name: 'JavaScript', status: false },
       { name: 'React', status: false },
       { name: 'Vue', status: false },
-      { name: 'scaffold-eth', status: false },
+      { name: 'Scaffold-ETH', status: false },
     ],
     'Backend Techstacks': [
       { name: 'Rust', status: false },

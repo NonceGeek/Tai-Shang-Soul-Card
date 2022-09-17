@@ -398,7 +398,7 @@ export default function index(props) {
             </div>
           );
         })}
-        <div className="w-[421px] h-[150px] rounded border-[0.5px] border-solid border-white text-white font-bold mr-4 mb-4 px-6 py-2">
+        {/* <div className="w-[421px] h-[150px] rounded border-[0.5px] border-solid border-white text-white font-bold mr-4 mb-4 px-6 py-2">
           <p>Do you agree to retrieve your tag sorting by Github</p>
           <div className="flex justify-center">
             <Button colorStyle="green" buttonText="Agree" font="IBMPlexMono" />
@@ -408,7 +408,7 @@ export default function index(props) {
               font="IBMPlexMono"
             />
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="mb-6">
         <InputLabel text="What's your company/DAO?" bold={true}></InputLabel>

@@ -7,7 +7,7 @@ import location from './mock/location.svg';
 import sign from './mock/sign.svg';
 import wechat from './mock/wechat.svg';
 import mirror_link from './mock/miro.svg';
-import github_link from './mock/telegram.svg';
+import github_link from './mock/github.svg';
 import discord from './mock/discord.svg';
 import twitter from './mock/twitter.svg';
 import telegram from './mock/telegram.svg';
@@ -172,7 +172,7 @@ const Card = (props) => {
           </span>
         </div>
         <div className="inside text-ibm mt-[8px]">
-          <div className="basic-info general-border">
+          <div className="basic-info general-border flex justify-center items-center">
             <img
               className="max-w-full max-h-full avator"
               src={

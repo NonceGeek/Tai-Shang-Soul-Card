@@ -254,6 +254,13 @@ export default function index(props) {
           placeholder="eg: @SoulCard"
         ></GradientInput>
         <GradientInput
+          value={formData.basic_info.social_links.github_link}
+          onChange={changeHandle('basic_info', 'social_links', 'github_link')}
+          width="md"
+          label="GitHub"
+          placeholder="eg: https://github.com/NonceGeek"
+        ></GradientInput>
+        <GradientInput
           value={formData.basic_info.social_links.mirror_link}
           onChange={changeHandle('basic_info', 'social_links', 'mirror_link')}
           width="md"

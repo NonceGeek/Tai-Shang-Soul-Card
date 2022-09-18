@@ -329,7 +329,7 @@ const Card = (props) => {
             {cardData.awesome_things.map((item, index) => {
               return (
                 <div
-                  className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex"
+                  className="border-top-cus p-[8px] fw-700 text-ibm ft-s-12 flex"
                   key={index}
                 >
                   <div>{item.title}</div>
@@ -341,7 +341,7 @@ const Card = (props) => {
             })}
           </div>
           <div className="awsome-things general-border mt-[8px] pb-[20px]">
-            <div className="awsome-things-title ft-s-16 fw-700 border-b text-ibm-bold">
+            <div className="awsome-things-title ft-s-16 fw-700 border-tottom-cus text-ibm-bold">
               Project Contributed
             </div>
             <div className="p-[8px]">
@@ -367,7 +367,7 @@ const Card = (props) => {
             <div className="dao-list">
               {cardData.daos_joined.map((item, index) => {
                 return (
-                  <div className="flex border-t pt-[4px] pl-[4px]" key={index}>
+                  <div className="flex border-top-cus pt-[4px] pb-[4px] pl-[4px]" style={{alignItems: 'center'}} key={index}>
                     <div>
                       <img
                         style={{ height: '40px', width: '40px' }}
@@ -379,8 +379,8 @@ const Card = (props) => {
                         alt=""
                       />
                     </div>
-                    <div className="">
-                      <div className="dao-name ft-s-24 ft-700 mb-[10px] text-ibm-bold">
+                    <div className="ml-[10px]">
+                      <div className="dao-name ft-s-24 ft-700 mb-[4px] text-ibm-bold">
                         {item.name}
                       </div>
                       <div className="flex position text-ibm">

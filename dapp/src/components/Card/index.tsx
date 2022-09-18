@@ -5,7 +5,7 @@ export interface Props {
 }
 
 export default function index({ text, width, height = 'sm' }: Props) {
-  return <div className={`flex-grow border border-[#79D5A880] border-solid hover:border-black flex flex-col justify-center items-center font-IBMPlexMono text-[14px]
+  return <div className={`flex-grow border border-[#79D5A880] border-solid hover:border-tottom-cuslack flex flex-col justify-center items-center font-IBMPlexMono text-[14px]
       ${width === 'full' && 'w-full'}
       ${height === 'sm' && 'h-[26px]'}
       ${height === 'md' && 'h-[86px]'}

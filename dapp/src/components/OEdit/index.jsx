@@ -160,7 +160,7 @@ export default function index(props) {
         message.error('DAO不存在');
       } else {
         const dao = daoArr[0];
-        if (formData.partners.some((item) => item === dao.addr)) {
+        if (formData.partners.some((item) => item.name === dao.name)) {
           message.warn('你已经加入');
         } else {
           const res = await get_user({ params: [dao.addr] });

@@ -329,7 +329,7 @@ const Card = (props) => {
             {cardData.awesome_things.map((item) => {
               return (
                 <div
-                  className="border-t p-[8px] fw-700 text-ibm ft-s-12 flex"
+                  className="border-top-cus p-[8px] fw-700 text-ibm ft-s-12 flex"
                   key={item.title}
                 >
                   <div>{item.title}</div>
@@ -341,7 +341,7 @@ const Card = (props) => {
             })}
           </div>
           <div className="awsome-things general-border mt-[8px]">
-            <div className="awsome-things-title ft-s-16 fw-700 text-ibm-bold border-b">
+            <div className="awsome-things-title ft-s-16 fw-700 text-ibm-bold border-tottom-cus">
               Members Introduction
             </div>
             <div className="c-icon flex m-[8px]">
@@ -397,7 +397,7 @@ const Card = (props) => {
             <div className="partner">
               {cardData.partners.map((item, index) => {
                 return (
-                  <div className="flex border-t p-[8px] dao-ele" key={index}>
+                  <div className="flex border-top-cus p-[8px] dao-ele" key={index}>
                     <img
                       src={
                         item.avatar

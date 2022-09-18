@@ -51,9 +51,11 @@ export default function index(props) {
     core_members: [],
     sub_daos: [],
   });
+
   useEffect(async () => {
     if (!address) {
       history.push(`/`);
+      return;
     }
     const res = await get_role_map({ params: ['dao'] });
     if (res.data.result) {
@@ -121,17 +123,20 @@ export default function index(props) {
     el.click(); // open
   };
 
-  const changeDao = (param1) => {
+  const filterDao = (param1) => {
     return (value) => {
       check_dao[param1].name = value;
       set_check_dao([...check_dao]);
-      const daoArr = all_dao.filter((item) => item.name.indexOf(value) != -1);
+      const daoArr = all_dao
+        .filter(item => item.name.toLowerCase().indexOf(value.trim().toLowerCase()) > -1) // 不区分大小写的检查
+        .filter(item => !check_dao.some(dao => dao.name === item.name)); // 已添加的排除掉
       set_serch_dao([...daoArr]);
     };
   };
-  const searchDAO = (param1, value) => {
-    check_dao[param1].name = value;
+  const searchDAO = (value) => {
+    check_dao[check_dao.length - 1].name = value;
     set_check_dao([...check_dao]);
+    set_serch_dao([]);
   };
   const addDAO = () => {
     if (check_dao.length) {
@@ -216,11 +221,10 @@ export default function index(props) {
           font="IBMPlexMono"
         />
         <img
-          className={`${
-            formData.basic_info.avatar
-              ? 'w-52 h-52 object-contain'
-              : 'w-px h-px'
-          }`}
+          className={`${formData.basic_info.avatar
+            ? 'w-52 h-52 object-contain'
+            : 'w-px h-px'
+            }`}
           src={formData.basic_info.avatar}
         />
       </div>
@@ -376,64 +380,43 @@ export default function index(props) {
         <div className="mb-2">
           {check_dao.map((item, index) => {
             return (
-              <>
-                <div className="flex items-center" key={index}>
-                  <GradientInput
-                    value={check_dao[index].name}
-                    onChange={changeDao(index)}
-                    placeholder="eg: SoulCard project "
-                  ></GradientInput>
-                  <Button
-                    colorStyle="green"
-                    buttonText="Confirm"
-                    font="IBMPlexMono"
-                    style={{
-                      height: '20px',
-                      display: 'flex',
-                      fontSize: '10px',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      marginBottom: '8px',
-                      marginLeft: '8px',
-                    }}
-                    onClick={() => confirmDao(check_dao[index].name)}
-                  />
-                </div>
-                {search_dao.length !== 0 && (
-                  <div className="mb-2 border border-white border-solid bg-[#343434] w-[354px] flex flex-col py-2 cursor-default">
-                    {search_dao.map((item, index2) => {
-                      if (index2 === search_dao.length - 1) {
-                        return (
-                          <span
-                            className="ml-4"
-                            onClick={() => {
-                              searchDAO(index, item.name);
-                            }}
-                          >
-                            {item.name}
-                          </span>
-                        );
-                      }
-                      return (
-                        <>
-                          {' '}
-                          <span
-                            className="ml-4"
-                            onClick={() => {
-                              searchDAO(index, item.name);
-                            }}
-                          >
-                            {item.name}
-                          </span>
-                          <hr className="w-[90%]" />
-                        </>
-                      );
-                    })}
-                  </div>
-                )}
-              </>
+              <div className="flex items-center" key={index}>
+                <GradientInput
+                  value={check_dao[index].name}
+                  onChange={filterDao(index)}
+                  placeholder="eg: SoulCard project "
+                ></GradientInput>
+                <Button
+                  colorStyle="green"
+                  buttonText="Confirm"
+                  font="IBMPlexMono"
+                  style={{
+                    height: '20px',
+                    display: 'flex',
+                    fontSize: '10px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: '8px',
+                    marginLeft: '8px',
+                  }}
+                  onClick={() => confirmDao(check_dao[index].name)}
+                />
+              </div>
             );
           })}
+          {check_dao.length && check_dao[check_dao.length - 1]?.name && search_dao.length !== 0 && (
+            <div className="mb-4 px-4 py-1 w-[442px] border border-white border-solid rounded bg-[#343434] flex flex-col cursor-default">
+              {search_dao.map((item, index2) => (
+                <span
+                  className="py-3 border-b last:border-b-0 border-white"
+                  key={index2}
+                  onClick={() => searchDAO(item.name)}
+                >
+                  {item.name}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <Button
           colorStyle="green"

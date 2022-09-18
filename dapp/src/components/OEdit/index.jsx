@@ -174,6 +174,24 @@ export default function index(props) {
       }
     }
   };
+  const removeDao = (name) => {
+    if (formData.partners.length > 0) {
+      const isJoined = formData.partners.findIndex((item) => {
+        return item.name === name
+      })
+      if (isJoined === -1) {
+        message.error('未加入该DAO');
+      } else {
+        formData.partners = formData.partners.filter((item) => {
+          return item.name !== name
+        })
+        setFormData({ ...formData });
+        message.success('移除成功');
+      }
+    } else {
+      message.error('还未加入DAO');
+    }
+  }
   const addProject = () => {
     formData.awesome_things.push({ title: '', link: '' });
     setFormData({ ...formData });
@@ -401,6 +419,21 @@ export default function index(props) {
                   }}
                   onClick={() => confirmDao(check_dao[index].name)}
                 />
+                {check_dao[index].name ? <Button
+                  colorStyle="green"
+                  buttonText="Remove"
+                  font="IBMPlexMono"
+                  style={{
+                    height: '20px',
+                    display: 'flex',
+                    fontSize: '10px',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: '8px',
+                    marginLeft: '8px',
+                  }}
+                  onClick={() => removeDao(check_dao[index].name)}
+                /> : <span></span>}
               </div>
             );
           })}
